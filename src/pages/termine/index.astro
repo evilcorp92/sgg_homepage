@@ -329,136 +329,84 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
         const res = await fetch('/api/calendar.php');
         if (!res.ok) return;
         const data = await res.json();
-        if (!data || !data.ics) return;
+        if (!data || !data.events || data.events.length === 0) return;
 
-        const icsText = data.ics.replace(/\r?\n[ \t]/g, '');
-        const lines = icsText.split(/\r?\n/);
-        const events = [];
-        let cur = null;
+        const months = ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sept.', 'Okt.', 'Nov.', 'Dez.'];
+        const days = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
 
-        for (const l of lines) {
-          if (l.startsWith('BEGIN:VEVENT')) {
-            cur = { desc: '', loc: '', exdates: [] };
-          } else if (l.startsWith('END:VEVENT')) {
-            if (cur && cur.summary && cur.start) {
-              const s = cur.summary.trim();
-              const sLow = s.toLowerCase();
-              let cat = 'Sonstiges';
-              if (sLow.includes('vorstandssitzung')) cat = 'Vorstandssitzung';
-              else if (/\bvm\b|vereinsmeisterschaft/i.test(s)) cat = 'Vereinsmeisterschaft';
-              else if (sLow.includes('arbeitseinsatz')) cat = 'Arbeitseinsatz';
-              else if (!sLow.includes('training') && !sLow.includes('rwk')) cat = 'Allgemein';
-              else cat = 'Training / RWK';
+        const upcoming = data.events.map(e => {
+          const dt = new Date(e.startTime * 1000);
+          return {
+            ...e,
+            dateObj: dt
+          };
+        });
 
-              events.push({
-                summary: s,
-                desc: cur.desc,
-                loc: cur.loc,
-                start: cur.start,
-                isAllDay: cur.isAllDay,
-                cat
-              });
-            }
-            cur = null;
-          } else if (cur) {
-            const cIdx = l.indexOf(':');
-            if (cIdx === -1) continue;
-            const k = l.slice(0, cIdx).split(';')[0];
-            const v = l.slice(cIdx + 1).replace(/\\n/gi, '\n').replace(/\\,/g, ',').replace(/\\;/g, ';');
-            if (k === 'SUMMARY') cur.summary = v;
-            else if (k === 'DESCRIPTION') cur.desc = v;
-            else if (k === 'LOCATION') cur.loc = v;
-            else if (k === 'DTSTART') {
-              const cl = v.replace(/[^0-9TZ]/g, '');
-              if (cl.length === 8) {
-                cur.start = new Date(parseInt(cl.slice(0,4)), parseInt(cl.slice(4,6))-1, parseInt(cl.slice(6,8)));
-                cur.isAllDay = true;
-              } else if (cl.length >= 15) {
-                if (cl.endsWith('Z')) {
-                  cur.start = new Date(Date.UTC(parseInt(cl.slice(0,4)), parseInt(cl.slice(4,6))-1, parseInt(cl.slice(6,8)), parseInt(cl.slice(9,11)), parseInt(cl.slice(11,13))));
-                } else {
-                  cur.start = new Date(parseInt(cl.slice(0,4)), parseInt(cl.slice(4,6))-1, parseInt(cl.slice(6,8)), parseInt(cl.slice(9,11)), parseInt(cl.slice(11,13)));
-                }
-                cur.isAllDay = false;
-              }
-            }
-          }
-        }
+        const list = document.getElementById('eventsList');
+        if (!list) return;
 
-        const now = new Date();
-        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-        const upcoming = events.filter(e => e.start && e.start.getTime() >= todayStart).sort((a,b) => a.start.getTime() - b.start.getTime());
+        const html = upcoming.map(e => {
+          const mStr = months[e.dateObj.getMonth()];
+          const dNum = e.dateObj.getDate();
+          const dStr = `${days[e.dateObj.getDay()]}, ${String(dNum).padStart(2,'0')}.${String(e.dateObj.getMonth()+1).padStart(2,'0')}.${e.dateObj.getFullYear()}`;
+          const tStr = e.isAllDay ? 'Ganztägig' : `${String(e.dateObj.getHours()).padStart(2,'0')}:${String(e.dateObj.getMinutes()).padStart(2,'0')} Uhr`;
 
-        if (upcoming.length > 0) {
-          const list = document.getElementById('eventsList');
-          if (!list) return;
+          let badgeCls = 'bg-slate-100 text-slate-700';
+          if (e.category === 'Vorstandssitzung') badgeCls = 'bg-blue-100 text-blue-800';
+          else if (e.category === 'Vereinsmeisterschaft') badgeCls = 'bg-amber-100 text-amber-800';
+          else if (e.category === 'Arbeitseinsatz') badgeCls = 'bg-emerald-100 text-emerald-800';
 
-          const months = ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sept.', 'Okt.', 'Nov.', 'Dez.'];
-          const days = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
-
-          const html = upcoming.map(e => {
-            const mStr = months[e.start.getMonth()];
-            const dNum = e.start.getDate();
-            const dStr = `${days[e.start.getDay()]}, ${String(dNum).padStart(2,'0')}.${String(e.start.getMonth()+1).padStart(2,'0')}.${e.start.getFullYear()}`;
-            const tStr = e.isAllDay ? 'Ganztägig' : `${String(e.start.getHours()).padStart(2,'0')}:${String(e.start.getMinutes()).padStart(2,'0')} Uhr`;
-
-            let badgeCls = 'bg-slate-100 text-slate-700';
-            if (e.cat === 'Vorstandssitzung') badgeCls = 'bg-blue-100 text-blue-800';
-            else if (e.cat === 'Vereinsmeisterschaft') badgeCls = 'bg-amber-100 text-amber-800';
-            else if (e.cat === 'Arbeitseinsatz') badgeCls = 'bg-emerald-100 text-emerald-800';
-
-            return `
-              <div 
-                class="event-card bg-white border border-brand-border/70 rounded-brand p-5 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-4"
-                data-category="${e.cat}"
-                data-summary="${e.summary.toLowerCase()}"
-                data-description="${(e.desc || '').toLowerCase()}"
-                data-location="${(e.loc || '').toLowerCase()}"
-              >
-                <div class="flex items-center gap-4 min-w-[200px] border-b md:border-b-0 md:border-r border-brand-border/40 pb-3 md:pb-0 md:pr-4">
-                  <div class="w-12 h-12 rounded-xl bg-brand-dark text-white flex flex-col items-center justify-center shrink-0 font-extrabold shadow-sm">
-                    <span class="text-xs uppercase leading-none">${mStr}</span>
-                    <span class="text-base leading-tight">${dNum}</span>
-                  </div>
-                  <div class="space-y-0.5">
-                    <span class="font-extrabold text-sm text-brand-dark block">${dStr}</span>
-                    <span class="text-xs text-brand-muted flex items-center gap-1 font-medium">🕒 ${tStr}</span>
-                  </div>
+          return `
+            <div 
+              class="event-card bg-white border border-brand-border/70 rounded-brand p-5 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-4"
+              data-category="${e.category}"
+              data-summary="${e.summary.toLowerCase()}"
+              data-description="${(e.description || '').toLowerCase()}"
+              data-location="${(e.location || '').toLowerCase()}"
+            >
+              <div class="flex items-center gap-4 min-w-[200px] border-b md:border-b-0 md:border-r border-brand-border/40 pb-3 md:pb-0 md:pr-4">
+                <div class="w-12 h-12 rounded-xl bg-brand-dark text-white flex flex-col items-center justify-center shrink-0 font-extrabold shadow-sm">
+                  <span class="text-xs uppercase leading-none">${mStr}</span>
+                  <span class="text-base leading-tight">${dNum}</span>
                 </div>
-                <div class="space-y-1.5 flex-grow">
-                  <div class="flex items-center gap-2">
-                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${badgeCls}">${e.cat}</span>
-                  </div>
-                  <h3 class="text-base font-extrabold text-brand-dark">${e.summary}</h3>
-                  ${e.loc ? `<p class="text-xs text-brand-steel flex items-center gap-1">📍 ${e.loc}</p>` : ''}
-                  ${e.desc ? `<p class="text-xs text-brand-content/80 leading-relaxed pt-1">${e.desc}</p>` : ''}
+                <div class="space-y-0.5">
+                  <span class="font-extrabold text-sm text-brand-dark block">${dStr}</span>
+                  <span class="text-xs text-brand-muted flex items-center gap-1 font-medium">🕒 ${tStr}</span>
                 </div>
               </div>
-            `;
-          }).join('');
+              <div class="space-y-1.5 flex-grow">
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${badgeCls}">${e.category}</span>
+                </div>
+                <h3 class="text-base font-extrabold text-brand-dark">${e.summary}</h3>
+                ${e.location ? `<p class="text-xs text-brand-steel flex items-center gap-1">📍 ${e.location}</p>` : ''}
+                ${e.description ? `<p class="text-xs text-brand-content/80 leading-relaxed pt-1">${e.description}</p>` : ''}
+              </div>
+            </div>
+          `;
+        }).join('');
 
-          list.innerHTML = html;
+        list.innerHTML = html;
 
-          // Update counts on filter buttons
-          const allCnt = upcoming.length;
-          const allgCnt = upcoming.filter(e => e.cat === 'Allgemein').length;
-          const vorstCnt = upcoming.filter(e => e.summary.toLowerCase().includes('vorstandssitzung') || e.cat === 'Vorstandssitzung').length;
-          const vmCnt = upcoming.filter(e => /\bvm\b|vereinsmeisterschaft/i.test(e.summary) || e.cat === 'Vereinsmeisterschaft').length;
-          const arbCnt = upcoming.filter(e => e.summary.toLowerCase().includes('arbeitseinsatz') || e.cat === 'Arbeitseinsatz').length;
+        // Update counts on filter buttons
+        const allCnt = upcoming.length;
+        const allgCnt = upcoming.filter(e => e.category === 'Allgemein').length;
+        const vorstCnt = upcoming.filter(e => e.summary.toLowerCase().includes('vorstandssitzung') || e.category === 'Vorstandssitzung').length;
+        const vmCnt = upcoming.filter(e => /\bvm\b|vereinsmeisterschaft/i.test(e.summary) || e.category === 'Vereinsmeisterschaft').length;
+        const arbCnt = upcoming.filter(e => e.summary.toLowerCase().includes('arbeitseinsatz') || e.category === 'Arbeitseinsatz').length;
 
-          const bAllg = document.getElementById('btn-Allgemein');
-          if (bAllg) bAllg.textContent = `🎯 Allgemein (${allgCnt})`;
-          const bAll = document.getElementById('btn-all');
-          if (bAll) bAll.textContent = `Alle (${allCnt})`;
-          const bVorst = document.getElementById('btn-Vorstandssitzung');
-          if (bVorst) bVorst.textContent = `👥 Vorstandssitzungen (${vorstCnt})`;
-          const bVm = document.getElementById('btn-Vereinsmeisterschaft');
-          if (bVm) bVm.textContent = `🏆 Vereinsmeisterschaften (${vmCnt})`;
-          const bArb = document.getElementById('btn-Arbeitseinsatz');
-          if (bArb) bArb.textContent = `🔨 Arbeitseinsätze (${arbCnt})`;
+        const bAllg = document.getElementById('btn-Allgemein');
+        if (bAllg) bAllg.textContent = `🎯 Allgemein (${allgCnt})`;
+        const bAll = document.getElementById('btn-all');
+        if (bAll) bAll.textContent = `Alle (${allCnt})`;
+        const bVorst = document.getElementById('btn-Vorstandssitzung');
+        if (bVorst) bVorst.textContent = `👥 Vorstandssitzungen (${vorstCnt})`;
+        const bVm = document.getElementById('btn-Vereinsmeisterschaft');
+        if (bVm) bVm.textContent = `🏆 Vereinsmeisterschaften (${vmCnt})`;
+        const bArb = document.getElementById('btn-Arbeitseinsatz');
+        if (bArb) bArb.textContent = `🔨 Arbeitseinsätze (${arbCnt})`;
 
-          applyFilters();
-        }
+        applyFilters();
       } catch (err) {
         console.warn('Live calendar sync fallback to pre-rendered:', err);
       }

@@ -11,17 +11,6 @@ const postsCollection = defineCollection({
   })
 });
 
-const pagesCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    date: z.coerce.date().optional(),
-    draft: z.boolean().default(false),
-    type: z.string().optional(),
-  })
-});
-
 export const collections = {
   posts: postsCollection,
-  pages: pagesCollection,
 };

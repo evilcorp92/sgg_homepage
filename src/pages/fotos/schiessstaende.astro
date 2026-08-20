@@ -72,13 +72,13 @@ const totalPhotos = albums.reduce((sum, a) => sum + a.images.length, 0);
 
             {/* Thumbnails */}
             <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4">
-              {album.images.map((imgUrl, imgIdx) => (
+              {album.photos.map((photo: any, imgIdx: number) => (
                 <div 
                   class="relative aspect-[4/3] rounded-brand overflow-hidden bg-slate-900 cursor-pointer group shadow-xs hover:shadow-md transition-all"
                   onclick={`openGallery('${album.title.replace(/'/g, "\\'")}', ${JSON.stringify(album.images)}, ${imgIdx})`}
                 >
                   <img 
-                    src={imgUrl} 
+                    src={photo.thumb || photo.full} 
                     alt={`${album.title} - Bild ${imgIdx + 1}`}
                     class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-108"
                     loading="lazy"
