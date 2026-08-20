@@ -18,7 +18,7 @@ const upcomingEvents = allEvents
 // Count for each category
 const allgemeinCount = upcomingEvents.filter(e => e.category === 'Allgemein').length;
 const vorstandCount = upcomingEvents.filter(e => e.summary.toLowerCase().includes('vorstandssitzung') || e.category === 'Vorstandssitzung').length;
-const vmCount = upcomingEvents.filter(e => /\bvm\b|vereinsmeisterschaft/i.test(e.summary) || e.category === 'Vereinsmeisterschaft').length;
+const meisterschaftCount = upcomingEvents.filter(e => /\b(vm|bm|lm)\b|meisterschaft/i.test(e.summary) || e.category === 'Meisterschaft').length;
 const arbeitseinsatzCount = upcomingEvents.filter(e => e.summary.toLowerCase().includes('arbeitseinsatz') || e.category === 'Arbeitseinsatz').length;
 
 const formatDate = (date: Date) => {
@@ -35,7 +35,7 @@ const GOOGLE_CALENDAR_ADD_URL = "https://calendar.google.com/calendar/u/0?cid=OW
 const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9idllguk0%40group.calendar.google.com/public/basic.ics";
 ---
 
-<Layout title="Termine & Vereinskalender - SG Gersfeld 1813 e.V." description="Kommende Vereinstermine aus dem Google Kalender der SG Gersfeld: Vorstandssitzungen, Vereinsmeisterschaften, Feste und Arbeitseinsätze.">
+<Layout title="Termine & Vereinskalender - SG Gersfeld 1813 e.V." description="Kommende Vereinstermine aus dem Google Kalender der SG Gersfeld: Vorstandssitzungen, Meisterschaften (VM, BM, LM), Feste und Arbeitseinsätze.">
   
   <div class="bg-brand-card min-h-screen pb-24">
     
@@ -83,11 +83,11 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
             👥 Vorstandssitzungen ({vorstandCount})
           </button>
           <button 
-            onclick="setFilter('Vereinsmeisterschaft')" 
-            id="btn-Vereinsmeisterschaft"
+            onclick="setFilter('Meisterschaft')" 
+            id="btn-Meisterschaft"
             class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-slate-100 text-brand-steel hover:bg-slate-200"
           >
-            🏆 Vereinsmeisterschaften ({vmCount})
+            🏆 Meisterschaften ({meisterschaftCount})
           </button>
           <button 
             onclick="setFilter('Arbeitseinsatz')" 
@@ -170,7 +170,7 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
                     <div class="flex items-center gap-2">
                       <span class={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
                         e.category === 'Vorstandssitzung' ? 'bg-blue-100 text-blue-800' :
-                        e.category === 'Vereinsmeisterschaft' ? 'bg-amber-100 text-amber-800' :
+                        (e.category === 'Meisterschaft' || e.category === 'Vereinsmeisterschaft') ? 'bg-amber-100 text-amber-800' :
                         e.category === 'Arbeitseinsatz' ? 'bg-emerald-100 text-emerald-800' :
                         'bg-slate-100 text-slate-700'
                       }`}>
@@ -238,11 +238,11 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
   <script is:inline>
     let activeCategory = 'Allgemein';
 
-    // Parse URL parameter or hash (e.g. /termine/?filter=Vorstandssitzung)
+    // Parse URL parameter or hash (e.g. /termine/?filter=Meisterschaft)
     const urlParams = new URLSearchParams(window.location.search);
     const filterParam = urlParams.get('filter') || window.location.hash.replace('#', '');
-    if (filterParam && ['all', 'Allgemein', 'Vorstandssitzung', 'Vereinsmeisterschaft', 'Arbeitseinsatz'].includes(filterParam)) {
-      activeCategory = filterParam;
+    if (filterParam && ['all', 'Allgemein', 'Vorstandssitzung', 'Meisterschaft', 'Vereinsmeisterschaft', 'Arbeitseinsatz'].includes(filterParam)) {
+      activeCategory = (filterParam === 'Vereinsmeisterschaft') ? 'Meisterschaft' : filterParam;
     }
 
     function setFilter(cat) {
@@ -287,8 +287,8 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
           matchesCat = (cat === 'Allgemein');
         } else if (activeCategory === 'Vorstandssitzung') {
           matchesCat = summary.includes('vorstandssitzung') || cat === 'Vorstandssitzung';
-        } else if (activeCategory === 'Vereinsmeisterschaft') {
-          matchesCat = (/\bvm\b|vereinsmeisterschaft/.test(summary)) || cat === 'Vereinsmeisterschaft';
+        } else if (activeCategory === 'Meisterschaft' || activeCategory === 'Vereinsmeisterschaft') {
+          matchesCat = (/\b(vm|bm|lm)\b|meisterschaft/i.test(summary)) || cat === 'Meisterschaft' || cat === 'Vereinsmeisterschaft';
         } else if (activeCategory === 'Arbeitseinsatz') {
           matchesCat = summary.includes('arbeitseinsatz') || cat === 'Arbeitseinsatz';
         }
@@ -353,7 +353,7 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
 
           let badgeCls = 'bg-slate-100 text-slate-700';
           if (e.category === 'Vorstandssitzung') badgeCls = 'bg-blue-100 text-blue-800';
-          else if (e.category === 'Vereinsmeisterschaft') badgeCls = 'bg-amber-100 text-amber-800';
+          else if (e.category === 'Meisterschaft' || e.category === 'Vereinsmeisterschaft') badgeCls = 'bg-amber-100 text-amber-800';
           else if (e.category === 'Arbeitseinsatz') badgeCls = 'bg-emerald-100 text-emerald-800';
 
           return `
@@ -392,7 +392,7 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
         const allCnt = upcoming.length;
         const allgCnt = upcoming.filter(e => e.category === 'Allgemein').length;
         const vorstCnt = upcoming.filter(e => e.summary.toLowerCase().includes('vorstandssitzung') || e.category === 'Vorstandssitzung').length;
-        const vmCnt = upcoming.filter(e => /\bvm\b|vereinsmeisterschaft/i.test(e.summary) || e.category === 'Vereinsmeisterschaft').length;
+        const meisterschaftCnt = upcoming.filter(e => /\b(vm|bm|lm)\b|meisterschaft/i.test(e.summary) || e.category === 'Meisterschaft' || e.category === 'Vereinsmeisterschaft').length;
         const arbCnt = upcoming.filter(e => e.summary.toLowerCase().includes('arbeitseinsatz') || e.category === 'Arbeitseinsatz').length;
 
         const bAllg = document.getElementById('btn-Allgemein');
@@ -401,8 +401,8 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
         if (bAll) bAll.textContent = `Alle (${allCnt})`;
         const bVorst = document.getElementById('btn-Vorstandssitzung');
         if (bVorst) bVorst.textContent = `👥 Vorstandssitzungen (${vorstCnt})`;
-        const bVm = document.getElementById('btn-Vereinsmeisterschaft');
-        if (bVm) bVm.textContent = `🏆 Vereinsmeisterschaften (${vmCnt})`;
+        const bMeisterschaft = document.getElementById('btn-Meisterschaft') || document.getElementById('btn-Vereinsmeisterschaft');
+        if (bMeisterschaft) bMeisterschaft.textContent = `🏆 Meisterschaften (${meisterschaftCnt})`;
         const bArb = document.getElementById('btn-Arbeitseinsatz');
         if (bArb) bArb.textContent = `🔨 Arbeitseinsätze (${arbCnt})`;
 

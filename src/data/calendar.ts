@@ -9,7 +9,7 @@ export interface CalendarEvent {
   startDate: Date;
   endDate?: Date;
   isAllDay: boolean;
-  category: 'Allgemein' | 'Vorstandssitzung' | 'Vereinsmeisterschaft' | 'Arbeitseinsatz' | 'Training / RWK' | 'Sonstiges';
+  category: 'Allgemein' | 'Vorstandssitzung' | 'Meisterschaft' | 'Arbeitseinsatz' | 'Training / RWK' | 'Sonstiges';
 }
 
 function parseICSDate(str: string): Date | null {
@@ -61,14 +61,14 @@ export function parseICS(icsText: string): CalendarEvent[] {
         let category: CalendarEvent['category'] = 'Sonstiges';
         if (sLower.includes('vorstandssitzung')) {
           category = 'Vorstandssitzung';
-        } else if (/\bvm\b|vereinsmeisterschaft/i.test(s)) {
-          category = 'Vereinsmeisterschaft';
+        } else if (/\b(vm|bm|lm)\b|meisterschaft/i.test(s)) {
+          category = 'Meisterschaft';
         } else if (sLower.includes('arbeitseinsatz')) {
           category = 'Arbeitseinsatz';
         } else if (
           !sLower.includes('training') &&
           !sLower.includes('vorstandssitzung') &&
-          !/\bvm\b|vereinsmeisterschaft/i.test(s) &&
+          !/\b(vm|bm|lm)\b|meisterschaft/i.test(s) &&
           !sLower.includes('rwk') &&
           !sLower.includes('arbeitseinsatz')
         ) {

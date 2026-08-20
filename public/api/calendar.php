@@ -76,8 +76,8 @@ foreach ($lines as $line) {
             $cat = 'Sonstiges';
             if (strpos($sLow, 'vorstandssitzung') !== false) {
                 $cat = 'Vorstandssitzung';
-            } elseif (preg_match('/\bvm\b|vereinsmeisterschaft/i', $s)) {
-                $cat = 'Vereinsmeisterschaft';
+            } elseif (preg_match('/\b(vm|bm|lm)\b|meisterschaft/i', $s)) {
+                $cat = 'Meisterschaft';
             } elseif (strpos($sLow, 'arbeitseinsatz') !== false) {
                 $cat = 'Arbeitseinsatz';
             } elseif (strpos($sLow, 'training') === false && strpos($sLow, 'rwk') === false) {
