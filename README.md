@@ -34,7 +34,8 @@ Alle Beiträge befinden sich als Markdown-Dateien unter `src/content/posts/` –
 src/content/posts/
 ├── 2026/
 ├── 2025/
-├── ...
+├── 2024/
+└── ...
 ```
 
 Um einen neuen Beitrag zu erstellen, lege eine neue `.md`-Datei im jeweiligen Jahresordner an (z. B. `src/content/posts/2026/mein-neuer-beitrag.md`):
@@ -54,19 +55,41 @@ Ein Bild einbinden:
 
 ---
 
-### 2. Termine & Google Kalender (100% Vollautomatisch)
+### 2. Vorstand, Schießwarte & Funktionsträger ändern
+Die Vorstandsmitglieder und Funktionsträger sind zentral in einer eigenen Datendatei hinterlegt:
+- 📄 **Datei**: `src/data/vorstand.ts`
+- Hier findest du übersichtliche TypeScript-Listen für:
+  - `HAUPTVORSTAND` (1./2. Vorsitzende, Kassierer, Schriftführer, Gerätewarte etc.)
+  - `SCHIESSWARTE` (Liste der Schießwarte mit Status)
+  - `KASSENPRUEFER`
+  - `KOENIGSFAMILIE` (Schützenkönig, Ritter, Damen, Jugend)
+  - `BDS_VORSTAND` & `BDS_ROS` (Range Officers)
+
+*(Die Datei `src/pages/verein/vorstand.astro` enthält lediglich das HTML-Layout und rendert diese Daten automatisch).*
+
+---
+
+### 3. Kosten, Beiträge & Munitionspreise anpassen
+- 📄 **Datei**: `src/pages/verein/kosten.astro`
+- Direkt ganz oben im Kopf der Datei (Zeilen 7–27) befinden sich die Daten-Arrays:
+  - `YEARLY_DYNAMIC_FEES`: Die jährlichen dynamischen Mitgliedsbeiträge (2025, 2026, 2027 etc.).
+  - `AMMO_PRICES`: Die aktuellen Munitionspreise vor Ort (Kaliber, Packungsgröße, Preis).
+
+---
+
+### 4. Termine & Google Kalender (100% Vollautomatisch)
 - **Live-Kalender & Gefilterte Listen (`/termine/`)**:
   - Neue Termine trägst du wie gewohnt in den offiziellen **Google Kalender** der SG Gersfeld ein.
   - **Kein Rebuild nötig**: Die Website synchronisiert Termine und Kategorien (*Allgemein, Vorstandssitzungen, Vereinsmeisterschaften, Arbeitseinsätze*) über den API-Endpunkt `/api/calendar.php` automatisch in Echtzeit!
 
 ---
 
-### 3. Dienstplan (100% Vollautomatisch)
+### 5. Dienstplan (100% Vollautomatisch)
 - Der **Dienstplan** für Standaufsichten wird direkt per Live-Widget von `https://dp.sg-gersfeld.de/` geladen. Änderungen dort sind sofort auf der Homepage sichtbar.
 
 ---
 
-### 4. Fotoalben & Bildergalerien (`/fotos/`)
+### 6. Fotoalben & Bildergalerien (`/fotos/`)
 Die Alben werden über die Konfigurationsdatei `src/data/photoAlbums.json` verwaltet:
 - **Events & Feste** (`events`): z. B. Westernfeste, Silver City Cups, Vereinsfeiern.
 - **Gebäude** (`gebaeude`): Saloon, Cantina, Schützenhaus, Zeltwiese etc.
@@ -90,12 +113,12 @@ Neues Album anlegen: Einfach Bilder hochladen und den Eintrag in `src/data/photo
 
 ---
 
-### 5. Vereinsdaten, Vorstand & Kosten ändern
-- **Vorstand & Schießwarte**: `src/pages/verein/vorstand.astro`
-- **Kosten & Beiträge**: `src/pages/verein/kosten.astro`
+### 7. Schießzeiten, FAQ & Satzungen bearbeiten
 - **Schießzeiten & Disziplinen**: `src/pages/verein/schiesszeiten.astro`
-- **Satzungen**: `src/pages/verein/satzung.astro` und `src/pages/satzung-bds-schuetzen-sg-gersfeld.astro`
-- **FAQ (Häufige Fragen)**: `src/pages/faq.astro`
+- **FAQ (Häufige Fragen)**: `src/pages/faq.astro` (im Array `FAQ_SECTIONS` ganz oben)
+- **Hauptsatzung**: `src/pages/verein/satzung.astro`
+- **BDS-Satzung**: `src/pages/satzung-bds-schuetzen-sg-gersfeld.astro`
+- **Videoüberwachung**: `src/pages/videoueberwachung.astro`
 
 ---
 
@@ -110,7 +133,7 @@ Sobald das Repository auf GitHub liegt, baut GitHub bei jedem `git push` auf den
    - `FTP_SERVER`: `w020c7bf.kasserver.com`
    - `FTP_USERNAME`: `f018a826`
    - `FTP_PASSWORD`: *(dein FTP-Passwort)*
-3. Fertig! Zukünftige Änderungen werden nach jedem Push automatisch innerhalb von ca. 30 Sekunden deployed.
+3. Fertig! Zukünftige Änderungen werden nach jedem Push auf `main` automatisch innerhalb von ca. 20–30 Sekunden deployed (andere Branches wie `dev` lösen keinen Deploy aus).
 
 ---
 
