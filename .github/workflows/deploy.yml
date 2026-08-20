@@ -34,9 +34,10 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./dist/
-          server-dir: /
+          server-dir: ./
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
             wp-content/uploads/**
+            public/wp-content/uploads/**
