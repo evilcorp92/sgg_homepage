@@ -14,6 +14,19 @@ function getFileHash(filePath) {
   return crypto.createHash("md5").update(content).digest("hex");
 }
 
+async function uploadWithRetry(client, fullPath, fileName, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      await client.uploadFrom(fullPath, fileName);
+      return;
+    } catch (err) {
+      if (attempt === maxRetries) throw err;
+      console.warn(`[Retry ${attempt}/${maxRetries}] Retrying upload of ${fileName} after error:`, err.message);
+      await new Promise(r => setTimeout(r, 1000 * attempt));
+    }
+  }
+}
+
 async function deploy() {
   const distPath = path.resolve(__dirname, "../dist");
   if (!fs.existsSync(distPath)) {
@@ -70,17 +83,17 @@ async function deploy() {
   client.ftp.verbose = false;
 
   const ftpConfig = {
-    host: "w020c7bf.kasserver.com",
-    port: 21,
-    user: "f018a826",
-    password: "***REMOVED***",
+    host: process.env.FTP_SERVER || "w020c7bf.kasserver.com",
+    port: parseInt(process.env.FTP_PORT || "21"),
+    user: process.env.FTP_USERNAME || "f018a826",
+    password: process.env.FTP_PASSWORD || "***REMOVED***",
     secure: false
   };
 
   try {
-    console.log("Connecting to FTP server...");
+    console.log(`Connecting to FTP server ${ftpConfig.host}...`);
     await client.access(ftpConfig);
-    console.log("Connected!");
+    console.log("Connected successfully!");
 
     let uploaded = 0;
     let totalBytes = 0;
@@ -95,7 +108,7 @@ async function deploy() {
         await client.cd("/");
       }
 
-      await client.uploadFrom(file.fullPath, fileName);
+      await uploadWithRetry(client, file.fullPath, fileName);
       uploaded++;
       totalBytes += file.size;
       manifest[file.relPath] = newManifest[file.relPath];
