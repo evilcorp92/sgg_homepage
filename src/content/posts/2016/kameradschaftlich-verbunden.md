@@ -2,7 +2,7 @@
 title: "Kameradschaftlich verbunden"
 date: 2016-07-30T20:58:27
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsnachrichten']
 ---
 
 ## Die Bundeswehr zu Gast bei den Gersfelder Schützen
@@ -11,7 +11,7 @@ Aufgrund langer persönlicher Verbindung zwischen dem Leiter der Truppenübungs-
 
 Dabei wurde diesmal mit verschiedenen Groß- und Kleinkaliberwaffen geschossen, die sportlich zugelassen sind, was wohl für den einen oder anderen Soldaten eine Umstellung bedeutete, da er vorrangig im Umgang mit militärischen Waffen unterwiesen ist. Jeder Schütze musste mit drei verschiedenen Gewehren und drei unterschiedlichen Kurzwaffen eine bestimmte Anzahl von Wettkampfschüssen abgeben. Die Schwierigkeit wurde zusätzlich noch durch verschiedene Schießstellungen wie liegend, stehend freihändig und sitzend erhöht. Sieger wurde, wer mit allen Waffen die meisten Ringe erzielte.
 
-![Bild 1](http://www.sg-gersfeld.de/wp-content/uploads/ftp/Freundschaftsschiessen%20SG%20BW%202016_1.jpg)
+![Bild 1](/wp-content/uploads/2016/07/Freundschaftsschiessen-SG-BW-2016_1.jpg)
 
 Volle Konzentration beim Schiessen
 
@@ -19,15 +19,11 @@ Bei der Auswertung stellte sich heraus, dass Major Christoph Peschel von der Kom
 
 Als Dank überreichte Oberstleutnant Weinrauter dem Organisator Frank Schmidt ein Wappenschild der Truppenübungsplatzkommandantur Süd und lud im Gegenzug den Verein zum nächsten gemeinsamen Schießen nach Wildflecken ein. Zwischendurch durfte natürlich auch eine herzhafte Stärkung nicht fehlen und nach der Siegerehrung verbrachte man noch gesellige Stunden mit Fachsimpelei und angeregten Gesprächen.
 
-**
-![Bild 2](http://www.sg-gersfeld.de/wp-content/uploads/ftp/Freundschaftsschiessen%20SG%20BW%202016_2.jpg)
-**
+![Bild 2](/wp-content/uploads/2016/07/Freundschaftsschiessen-SG-BW-2016_2.jpg)
 
 Siegertypen: Michael Jahn, Major Christoph Peschel, Oliver Hecht (v.l.)
 
-**
-![Bild 3](http://www.sg-gersfeld.de/wp-content/uploads/ftp/Freundschaftsschiessen%20SG%20BW%202016_3.jpg)
-**
+![Bild 3](/wp-content/uploads/2016/07/Freundschaftsschiessen-SG-BW-2016_3.jpg)
 
 „Gut Schuß“ und bis zum nächsten Mal
 
