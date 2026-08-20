@@ -1,0 +1,148 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  Video, Shield, Info, Lock, Eye, Scale, ArrowLeft, Building2, UserCheck
+} from 'lucide-react';
+---
+
+<Layout title="Informationen zur Videoüberwachung - SG Gersfeld 1813 e.V." description="Pflichtinformationen zur Videoüberwachung des Vereinsgeländes der SG Gersfeld 1813 e.V. nach Art. 13 DSGVO.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <a href="/datenschutz/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors bg-white px-3 py-1 rounded-full border border-brand-border/60">
+            <ArrowLeft class="w-3.5 h-3.5" /> Zur Datenschutzerklärung
+          </a>
+        </div>
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          Rechtliche Hinweise & DSGVO
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Video class="w-9 h-9 text-brand-steel" /> Videoüberwachung
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-sm sm:text-base">
+          Transparenz und Informationspflichten zur Videoüberwachung des Vereinsgeländes der SG Gersfeld 1813 e.V. gemäß Art. 13 DSGVO.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-6 mt-12 space-y-10">
+
+      {/* Verantwortlicher Card */}
+      <section class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 border-b border-brand-border/60 pb-3">
+          <Building2 class="w-6 h-6 text-brand-steel" />
+          <h2 class="text-xl font-extrabold text-brand-dark">1. Verantwortlicher</h2>
+        </div>
+        <div class="space-y-1 text-brand-content text-sm sm:text-base">
+          <p class="font-extrabold text-brand-dark">Schützengesellschaft Gersfeld 1813 e.V.</p>
+          <p>Rommerser Straße 32</p>
+          <p>36129 Gersfeld (Rhön)</p>
+          <p class="text-xs text-brand-muted pt-2">Eingetragen im Vereinsregister des Amtsgerichts Fulda (VR 160).</p>
+        </div>
+      </section>
+
+      {/* Zweck & Rechtsgrundlage */}
+      <section class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 border-b border-brand-border/60 pb-3">
+          <Scale class="w-6 h-6 text-brand-steel" />
+          <h2 class="text-xl font-extrabold text-brand-dark">2. Zwecke und Rechtsgrundlage</h2>
+        </div>
+        
+        <div class="space-y-4 text-brand-content text-sm sm:text-base leading-relaxed">
+          <div>
+            <h3 class="font-bold text-brand-dark mb-1">Zwecke der Videoüberwachung:</h3>
+            <ul class="list-disc list-inside space-y-1 pl-2 text-sm text-brand-content/90">
+              <li>Wahrnehmung des Hausrechts auf dem gesamten Vereinsgelände</li>
+              <li>Schutz von Vereinseigentum, Gebäuden und Sportstätten vor Vandalismus, unbefugtem Zutritt und Einbruch</li>
+              <li>Sicherung waffenrechtlich sensibler Schießstandbereiche</li>
+              <li>Gefahrenabwehr sowie Beweissicherung und Aufklärung bei eventuellen Straftaten</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 class="font-bold text-brand-dark mb-1">Rechtsgrundlage:</h3>
+            <p>
+              Rechtsgrundlage der Videoüberwachung ist <strong>Art. 6 Abs. 1 lit. f) DSGVO</strong> (berechtigtes Interesse des Verantwortlichen) sowie § 4 Bundesdatenschutzgesetz (BDSG). Unsere berechtigten Interessen ergeben sich aus den oben genannten Sicherheits- und Schutzzwecken.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Speicherdauer & Empfänger */}
+      <section class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 border-b border-brand-border/60 pb-3">
+          <Lock class="w-6 h-6 text-brand-steel" />
+          <h2 class="text-xl font-extrabold text-brand-dark">3. Speicherdauer & Empfänger der Daten</h2>
+        </div>
+        
+        <div class="space-y-4 text-brand-content text-sm sm:text-base leading-relaxed">
+          <p>
+            Die Aufnahmen dienen primär der Live-Überwachung zur Wahrung der Stand- und Anlagensicherheit. Eine dauerhafte Speicherung findet grundsätzlich nicht statt. Sollten im Einzelfall Aufzeichnungen zur Beweissicherung bei Vorfällen erforderlich sein, werden diese unverzüglich gelöscht, sobald sie für die Zweckerreichung nicht mehr erforderlich sind.
+          </p>
+          <p>
+            Eine Weitergabe von Daten an Dritte erfolgt ausschließlich dann, wenn dies zur Verfolgung von Straftaten erforderlich ist, an die zuständigen Strafverfolgungs- und Ermittlungsbehörden.
+          </p>
+        </div>
+      </section>
+
+      {/* Betroffenenrechte */}
+      <section class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 border-b border-brand-border/60 pb-3">
+          <UserCheck class="w-6 h-6 text-brand-steel" />
+          <h2 class="text-xl font-extrabold text-brand-dark">4. Rechte der Betroffenen</h2>
+        </div>
+        
+        <div class="space-y-4 text-brand-content text-sm sm:text-base leading-relaxed">
+          <p>
+            Betroffene Personen haben im Rahmen der gesetzlichen Bestimmungen der DSGVO folgende Rechte gegenüber dem Verantwortlichen:
+          </p>
+
+          <ul class="space-y-2.5 text-sm">
+            <li class="p-3 bg-slate-50 rounded-brand border border-slate-200">
+              <strong class="text-brand-dark block">Recht auf Auskunft (Art. 15 DSGVO):</strong>
+              Sie haben das Recht auf Bestätigung und Auskunft darüber, ob personenbezogene Daten verarbeitet werden.
+            </li>
+            <li class="p-3 bg-slate-50 rounded-brand border border-slate-200">
+              <strong class="text-brand-dark block">Recht auf Berichtigung & Löschung (Art. 16, 17 DSGVO):</strong>
+              Sie können unverzügliche Löschung oder Berichtigung Ihrer Daten verlangen, sofern die gesetzlichen Gründe vorliegen.
+            </li>
+            <li class="p-3 bg-slate-50 rounded-brand border border-slate-200">
+              <strong class="text-brand-dark block">Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO):</strong>
+              Unter den gesetzlichen Voraussetzungen können Sie eine Einschränkung der Verarbeitung verlangen.
+            </li>
+            <li class="p-3 bg-slate-50 rounded-brand border border-slate-200">
+              <strong class="text-brand-dark block">Widerspruchsrecht (Art. 21 DSGVO):</strong>
+              Sie haben das Recht, aus Gründen, die sich aus Ihrer besonderen Situation ergeben, jederzeit Widerspruch gegen die Verarbeitung einzulegen.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      {/* Zuständige Aufsichtsbehörde */}
+      <section class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 border-b border-brand-border/60 pb-3">
+          <Shield class="w-6 h-6 text-brand-steel" />
+          <h2 class="text-xl font-extrabold text-brand-dark">5. Beschwerderecht bei der Aufsichtsbehörde</h2>
+        </div>
+        <div class="space-y-2 text-brand-content text-sm sm:text-base leading-relaxed">
+          <p>
+            Jede betroffene Person hat unbeschadet eines anderweitigen Rechtsbehelfs das Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde (Art. 77 DSGVO). In Hessen ist dies:
+          </p>
+          <div class="p-4 bg-slate-50 rounded-brand border border-slate-200 text-sm font-medium">
+            <p class="font-bold text-brand-dark">Der Hessische Beauftragte für Datenschutz und Informationsfreiheit</p>
+            <p>Gustav-Stresemann-Ring 1, 65189 Wiesbaden</p>
+            <p>Postfach 3163, 65021 Wiesbaden</p>
+            <p class="pt-1"><a href="https://datenschutz.hessen.de/" target="_blank" rel="noopener noreferrer" class="text-brand-steel underline font-bold">https://datenschutz.hessen.de/</a></p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+</Layout>

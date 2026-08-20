@@ -1,0 +1,167 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  Target, Clock, Shield, Award, Mail, ArrowLeft, ArrowRight, CheckCircle2, FileText, Info 
+} from 'lucide-react';
+
+const KURZWAFFE_DISZIPLINEN = [
+  'Luftpistole 10 m (Druckluft)',
+  'Mehrschüssige Luftpistole 10 m',
+  'Olympische Schnellfeuerpistole 25 m',
+  'Sportpistole Kleinkaliber 25 m (.22 lr)',
+  'Sportpistole Großkaliber 25 m (9mm, .45 ACP, .357 Mag, .44 Mag)',
+  'Gebrauchspistole & Gebrauchsrevolver 25 m',
+  'Standardpistole 25 m',
+  'Freie Pistole 50 m'
+];
+
+const LANGWAFFE_DISZIPLINEN = [
+  'Luftgewehr 10 m (Stehend, Auflage)',
+  'Zimmerstutzen 15 m',
+  'Kleinkalibergewehr 50 m (Präzision & Dreistellung)',
+  'Großkalibergewehr 50 m',
+  'Ordonnanzgewehr 50 m',
+  'Unterhebelrepetiergewehr 50 m'
+];
+---
+
+<Layout title="DSB Abteilung (Präzision) - SG Gersfeld 1813 e.V." description="DSB Sportschießen bei der SG Gersfeld: Luftgewehr, Sportpistole, Freie Pistole und traditionelle DSB-Disziplinen.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Hero Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <a href="/abteilungen/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors bg-white px-3 py-1 rounded-full border border-brand-border/60">
+            <ArrowLeft class="w-3.5 h-3.5" /> Alle Abteilungen
+          </a>
+        </div>
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          Deutscher Schützenbund
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Target class="w-10 h-10 text-brand-steel" /> DSB — Präzisions-Schießsport
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-base sm:text-lg">
+          Klassischer Schießsport mit Fokus auf höchste Konzentration, Atemtechnik und Präzision von der 10m-Druckluftdistanz bis zum 50m-Kleinkaliber.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* Quick Facts Bar */}
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white rounded-brand-lg border border-brand-border/70 p-6 shadow-sm">
+        <div class="space-y-1 text-center sm:text-left sm:border-r border-brand-border/40 sm:pr-4">
+          <span class="text-xs font-bold uppercase text-brand-muted">Verband</span>
+          <p class="text-sm font-extrabold text-brand-dark">Hessischer Schützenverband / DSB</p>
+        </div>
+        <div class="space-y-1 text-center sm:text-left sm:border-r border-brand-border/40 sm:pr-4">
+          <span class="text-xs font-bold uppercase text-brand-muted">Schießzeiten</span>
+          <p class="text-sm font-extrabold text-brand-dark">Mo (19–21 Uhr), Sa (17–19), So (10–13)</p>
+        </div>
+        <div class="space-y-1 text-center sm:text-left">
+          <span class="text-xs font-bold uppercase text-brand-muted">Stände</span>
+          <p class="text-sm font-extrabold text-brand-dark">10m Druckluft, 25m Kurzwaffe, 50m Langwaffe</p>
+        </div>
+      </div>
+
+      {/* Disciplines Grid */}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        {/* Kurzwaffe */}
+        <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+          <div class="flex items-center gap-3 border-b border-brand-border/40 pb-4">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-brand-steel">
+              <Target class="w-5 h-5" />
+            </div>
+            <div>
+              <h2 class="text-xl font-extrabold text-brand-dark">Kurzwaffen-Disziplinen</h2>
+              <span class="text-xs text-brand-muted font-medium">10m Druckluft & 25m Präzision / Duell</span>
+            </div>
+          </div>
+          <ul class="space-y-2.5 text-sm">
+            {KURZWAFFE_DISZIPLINEN.map(d => (
+              <li class="flex items-start gap-2 text-brand-content bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                <CheckCircle2 class="w-4 h-4 text-brand-steel shrink-0 mt-0.5" />
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Langwaffe */}
+        <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+          <div class="flex items-center gap-3 border-b border-brand-border/40 pb-4">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-brand-steel">
+              <Shield class="w-5 h-5" />
+            </div>
+            <div>
+              <h2 class="text-xl font-extrabold text-brand-dark">Langwaffen-Disziplinen</h2>
+              <span class="text-xs text-brand-muted font-medium">10m Druckluft, 15m & 50m Gewehr</span>
+            </div>
+          </div>
+          <ul class="space-y-2.5 text-sm">
+            {LANGWAFFE_DISZIPLINEN.map(d => (
+              <li class="flex items-start gap-2 text-brand-content bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                <CheckCircle2 class="w-4 h-4 text-brand-steel shrink-0 mt-0.5" />
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      {/* Waffensachkunde & Lehrgänge Infobox */}
+      <div class="bg-slate-900 text-white rounded-brand-lg p-8 shadow-md grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div class="md:col-span-2 space-y-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30">
+            <Award class="w-3.5 h-3.5" /> Qualifikation & Ausbildung
+          </span>
+          <h3 class="text-2xl font-black tracking-tight">Waffensachkunde & Standaufsichten</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Wir bieten regelmäßig Lehrgänge mit abschließender amtlicher Sachkundeprüfung für Sportschützen sowie Weiterbildungen zur verantwortlichen Standaufsicht an.
+          </p>
+        </div>
+        <div class="text-center md:text-right">
+          <a 
+            href="mailto:info@sg-gersfeld.de?subject=Anfrage%20Waffensachkunde" 
+            class="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-5 py-3 rounded-brand font-bold text-sm transition-colors shadow"
+          >
+            <Mail class="w-4 h-4" /> Lehrgang anfragen
+          </a>
+        </div>
+      </div>
+
+      {/* Vorstand & Ansprechpartner */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-brand-border/40 pb-4">
+          <div>
+            <h3 class="text-xl font-extrabold text-brand-dark">Vorstand & Ansprechpartner</h3>
+            <p class="text-xs text-brand-muted">Schützengesellschaft Gersfeld 1813 e.V.</p>
+          </div>
+          <a href="/verein/vorstand/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark">
+            Kompletten Vorstand ansehen →
+          </a>
+        </div>
+        <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm">
+          <div>
+            <span class="font-extrabold text-brand-dark block">Geschäftsführender Vorstand</span>
+            <span class="text-xs text-brand-steel">Für alle allgemeinen Fragen zum DSB-Schießbetrieb</span>
+          </div>
+          <a 
+            href="mailto:vorstand@sg-gersfeld.de" 
+            class="inline-flex items-center gap-1.5 px-4 py-2 rounded-brand bg-brand-dark hover:bg-brand-steel text-white text-xs font-bold transition-colors"
+          >
+            <Mail class="w-3.5 h-3.5" /> vorstand@sg-gersfeld.de
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>

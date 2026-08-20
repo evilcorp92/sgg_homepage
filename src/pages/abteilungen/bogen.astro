@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  Shield, Clock, Target, Award, Mail, ArrowLeft, ArrowRight, CheckCircle2, HeartHandshake, Sparkles, UserPlus 
+} from 'lucide-react';
+
+const ARCHERY_TYPES = [
+  { title: 'Recurvebogen (Olympisch & Blank)', desc: 'Klassischer Bogensport mit oder ohne Visierhilfen für präzise Schussfolgen.' },
+  { title: 'Compoundbogen', desc: 'Moderne Bogen-High-Tech mit Flaschenzugsystem für höchste Pfeilgeschwindigkeit und Präzision.' },
+  { title: 'Traditioneller Langbogen & Jagdbogen', desc: 'Instinktives Schießen ohne Visiereinrichtung mit Naturmaterialien.' },
+  { title: 'Bogensportanlage im Grünen', desc: 'Weitläufige Schießwiese auf unserem Vereinsgelände direkt am Schützenhaus.' }
+];
+---
+
+<Layout title="Bogenabteilung - SG Gersfeld 1813 e.V." description="Bogenschießen bei der SG Gersfeld: Traditioneller und olympischer Bogensport im Grünen. Wir suchen engagierte Schützen zur Reaktivierung!">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Hero Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <a href="/abteilungen/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors bg-white px-3 py-1 rounded-full border border-brand-border/60">
+            <ArrowLeft class="w-3.5 h-3.5" /> Alle Abteilungen
+          </a>
+        </div>
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-200">
+          Reaktivierung & Initiative
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Shield class="w-10 h-10 text-emerald-700" /> Bogenschießen in Gersfeld
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-base sm:text-lg">
+          Lautlose Konzentration, Kraft und mentale Ruhe auf unserer idyllischen Bogensportanlage im Herzen der Rhön.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* Callout Reaktivierungs-Banner */}
+      <div class="bg-gradient-to-tr from-emerald-950 via-slate-900 to-slate-950 text-white rounded-brand-lg p-8 shadow-xl space-y-6">
+        <div class="flex items-center gap-3">
+          <Sparkles class="w-8 h-8 text-emerald-400" />
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-emerald-300">Initiative</span>
+            <h2 class="text-2xl sm:text-3xl font-black">Interesse, das Bogenschießen neu zu beleben?</h2>
+          </div>
+        </div>
+        
+        <p class="text-sm sm:text-base text-slate-200 leading-relaxed max-w-3xl">
+          Das Bogenschießen ist fester Bestandteil der Vereinssatzung der SG Gersfeld. Aktuell ruht der regelmäßige Trainingsbetrieb mangels aktiver Trainingsgruppe und Übungsleiter. <strong>Wir möchten das Bogenschießen jedoch unbedingt reaktivieren!</strong>
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2 text-xs">
+          <div class="bg-white/10 p-4 rounded-brand border border-white/10 space-y-1">
+            <span class="font-bold text-emerald-300 flex items-center gap-1.5"><UserPlus class="w-4 h-4" /> Übungsleiter gesucht</span>
+            <p class="text-slate-300">Du hast Erfahrung im Bogensport und möchtest eine Gruppe leiten?</p>
+          </div>
+          <div class="bg-white/10 p-4 rounded-brand border border-white/10 space-y-1">
+            <span class="font-bold text-emerald-300 flex items-center gap-1.5"><Target class="w-4 h-4" /> Schützen & Einsteiger</span>
+            <p class="text-slate-300">Du möchtest regelmäßig Bogen schießen oder neu erlernen?</p>
+          </div>
+          <div class="bg-white/10 p-4 rounded-brand border border-white/10 space-y-1">
+            <span class="font-bold text-emerald-300 flex items-center gap-1.5"><HeartHandshake class="w-4 h-4" /> Volle Unterstützung</span>
+            <p class="text-slate-300">Der Verein stellt Standgelände und organisatorische Hilfe bereit.</p>
+          </div>
+        </div>
+
+        <div class="pt-4 flex flex-wrap items-center gap-4">
+          <a 
+            href="mailto:info@sg-gersfeld.de?subject=Interesse%20am%20Bogenschie%C3%9Fen" 
+            class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-extrabold text-sm px-6 py-3 rounded-brand transition-colors shadow-md"
+          >
+            <Mail class="w-4 h-4" /> Jetzt Kontakt aufnehmen (info@sg-gersfeld.de)
+          </a>
+        </div>
+      </div>
+
+      {/* Bogensport Möglichkeiten */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <h3 class="text-2xl font-extrabold text-brand-dark">
+          Bogensportarten & Disziplinen
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {ARCHERY_TYPES.map(a => (
+            <div class="p-5 rounded-brand bg-slate-50 border border-slate-200/80 space-y-2">
+              <h4 class="font-bold text-brand-dark text-base flex items-center gap-2">
+                <CheckCircle2 class="w-4 h-4 text-emerald-600" /> {a.title}
+              </h4>
+              <p class="text-xs text-brand-steel leading-relaxed">
+                {a.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Stand & Lage Info */}
+      <div class="p-6 rounded-brand-lg bg-white border border-brand-border/70 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center sm:text-left">
+          <h4 class="text-lg font-bold text-brand-dark">Bogensport-Außenanlage</h4>
+          <p class="text-xs text-brand-muted">Rommerser Str. 32, 36129 Gersfeld — Direkter Zugang über das Außengelände des Schützenhauses.</p>
+        </div>
+        <a 
+          href="/fotos/schiessstaende/" 
+          class="shrink-0 inline-flex items-center gap-1.5 text-xs font-bold text-brand-steel hover:text-brand-dark border border-brand-border/80 px-4 py-2 rounded-brand bg-brand-bg transition-colors"
+        >
+          Fotos der Anlage ansehen →
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>

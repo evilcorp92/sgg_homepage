@@ -1,0 +1,468 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCalendarEvents, type CalendarEvent } from '../../data/calendar';
+import { 
+  Calendar as CalendarIcon, Clock, Filter, ExternalLink, Download, Hammer, Users, Trophy, ShieldCheck, MapPin, Search 
+} from 'lucide-react';
+
+const allEvents = await getCalendarEvents();
+
+// Filter strictly for upcoming events (not in the past) and sort chronologically ascending
+const now = new Date();
+const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+
+const upcomingEvents = allEvents
+  .filter(e => e.startDate.getTime() >= todayStart)
+  .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
+
+// Count for each category
+const allgemeinCount = upcomingEvents.filter(e => e.category === 'Allgemein').length;
+const vorstandCount = upcomingEvents.filter(e => e.summary.toLowerCase().includes('vorstandssitzung') || e.category === 'Vorstandssitzung').length;
+const vmCount = upcomingEvents.filter(e => /\bvm\b|vereinsmeisterschaft/i.test(e.summary) || e.category === 'Vereinsmeisterschaft').length;
+const arbeitseinsatzCount = upcomingEvents.filter(e => e.summary.toLowerCase().includes('arbeitseinsatz') || e.category === 'Arbeitseinsatz').length;
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
+};
+
+const formatTime = (date: Date, isAllDay: boolean) => {
+  if (isAllDay) return 'Ganztägig';
+  return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+};
+
+const CALENDAR_EMBED_URL = "https://calendar.google.com/calendar/embed?src=9edol05k9ov7vnr7o9idllguk0%40group.calendar.google.com&ctz=Europe%2FBerlin&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0";
+const GOOGLE_CALENDAR_ADD_URL = "https://calendar.google.com/calendar/u/0?cid=OWVkb2wwNWs5b3Y3dm5yN285aWRsbGd1azBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ";
+const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9idllguk0%40group.calendar.google.com/public/basic.ics";
+---
+
+<Layout title="Termine & Vereinskalender - SG Gersfeld 1813 e.V." description="Kommende Vereinstermine aus dem Google Kalender der SG Gersfeld: Vorstandssitzungen, Vereinsmeisterschaften, Feste und Arbeitseinsätze.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-extrabold tracking-widest uppercase text-brand-steel">
+          Vereinsleben & Kalender
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <CalendarIcon class="w-8 h-8 text-brand-steel" /> Anstehende Vereinstermine
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto">
+          Alle kommenden Termine synchronisiert aus unserem Google-Kalender. Nach Datum sortiert und mit Schnellfiltern für Vorstandssitzungen, Meisterschaften und Arbeitseinsätze.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 mt-12 space-y-10">
+
+      {/* Filter Toolbar & Search Bar */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/80 p-6 shadow-sm space-y-6">
+        
+        {/* Category Buttons: Default is Allgemein */}
+        <div class="flex flex-wrap items-center justify-center gap-2.5">
+          <button 
+            onclick="setFilter('Allgemein')" 
+            id="btn-Allgemein"
+            class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-brand-dark text-white shadow-sm"
+          >
+            🎯 Allgemein ({allgemeinCount})
+          </button>
+          <button 
+            onclick="setFilter('all')" 
+            id="btn-all"
+            class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-slate-100 text-brand-steel hover:bg-slate-200"
+          >
+            Alle ({upcomingEvents.length})
+          </button>
+          <button 
+            onclick="setFilter('Vorstandssitzung')" 
+            id="btn-Vorstandssitzung"
+            class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-slate-100 text-brand-steel hover:bg-slate-200"
+          >
+            👥 Vorstandssitzungen ({vorstandCount})
+          </button>
+          <button 
+            onclick="setFilter('Vereinsmeisterschaft')" 
+            id="btn-Vereinsmeisterschaft"
+            class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-slate-100 text-brand-steel hover:bg-slate-200"
+          >
+            🏆 Vereinsmeisterschaften ({vmCount})
+          </button>
+          <button 
+            onclick="setFilter('Arbeitseinsatz')" 
+            id="btn-Arbeitseinsatz"
+            class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-slate-100 text-brand-steel hover:bg-slate-200"
+          >
+            🔨 Arbeitseinsätze ({arbeitseinsatzCount})
+          </button>
+        </div>
+
+        {/* Search Input & Action Bar */}
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-brand-border/40">
+          <div class="relative w-full sm:w-80">
+            <Search class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
+            <input 
+              type="text" 
+              id="eventSearch" 
+              placeholder="Termin suchen (z.B. Arbeitseinsatz, Trap)..."
+              oninput="handleSearch()"
+              class="w-full pl-10 pr-4 py-2 text-xs sm:text-sm rounded-brand border border-brand-border/80 focus:border-brand-dark focus:ring-1 focus:ring-brand-dark outline-none bg-slate-50"
+            />
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 self-stretch sm:self-auto justify-end">
+            <a 
+              href={GOOGLE_CALENDAR_ADD_URL}
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-brand bg-white hover:bg-brand-steel/10 text-brand-steel hover:text-brand-dark border border-brand-border/80 text-xs font-bold transition-all shadow-sm"
+            >
+              <ExternalLink class="w-3.5 h-3.5" /> In Google Kalender öffnen
+            </a>
+            <a 
+              href={ICAL_URL}
+              class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-brand bg-brand-dark hover:bg-brand-steel text-white text-xs font-bold transition-all shadow-sm"
+            >
+              <Download class="w-3.5 h-3.5" /> iCal (.ics)
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      {/* Events List Container */}
+      <div class="space-y-4" id="eventsContainer">
+        <div id="eventsCounter" class="text-xs font-bold text-brand-muted px-1">
+          {allgemeinCount} Termine angezeigt
+        </div>
+
+        <div class="space-y-3" id="eventsList">
+          {upcomingEvents.length > 0 ? (
+            upcomingEvents.map((e) => {
+              const isInitiallyVisible = e.category === 'Allgemein';
+              return (
+                <div 
+                  class={`event-card bg-white border border-brand-border/70 rounded-brand p-5 shadow-sm hover:shadow-md transition-all duration-200 ${isInitiallyVisible ? 'flex' : 'hidden'} flex-col md:flex-row md:items-center justify-between gap-4`}
+                  data-category={e.category}
+                  data-summary={e.summary.toLowerCase()}
+                  data-description={e.description.toLowerCase()}
+                  data-location={e.location.toLowerCase()}
+                >
+                  {/* Date & Time Column */}
+                  <div class="flex items-center gap-4 min-w-[200px] border-b md:border-b-0 md:border-r border-brand-border/40 pb-3 md:pb-0 md:pr-4">
+                    <div class="w-12 h-12 rounded-xl bg-brand-dark text-white flex flex-col items-center justify-center shrink-0 font-extrabold shadow-sm">
+                      <span class="text-xs uppercase leading-none">{e.startDate.toLocaleDateString('de-DE', { month: 'short' })}</span>
+                      <span class="text-base leading-tight">{e.startDate.getDate()}</span>
+                    </div>
+                    <div class="space-y-0.5">
+                      <span class="font-extrabold text-sm text-brand-dark block">
+                        {formatDate(e.startDate)}
+                      </span>
+                      <span class="text-xs text-brand-muted flex items-center gap-1 font-medium">
+                        <Clock class="w-3 h-3 text-brand-steel" /> {formatTime(e.startDate, e.isAllDay)}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Event Details */}
+                  <div class="space-y-1.5 flex-grow">
+                    <div class="flex items-center gap-2">
+                      <span class={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
+                        e.category === 'Vorstandssitzung' ? 'bg-blue-100 text-blue-800' :
+                        e.category === 'Vereinsmeisterschaft' ? 'bg-amber-100 text-amber-800' :
+                        e.category === 'Arbeitseinsatz' ? 'bg-emerald-100 text-emerald-800' :
+                        'bg-slate-100 text-slate-700'
+                      }`}>
+                        {e.category}
+                      </span>
+                    </div>
+                    <h3 class="text-base font-extrabold text-brand-dark">
+                      {e.summary}
+                    </h3>
+                    {e.location && (
+                      <p class="text-xs text-brand-steel flex items-center gap-1">
+                        <MapPin class="w-3 h-3 shrink-0 text-brand-steel" /> {e.location}
+                      </p>
+                    )}
+                    {e.description && (
+                      <p class="text-xs text-brand-content/80 leading-relaxed pt-1">
+                        {e.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              );
+            })
+          ) : (
+            <div class="p-8 text-center bg-white rounded-brand border border-brand-border/70 text-brand-muted">
+              Aktuell sind keine weiteren zukünftigen Termine im Kalender eingetragen.
+            </div>
+          )}
+        </div>
+
+        {/* No events message */}
+        <div id="noEventsMessage" class="hidden p-8 text-center bg-white rounded-brand border border-brand-border/70 text-brand-muted">
+          Keine anstehenden Termine für die gewählte Filterung gefunden.
+        </div>
+      </div>
+
+      {/* Embedded Google Calendar Card */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/80 shadow-md overflow-hidden mt-16">
+        <div class="bg-slate-50 border-b border-brand-border/60 p-4 sm:p-6 flex items-center justify-between">
+          <div>
+            <h2 class="text-xl font-black text-brand-dark flex items-center gap-2">
+              <CalendarIcon class="w-5 h-5 text-brand-steel" /> Google Kalender Übersicht
+            </h2>
+            <p class="text-xs text-brand-muted">Interaktiver Kalender der SG Gersfeld</p>
+          </div>
+        </div>
+        <div class="p-2 sm:p-6 bg-slate-100/50">
+          <div class="relative w-full rounded-brand border border-slate-200 overflow-hidden bg-white shadow-inner" style="min-height: 650px;">
+            <iframe 
+              src={CALENDAR_EMBED_URL}
+              style="border: 0; width: 100%; height: 700px;" 
+              frameborder="0" 
+              scrolling="no"
+              title="Google Kalender SG Gersfeld"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script is:inline>
+    let activeCategory = 'Allgemein';
+
+    // Parse URL parameter or hash (e.g. /termine/?filter=Vorstandssitzung)
+    const urlParams = new URLSearchParams(window.location.search);
+    const filterParam = urlParams.get('filter') || window.location.hash.replace('#', '');
+    if (filterParam && ['all', 'Allgemein', 'Vorstandssitzung', 'Vereinsmeisterschaft', 'Arbeitseinsatz'].includes(filterParam)) {
+      activeCategory = filterParam;
+    }
+
+    function setFilter(cat) {
+      activeCategory = cat;
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('bg-brand-dark', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-slate-100', 'text-brand-steel');
+      });
+      const activeBtn = document.getElementById(`btn-${cat}`);
+      if (activeBtn) {
+        activeBtn.classList.remove('bg-slate-100', 'text-brand-steel');
+        activeBtn.classList.add('bg-brand-dark', 'text-white', 'shadow-sm');
+      }
+      applyFilters();
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setFilter(activeCategory);
+      syncLiveCalendar();
+    });
+    setFilter(activeCategory);
+
+    function handleSearch() {
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const searchVal = (document.getElementById('eventSearch')?.value || '').toLowerCase().trim();
+      const cards = document.querySelectorAll('.event-card');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const summary = card.getAttribute('data-summary') || '';
+        const description = card.getAttribute('data-description') || '';
+        const location = card.getAttribute('data-location') || '';
+
+        let matchesCat = false;
+        if (activeCategory === 'all') {
+          matchesCat = true;
+        } else if (activeCategory === 'Allgemein') {
+          matchesCat = (cat === 'Allgemein');
+        } else if (activeCategory === 'Vorstandssitzung') {
+          matchesCat = summary.includes('vorstandssitzung') || cat === 'Vorstandssitzung';
+        } else if (activeCategory === 'Vereinsmeisterschaft') {
+          matchesCat = (/\bvm\b|vereinsmeisterschaft/.test(summary)) || cat === 'Vereinsmeisterschaft';
+        } else if (activeCategory === 'Arbeitseinsatz') {
+          matchesCat = summary.includes('arbeitseinsatz') || cat === 'Arbeitseinsatz';
+        }
+
+        let matchesSearch = true;
+        if (searchVal) {
+          matchesSearch = summary.includes(searchVal) || description.includes(searchVal) || location.includes(searchVal);
+        }
+
+        if (matchesCat && matchesSearch) {
+          card.classList.remove('hidden');
+          card.classList.add('flex');
+          visibleCount++;
+        } else {
+          card.classList.remove('flex');
+          card.classList.add('hidden');
+        }
+      });
+
+      const counter = document.getElementById('eventsCounter');
+      if (counter) {
+        counter.textContent = `${visibleCount} Termine angezeigt`;
+      }
+
+      const noMsg = document.getElementById('noEventsMessage');
+      if (noMsg) {
+        if (visibleCount === 0) {
+          noMsg.classList.remove('hidden');
+        } else {
+          noMsg.classList.add('hidden');
+        }
+      }
+    }
+
+    // Live calendar background updater
+    async function syncLiveCalendar() {
+      try {
+        const res = await fetch('/api/calendar.php');
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data || !data.ics) return;
+
+        const icsText = data.ics.replace(/\r?\n[ \t]/g, '');
+        const lines = icsText.split(/\r?\n/);
+        const events = [];
+        let cur = null;
+
+        for (const l of lines) {
+          if (l.startsWith('BEGIN:VEVENT')) {
+            cur = { desc: '', loc: '', exdates: [] };
+          } else if (l.startsWith('END:VEVENT')) {
+            if (cur && cur.summary && cur.start) {
+              const s = cur.summary.trim();
+              const sLow = s.toLowerCase();
+              let cat = 'Sonstiges';
+              if (sLow.includes('vorstandssitzung')) cat = 'Vorstandssitzung';
+              else if (/\bvm\b|vereinsmeisterschaft/i.test(s)) cat = 'Vereinsmeisterschaft';
+              else if (sLow.includes('arbeitseinsatz')) cat = 'Arbeitseinsatz';
+              else if (!sLow.includes('training') && !sLow.includes('rwk')) cat = 'Allgemein';
+              else cat = 'Training / RWK';
+
+              events.push({
+                summary: s,
+                desc: cur.desc,
+                loc: cur.loc,
+                start: cur.start,
+                isAllDay: cur.isAllDay,
+                cat
+              });
+            }
+            cur = null;
+          } else if (cur) {
+            const cIdx = l.indexOf(':');
+            if (cIdx === -1) continue;
+            const k = l.slice(0, cIdx).split(';')[0];
+            const v = l.slice(cIdx + 1).replace(/\\n/gi, '\n').replace(/\\,/g, ',').replace(/\\;/g, ';');
+            if (k === 'SUMMARY') cur.summary = v;
+            else if (k === 'DESCRIPTION') cur.desc = v;
+            else if (k === 'LOCATION') cur.loc = v;
+            else if (k === 'DTSTART') {
+              const cl = v.replace(/[^0-9TZ]/g, '');
+              if (cl.length === 8) {
+                cur.start = new Date(parseInt(cl.slice(0,4)), parseInt(cl.slice(4,6))-1, parseInt(cl.slice(6,8)));
+                cur.isAllDay = true;
+              } else if (cl.length >= 15) {
+                if (cl.endsWith('Z')) {
+                  cur.start = new Date(Date.UTC(parseInt(cl.slice(0,4)), parseInt(cl.slice(4,6))-1, parseInt(cl.slice(6,8)), parseInt(cl.slice(9,11)), parseInt(cl.slice(11,13))));
+                } else {
+                  cur.start = new Date(parseInt(cl.slice(0,4)), parseInt(cl.slice(4,6))-1, parseInt(cl.slice(6,8)), parseInt(cl.slice(9,11)), parseInt(cl.slice(11,13)));
+                }
+                cur.isAllDay = false;
+              }
+            }
+          }
+        }
+
+        const now = new Date();
+        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+        const upcoming = events.filter(e => e.start && e.start.getTime() >= todayStart).sort((a,b) => a.start.getTime() - b.start.getTime());
+
+        if (upcoming.length > 0) {
+          const list = document.getElementById('eventsList');
+          if (!list) return;
+
+          const months = ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sept.', 'Okt.', 'Nov.', 'Dez.'];
+          const days = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
+
+          const html = upcoming.map(e => {
+            const mStr = months[e.start.getMonth()];
+            const dNum = e.start.getDate();
+            const dStr = `${days[e.start.getDay()]}, ${String(dNum).padStart(2,'0')}.${String(e.start.getMonth()+1).padStart(2,'0')}.${e.start.getFullYear()}`;
+            const tStr = e.isAllDay ? 'Ganztägig' : `${String(e.start.getHours()).padStart(2,'0')}:${String(e.start.getMinutes()).padStart(2,'0')} Uhr`;
+
+            let badgeCls = 'bg-slate-100 text-slate-700';
+            if (e.cat === 'Vorstandssitzung') badgeCls = 'bg-blue-100 text-blue-800';
+            else if (e.cat === 'Vereinsmeisterschaft') badgeCls = 'bg-amber-100 text-amber-800';
+            else if (e.cat === 'Arbeitseinsatz') badgeCls = 'bg-emerald-100 text-emerald-800';
+
+            return `
+              <div 
+                class="event-card bg-white border border-brand-border/70 rounded-brand p-5 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col md:flex-row md:items-center justify-between gap-4"
+                data-category="${e.cat}"
+                data-summary="${e.summary.toLowerCase()}"
+                data-description="${(e.desc || '').toLowerCase()}"
+                data-location="${(e.loc || '').toLowerCase()}"
+              >
+                <div class="flex items-center gap-4 min-w-[200px] border-b md:border-b-0 md:border-r border-brand-border/40 pb-3 md:pb-0 md:pr-4">
+                  <div class="w-12 h-12 rounded-xl bg-brand-dark text-white flex flex-col items-center justify-center shrink-0 font-extrabold shadow-sm">
+                    <span class="text-xs uppercase leading-none">${mStr}</span>
+                    <span class="text-base leading-tight">${dNum}</span>
+                  </div>
+                  <div class="space-y-0.5">
+                    <span class="font-extrabold text-sm text-brand-dark block">${dStr}</span>
+                    <span class="text-xs text-brand-muted flex items-center gap-1 font-medium">🕒 ${tStr}</span>
+                  </div>
+                </div>
+                <div class="space-y-1.5 flex-grow">
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${badgeCls}">${e.cat}</span>
+                  </div>
+                  <h3 class="text-base font-extrabold text-brand-dark">${e.summary}</h3>
+                  ${e.loc ? `<p class="text-xs text-brand-steel flex items-center gap-1">📍 ${e.loc}</p>` : ''}
+                  ${e.desc ? `<p class="text-xs text-brand-content/80 leading-relaxed pt-1">${e.desc}</p>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          list.innerHTML = html;
+
+          // Update counts on filter buttons
+          const allCnt = upcoming.length;
+          const allgCnt = upcoming.filter(e => e.cat === 'Allgemein').length;
+          const vorstCnt = upcoming.filter(e => e.summary.toLowerCase().includes('vorstandssitzung') || e.cat === 'Vorstandssitzung').length;
+          const vmCnt = upcoming.filter(e => /\bvm\b|vereinsmeisterschaft/i.test(e.summary) || e.cat === 'Vereinsmeisterschaft').length;
+          const arbCnt = upcoming.filter(e => e.summary.toLowerCase().includes('arbeitseinsatz') || e.cat === 'Arbeitseinsatz').length;
+
+          const bAllg = document.getElementById('btn-Allgemein');
+          if (bAllg) bAllg.textContent = `🎯 Allgemein (${allgCnt})`;
+          const bAll = document.getElementById('btn-all');
+          if (bAll) bAll.textContent = `Alle (${allCnt})`;
+          const bVorst = document.getElementById('btn-Vorstandssitzung');
+          if (bVorst) bVorst.textContent = `👥 Vorstandssitzungen (${vorstCnt})`;
+          const bVm = document.getElementById('btn-Vereinsmeisterschaft');
+          if (bVm) bVm.textContent = `🏆 Vereinsmeisterschaften (${vmCnt})`;
+          const bArb = document.getElementById('btn-Arbeitseinsatz');
+          if (bArb) bArb.textContent = `🔨 Arbeitseinsätze (${arbCnt})`;
+
+          applyFilters();
+        }
+      } catch (err) {
+        console.warn('Live calendar sync fallback to pre-rendered:', err);
+      }
+    }
+  </script>
+
+</Layout>

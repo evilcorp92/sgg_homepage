@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { HAUPTVORSTAND } from '../data/vorstand';
+import { Mail, Phone, ExternalLink, ArrowRight, ShieldCheck } from 'lucide-react';
+
+const executiveBoard = HAUPTVORSTAND.filter(m => m.geschaeftsfuehrend);
+---
+
+<Layout title="Impressum - SG Gersfeld 1813 e.V.">
+  <article class="bg-brand-card min-h-screen pb-24">
+    
+    <!-- Page Header -->
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-3">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight leading-tight">
+          Impressum
+        </h1>
+        <div class="w-12 h-1 bg-brand-steel/30 mx-auto rounded-full"></div>
+      </div>
+    </header>
+
+    <!-- Content Container -->
+    <div class="max-w-3xl mx-auto px-6 mt-16 space-y-12">
+      
+      <!-- Betreiber -->
+      <section class="space-y-3">
+        <h2 class="text-2xl font-extrabold text-brand-dark pb-2 border-b border-brand-border">
+          Betreiber
+        </h2>
+        <div class="text-brand-steel/90 text-base leading-relaxed">
+          <p class="font-bold text-brand-dark">Schützengesellschaft Gersfeld 1813 e.V.</p>
+          <p>Rommerser Str. 32</p>
+          <p>36129 Gersfeld (Rhön)</p>
+        </div>
+      </section>
+
+      <!-- Vertreten durch -->
+      <section class="space-y-4">
+        <h2 class="text-2xl font-extrabold text-brand-dark pb-2 border-b border-brand-border">
+          Vertreten durch
+        </h2>
+        <p class="text-brand-steel/90 text-base">
+          Den geschäftsführenden Vorstand gemäß § 26 BGB:
+        </p>
+
+        <!-- Dynamic Executive Board Table -->
+        <div class="overflow-x-auto rounded-brand border border-brand-border shadow-sm">
+          <table class="w-full text-left text-sm text-brand-steel/90">
+            <thead class="bg-brand-dark text-white font-bold text-xs uppercase tracking-wider">
+              <tr>
+                <th class="px-5 py-3.5">Funktion</th>
+                <th class="px-5 py-3.5">Vorname</th>
+                <th class="px-5 py-3.5">Nachname</th>
+                <th class="px-5 py-3.5">E-Mail</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brand-border bg-brand-card">
+              {executiveBoard.map((member) => (
+                <tr class="hover:bg-brand-bg/60 transition-colors">
+                  <td class="px-5 py-3.5 font-bold text-brand-dark flex items-center gap-1.5">
+                    {member.funktion}
+                    {member.kommissarisch && (
+                      <span class="text-[10px] uppercase font-bold px-1.5 py-0.5 rounded bg-amber-100 text-amber-800">
+                        kommissarisch
+                      </span>
+                    )}
+                  </td>
+                  <td class="px-5 py-3.5">{member.vorname}</td>
+                  <td class="px-5 py-3.5 font-medium">{member.nachname}</td>
+                  <td class="px-5 py-3.5">
+                    {member.email ? (
+                      <a href={`mailto:${member.email}`} class="font-medium text-brand-steel hover:text-brand-dark flex items-center gap-1">
+                        <Mail class="w-3.5 h-3.5 opacity-60" /> {member.email}
+                      </a>
+                    ) : (
+                      <span class="text-slate-400">—</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="pt-2">
+          <a href="/verein/vorstand/#geschaeftsfuehrend" class="inline-flex items-center gap-1.5 text-sm font-bold text-brand-steel hover:text-brand-dark transition-colors">
+            Zur vollständigen Vorstandsübersicht <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+      </section>
+
+      <!-- Kontakt -->
+      <section class="space-y-3">
+        <h2 class="text-2xl font-extrabold text-brand-dark pb-2 border-b border-brand-border">
+          Kontakt
+        </h2>
+        <div class="space-y-2 text-brand-steel/90 text-sm">
+          <p class="flex items-center gap-2">
+            <Phone class="w-4 h-4 text-brand-steel" />
+            <span>Telefon:</span>
+            <a href="tel:066541222" class="font-bold text-brand-dark hover:underline">06654 1222</a>
+          </p>
+          <p class="flex items-center gap-2">
+            <Mail class="w-4 h-4 text-brand-steel" />
+            <span>E-Mail:</span>
+            <a href="mailto:info@sg-gersfeld.de" class="font-bold text-brand-dark hover:underline">info@sg-gersfeld.de</a>
+          </p>
+        </div>
+      </section>
+
+      <!-- Registereintrag -->
+      <section class="space-y-3">
+        <h2 class="text-2xl font-extrabold text-brand-dark pb-2 border-b border-brand-border">
+          Registereintrag
+        </h2>
+        <div class="text-brand-steel/90 text-sm leading-relaxed">
+          <p>Eintragung im Vereinsregister.</p>
+          <p><span class="font-semibold text-brand-dark">Registergericht:</span> Amtsgericht Fulda</p>
+          <p><span class="font-semibold text-brand-dark">Registernummer:</span> VR 160</p>
+        </div>
+      </section>
+
+      <!-- Haftungsausschluss / Disclaimer -->
+      <section class="space-y-6 pt-6 border-t border-brand-border">
+        <h2 class="text-2xl font-extrabold text-brand-dark tracking-tight">
+          Haftungsausschluss (Disclaimer)
+        </h2>
+
+        <div class="space-y-3 text-sm text-brand-steel/90 leading-relaxed">
+          <h3 class="font-bold text-brand-dark text-base">Haftung für Inhalte</h3>
+          <p>
+            Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+          </p>
+          <p>
+            Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.
+          </p>
+        </div>
+
+        <div class="space-y-3 text-sm text-brand-steel/90 leading-relaxed">
+          <h3 class="font-bold text-brand-dark text-base">Haftung für Links</h3>
+          <p>
+            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar.
+          </p>
+          <p>
+            Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.
+          </p>
+        </div>
+
+        <div class="space-y-3 text-sm text-brand-steel/90 leading-relaxed">
+          <h3 class="font-bold text-brand-dark text-base">Urheberrecht</h3>
+          <p>
+            Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+          </p>
+          <p>
+            Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</Layout>

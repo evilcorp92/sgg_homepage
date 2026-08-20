@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-dark font-sans antialiased selection:bg-brand-steel/10;
+  }
+
+  /* Make standard markdown elements inside content look spectacular */
+  .prose h1 {
+    @apply text-3xl font-black tracking-tight text-brand-dark mt-10 mb-6;
+  }
+  .prose h2 {
+    @apply text-2xl font-extrabold tracking-tight text-brand-dark mt-10 mb-4 pb-2 border-b border-brand-border;
+  }
+  .prose h3 {
+    @apply text-xl font-bold tracking-tight text-brand-steel mt-6 mb-3;
+  }
+  .prose p {
+    @apply text-base leading-relaxed text-brand-steel/90 mb-5;
+  }
+  .prose a {
+    @apply font-semibold text-brand-steel hover:text-brand-dark underline decoration-brand-steel/30 hover:decoration-brand-dark decoration-2 transition-all;
+  }
+  .prose ul {
+    @apply list-disc list-inside mb-6 pl-4 space-y-2 text-brand-steel/90;
+  }
+  .prose ol {
+    @apply list-decimal list-inside mb-6 pl-4 space-y-2 text-brand-steel/90;
+  }
+  .prose li {
+    @apply mb-1;
+  }
+  .prose blockquote {
+    @apply border-l-4 border-brand-steel pl-5 my-6 italic text-brand-muted bg-brand-border/20 py-2 rounded-r-brand;
+  }
+  
+  /* Tables in Markdown */
+  .prose table {
+    @apply w-full border-separate border-spacing-0 my-8 border border-brand-border rounded-brand overflow-hidden shadow-sm bg-brand-card;
+  }
+  .prose th {
+    @apply bg-brand-dark text-white font-bold text-sm uppercase tracking-wider px-5 py-4 text-left border-none;
+  }
+  .prose td {
+    @apply px-5 py-3.5 text-sm text-brand-steel/90 border-b border-brand-border bg-brand-card transition-colors;
+  }
+  .prose tr:nth-child(even) td {
+    @apply bg-brand-bg/40;
+  }
+  .prose tr:hover td {
+    @apply bg-brand-steel/5;
+  }
+  .prose tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Images in Markdown */
+  .prose img {
+    @apply rounded-brand shadow-md my-8 max-w-full h-auto mx-auto block border border-brand-border;
+  }
+}
+
+/* Animations */
+.transition-300 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}

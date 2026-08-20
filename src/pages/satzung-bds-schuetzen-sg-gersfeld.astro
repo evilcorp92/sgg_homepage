@@ -1,0 +1,269 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  BookOpen, Download, FileText, Shield, ArrowLeft, CheckCircle2 
+} from 'lucide-react';
+
+const BDS_PARAGRAPHS = [
+  { id: 'p1', title: '§ 1 Name, Sitz und Geschäftsjahr' },
+  { id: 'p2', title: '§ 2 Zweck des Vereins, Gemeinnützigkeit' },
+  { id: 'p3', title: '§ 3 Mitgliedschaft in Verbänden' },
+  { id: 'p4', title: '§ 4 Mitgliedschaft, Beitrag' },
+  { id: 'p5', title: '§ 5 Organe des Vereins' },
+  { id: 'p5_1', title: '§ 5.1 Die Mitgliederversammlung' },
+  { id: 'p5_2', title: '§ 5.2 Der Vorstand' },
+  { id: 'p6', title: '§ 6 Ordnungen' },
+  { id: 'p7', title: '§ 7 Auflösungsbestimmungen' },
+];
+---
+
+<Layout title="Satzung BDS-Schützen SG Gersfeld" description="Offizielle und vollständige Satzung der BDS-Schützen SG Gersfeld e.V. (Vereinsregisternr. VR 2592 Fall: 1, Amtsgericht Fulda).">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <a href="/abteilungen/bds/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors bg-white px-3 py-1 rounded-full border border-brand-border/60">
+            <ArrowLeft class="w-3.5 h-3.5" /> Zur BDS-Abteilung
+          </a>
+        </div>
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          Rechtliches & Satzung
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <BookOpen class="w-8 h-8 text-brand-steel" /> Satzung BDS-Schützen SG Gersfeld
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto">
+          Offizieller und vollständiger Wortlaut der Satzung der BDS-Schützen SG Gersfeld e.V.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 mt-12 grid grid-cols-1 lg:grid-cols-4 gap-12">
+
+      {/* Sidebar: Table of Contents */}
+      <aside class="lg:col-span-1 space-y-6">
+        <div class="bg-white rounded-brand-lg border border-brand-border/70 p-5 shadow-sm space-y-3 sticky top-24">
+          <h3 class="font-extrabold text-brand-dark text-xs uppercase tracking-wider border-b border-brand-border/40 pb-2">
+            Inhaltsübersicht
+          </h3>
+          <nav class="space-y-1 text-xs font-semibold">
+            {BDS_PARAGRAPHS.map(p => (
+              <a 
+                href={`#${p.id}`} 
+                class="block py-1 text-brand-steel hover:text-brand-dark hover:translate-x-1 transition-all"
+              >
+                {p.title}
+              </a>
+            ))}
+          </nav>
+
+          <div class="pt-4 border-t border-brand-border/40 space-y-2">
+            <span class="text-[11px] font-bold uppercase text-brand-muted block">Weitere Dokumente</span>
+            <a 
+              href="/verein/satzung/" 
+              class="flex items-center gap-1.5 text-xs text-brand-steel hover:text-brand-dark py-1"
+            >
+              <FileText class="w-3.5 h-3.5" /> Hauptsatzung SG Gersfeld →
+            </a>
+            <a 
+              href="https://bdshessen.de/wp-content/uploads/2026/02/BDS_Beduerfnisantrag.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="flex items-center gap-1.5 text-xs text-brand-steel hover:text-brand-dark py-1"
+            >
+              <Download class="w-3.5 h-3.5" /> BDS Bedürfnisantrag (PDF)
+            </a>
+          </div>
+        </div>
+      </aside>
+
+      {/* Main Text Content */}
+      <main class="lg:col-span-3 bg-white rounded-brand-lg border border-brand-border/70 p-8 sm:p-12 shadow-sm space-y-12 leading-relaxed text-brand-content text-sm sm:text-base">
+        
+        {/* Header Badge Box */}
+        <div class="flex flex-col sm:flex-row items-center gap-6 p-6 rounded-brand bg-slate-50 border border-slate-200">
+          <img 
+            src="https://www.sg-gersfeld.de/wp-content/uploads/2020/07/BDS-Logo.png" 
+            alt="BDS Logo" 
+            class="w-16 h-auto shrink-0 drop-shadow-sm"
+          />
+          <div class="space-y-1 text-center sm:text-left">
+            <h2 class="text-lg font-black text-brand-dark">BDS-SCHÜTZEN SG GERSFELD e.V.</h2>
+            <p class="text-xs text-brand-steel">BDS-Vereinsnr. 791 | Rommerser Str. 32, 36129 Gersfeld/Rhön | Amtsgericht Fulda VR 2592 Fall: 1</p>
+          </div>
+        </div>
+
+        {/* § 1 */}
+        <section id="p1" class="space-y-3 scroll-mt-28">
+          <h2 class="text-xl font-extrabold text-brand-dark border-b border-brand-border/60 pb-2">
+            § 1 Name, Sitz und Geschäftsjahr des Vereins
+          </h2>
+          <p>
+            <strong>1.1</strong> Der Verein führt den Namen: <strong>BDS-Schützen SG Gersfeld e.V.</strong> (BDS-Vereinsnr. 791) und hat seinen Sitz in 36129 Gersfeld/Rhön, Rommerser Str. 32
+          </p>
+          <p>
+            <strong>1.2</strong> Die BDS-Schützen SG Gersfeld e.V. sind eine selbständige Abteilung innerhalb der Schützengesellschaft Gersfeld.
+          </p>
+          <p>
+            <strong>1.3</strong> Der 2015 gegründete Verein ist beim Amtsgericht Fulda unter der Nr. VR 2592 Fall: 1 im Vereinsregister eingetragen.
+          </p>
+          <p>
+            <strong>1.4</strong> Das Geschäftsjahr ist das Kalenderjahr.
+          </p>
+        </section>
+
+        {/* § 2 */}
+        <section id="p2" class="space-y-3 scroll-mt-28">
+          <h2 class="text-xl font-extrabold text-brand-dark border-b border-brand-border/60 pb-2">
+            § 2 Zweck des Vereins, Gemeinnützigkeit
+          </h2>
+          <p>
+            <strong>2.1</strong> Zweck des Vereins ist die Förderung des Sports. Der Satzungszweck wird verwirklicht insbesondere durch die Pflege und Ausübung des Schießsports nach Regeln des nach dem Waffengesetz zugelassenen übergeordneten Verbandes Bund Deutscher Sportschützen (BDS).
+          </p>
+          <p>
+            <strong>2.2</strong> Der Verein verfolgt ausschließlich und unmittelbar gemeinnützige Zwecke im Sinne des Abschnitts "Steuerbegünstigte Zwecke" der Abgabenordnung.
+          </p>
+          <p>
+            <strong>2.3</strong> Der Verein ist selbstlos tätig, er verfolgt nicht in erster Linie eigenwirtschaftliche Zwecke.
+          </p>
+          <p>
+            <strong>2.4</strong> Mittel des Vereins dürfen nur für satzungsgemäße Zwecke verwendet werden. Die Mitglieder erhalten keine Zuwendungen aus Mitteln des Vereins.
+          </p>
+          <p>
+            <strong>2.5</strong> Es darf keine Person durch Ausgaben, die dem Zweck des Vereins fremd sind, oder durch unverhältnismäßig hohe Vergütungen begünstigt werden.
+          </p>
+        </section>
+
+        {/* § 3 */}
+        <section id="p3" class="space-y-3 scroll-mt-28">
+          <h2 class="text-xl font-extrabold text-brand-dark border-b border-brand-border/60 pb-2">
+            § 3 Mitgliedschaft in Verbänden
+          </h2>
+          <p>Der Verein ist Mitglied:</p>
+          <ul class="list-disc list-inside space-y-1 pl-2">
+            <li>im Bund Deutscher Sportschützen (BDS)</li>
+            <li>sowie in weiteren Verbänden, wenn es in einer Mitgliederversammlung mit 2/3 Mehrheit auf Antrag beschlossen wird.</li>
+          </ul>
+        </section>
+
+        {/* § 4 */}
+        <section id="p4" class="space-y-4 scroll-mt-28">
+          <h2 class="text-xl font-extrabold text-brand-dark border-b border-brand-border/60 pb-2">
+            § 4 Mitgliedschaft, Beitrag
+          </h2>
+          <p>
+            <strong>4.1</strong> Mitglied in der BDS-Schützen SG Gersfeld e.V. kann auf schriftlichen Antrag jede volljährige Person werden, die bereits Mitglied in der Schützengesellschaft Gersfeld ist.
+          </p>
+          <p>
+            <strong>4.2</strong> Der Antrag auf Aufnahme in die BDS-Schützen SG Gersfeld e.V. muss schriftlich erfolgen. Der Vorstand entscheidet geheim mit einfacher Mehrheit über die Aufnahme. Ein ärztliches Attest oder ein polizeiliches Führungszeugnis kann vor der Aufnahme verlangt werden. Der Antrag kann ohne Angabe von Gründen abgelehnt werden.
+          </p>
+          <p><strong>4.3</strong> Die Mitgliedschaft endet</p>
+          <ul class="list-disc list-inside space-y-2 pl-4">
+            <li>durch Tod.</li>
+            <li>durch Austritt zum Ende des Geschäftsjahres. Die Kündigung muss schriftlich bis spätestens 30.09. des Jahres erfolgen.</li>
+            <li>durch Beschluss des Vorstands mit einfacher Mehrheit, wenn ein Mitglied 9 Monate mit der Entrichtung der Vereinsbeiträge oder sonstiger finanzieller Verpflichtungen im Verzug ist und nach erfolgter schriftlicher Mahnung durch Einschreiben diese Rückstände innerhalb der gesetzten Frist nicht entrichtet hat.</li>
+            <li>durch Ausschluss bei vereinsschädigendem Verhalten, das einstimmig durch den Vorstand festgestellt wurde. Dieser Beschluss mit Begründung muss dem Mitglied schriftlich zugstellt werden. Das Mitglied hat danach innerhalb von zwei Wochen das Recht auf Anhörung. Nimmt er das Recht auf Anhörung wahr, so ist die daraufhin getroffene erneute Entscheidung des Vorstands endgültig. Das ausgeschlossene Mitglied erhält keinerlei Rückzahlungen von Beiträgen oder Umlagen.</li>
+            <li>wenn das Mitglied aus der Schützengesellschaft Gersfeld austritt oder ausgeschlossen wurde.</li>
+          </ul>
+          <p>
+            <strong>4.4</strong> Es ist ein jährlicher Mitgliedsbeitrag an die BDS-Schützen SG Gersfeld e.V. zu entrichten. Art, Höhe und Fälligkeit wird von der Mitgliederversammlung festgelegt.
+          </p>
+          <p>
+            <strong>4.5</strong> Sonderbeiträge und Umlagen können auf Beschluss der Mitgliederversammlung erhoben werden.
+          </p>
+        </section>
+
+        {/* § 5 */}
+        <section id="p5" class="space-y-3 scroll-mt-28">
+          <h2 class="text-xl font-extrabold text-brand-dark border-b border-brand-border/60 pb-2">
+            § 5 Organe des Vereins
+          </h2>
+          <p>Die Organe des Vereins sind die Mitgliederversammlung und der Vorstand.</p>
+        </section>
+
+        {/* § 5.1 */}
+        <section id="p5_1" class="space-y-4 scroll-mt-28">
+          <h3 class="text-lg font-extrabold text-brand-dark border-b border-brand-border/40 pb-2">
+            § 5.1 Die Mitgliederversammlung
+          </h3>
+          <p><strong>5.1.1</strong> Die Mitgliederversammlung ist das oberste Organ des Vereins. Sie wird durch den Vorstand einberufen. Eine Mitgliederversammlung muss bis 31. März eines jeden Jahres durchgeführt werden. Ihre Beschlüsse sind für alle Mitglieder bindend.</p>
+          <p><strong>5.1.2</strong> Die Einladung zur Mitgliederversammlung muss spätestens zwei Wochen vor dem Termin mit der Tagesordnung allen Mitgliedern schriftlich zugegangen sein.</p>
+          
+          <p><strong>5.1.3</strong> Die Tagesordnung soll enthalten:</p>
+          <ul class="list-disc list-inside space-y-1 pl-4 text-xs sm:text-sm">
+            <li>Feststellung der ordnungsgemäßen Einladung und der Rechtmäßigkeit</li>
+            <li>Verlesung und Genehmigung des Protokolls der letzten Mitgliederversammlung</li>
+            <li>Bericht des Vorsitzenden</li>
+            <li>Bericht des Sportleiters</li>
+            <li>Bericht des Kassierers</li>
+            <li>Bericht der Kassenprüfer</li>
+            <li>Entlastung des Vorstands</li>
+            <li>Neuwahlen, wenn erforderlich</li>
+            <li>Wahl des/der Kassenprüfer(s), wenn erforderlich</li>
+            <li>Termine und Veranstaltungen</li>
+            <li>Verschiedenes</li>
+          </ul>
+
+          <p><strong>5.1.4</strong> Der Vorsitzende oder sein Vertreter leitet die Mitgliederversammlung. Über die Mitgliederversammlung ist ein Ergebnisprotokoll anzufertigen, das vom Versammlungsleiter und vom Protokollführer zu unterzeichnen ist. Anträge und gefasste Beschlüsse sind im Wortlaut in das Protokoll aufzunehmen.</p>
+          <p><strong>5.1.5</strong> Beschlüsse werden mit einfacher Mehrheit gefasst, sofern die Satzung nichts anderes vorgibt. Enthaltungen werden nicht berücksichtigt.</p>
+          <p><strong>5.1.6</strong> Satzungsänderungen können nur mit 2/3 Stimmenmehrheit beschlossen werden.</p>
+          <p><strong>5.1.7</strong> Außerordentliche Mitgliederversammlungen sind unter Angabe der Tagesordnungspunkte schriftlich mindestens 14 Tage vor dem Termin einzuberufen, wenn es der Vorstand im Interesse des Vereins für erforderlich hält oder auf schriftlichen Antrag von mindestens 30% der Mitglieder. Die Tagesordnungspunkte unter § 5.1.3 - ausgenommen die Feststellung der ordnungsgemäßen Einladung und der Rechtmäßigkeit - sind bei außerordentlichen Mitgliederversammlungen nicht erforderlich.</p>
+          <p><strong>5.1.8</strong> Die Kasse muss vor jeder Mitgliederversammlung durch zwei Kassenprüfer geprüft werden. Kassenprüfer dürfen keine Mitglieder des Vorstands gem. § 5.2.1 sein. Nur wenn die Kassenführung von den Kassenprüfern für in Ordnung befunden wurde, kann der Antrag auf Entlastung des Vorstands gestellt werden.</p>
+        </section>
+
+        {/* § 5.2 */}
+        <section id="p5_2" class="space-y-4 scroll-mt-28">
+          <h3 class="text-lg font-extrabold text-brand-dark border-b border-brand-border/40 pb-2">
+            § 5.2 Der Vorstand
+          </h3>
+          <p><strong>5.2.1</strong> Der Vorstand besteht aus dem/der/den:</p>
+          <div class="space-y-1 pl-4">
+            <p>a) Vorsitzenden</p>
+            <p>b) Sportleiter(-in)</p>
+            <p>c) Schriftführer(-in)</p>
+            <p>d) Kassierer(-in)</p>
+            <p>e) von der Mitgliederversammlung auf Vorschlag des Vorstands gewählten Personen</p>
+          </div>
+          <p class="text-xs text-brand-muted pl-4">
+            Der Vorstand legt die Verteilung der einzelnen Aufgaben der Vorstandsmitglieder in einer Aufgabenliste fest.
+          </p>
+
+          <p><strong>5.2.2</strong> Vorstand im Sinne des § 26 BGB sind a) - d) gemäß § 5.2.1. Hiervon sind <strong>zwei</strong> gemeinsam zur Vertretung des Vereins berechtigt.</p>
+          <p><strong>5.2.3</strong> Die Wahl der Vorstandsmitglieder erfolgt für 2 Jahre. Der Vorstand bleibt bis zur Wahl eines neuen Vorstands im Amt.</p>
+          <p><strong>5.2.4</strong> Beim vorzeitigen Ausscheiden von Vorstandsmitgliedern kann der Vorstand den freien Posten bis zur nächsten Mitgliederversammlung aus den Reihen der Mitglieder kommissarisch besetzen.</p>
+          <p><strong>5.2.5</strong> Für die Erledigung bestimmter Aufgaben kann der Vorstand zeitlich begrenzt Ausschüsse einsetzen. Ausschüsse sind nicht vertretungsberechtigt.</p>
+          <p><strong>5.2.6</strong> Alle Vorstandsmitglieder über ihre Tätigkeit ehrenamtlich aus. Im Interesse des Vereins entstehende Kosten werden in der vom Vorstand festgelegten Höhe ersetzt. Vorstandsmitglieder und Funktionsträger können für ihre grundsätzlich ehrenamtliche Tätigkeit eine angemessene Vergütung erhalten. Die Höhe wird durch einen Vorstandsbeschluss festgelegt.</p>
+        </section>
+
+        {/* § 6 */}
+        <section id="p6" class="space-y-3 scroll-mt-28">
+          <h2 class="text-xl font-extrabold text-brand-dark border-b border-brand-border/60 pb-2">
+            § 6 Ordnungen
+          </h2>
+          <p><strong>6.1</strong> Die BDS-Schützen SG Gersfeld e.V. ist eine eigenständige Abteilung der Schützengesellschaft Gersfeld. Der Gruppenleiter ist stimmberechtigtes Mitglied im erweiterten Vorstand der SG Gersfeld. Er kann durch den Sportleiter rechtskräftig vertreten werden.</p>
+          <p><strong>6.2</strong> Die Sportordnungen, Wettkampfbestimmungen und Schießordnungen der BDS-Schützen SG Gersfeld e.V. und die Satzung der Schützengesellschaft Gersfeld sind für die Mitglieder der BDS-Schützen SG Gersfeld verbindlich.</p>
+        </section>
+
+        {/* § 7 */}
+        <section id="p7" class="space-y-3 scroll-mt-28">
+          <h2 class="text-xl font-extrabold text-brand-dark border-b border-brand-border/60 pb-2">
+            § 7 Auflösungsbestimmungen
+          </h2>
+          <p><strong>7.1</strong> Bei der Auflösung oder Aufhebung des Vereins oder bei Wegfall steuerbegünstigter Zwecke fällt das Vermögen des Vereins an die Schützengesellschaft Gersfeld 1813 e.V., die es unmittelbar und ausschließlich für gemeinnützige Zwecke (Förderung des Schießsports) zu verwenden hat.</p>
+          <p><strong>7.2</strong> Über die Auflösung der Abteilung kann nur beschlossen werden, wenn der Vorstand <strong>oder</strong> die Hälfte der Mitglieder dies schriftlich beantragen. Zu diesem Zweck müssen zwei Versammlungen innerhalb von vier Wochen stattfinden. Diese beiden außerordentlichen Versammlungen müssen jedoch mindestens zeitlich eine Woche auseinander liegen. Bei der ersten Einladung müssen beide Termine bekannt gegeben werden. Die Frist der Einladung von zwei Wochen muss gewahrt bleiben. Die zum Zwecke der Auflösung des Vereins einberufenen Versammlungen sind nur dann beschlussfähig, wenn die Hälfte der Mitglieder bei der Abstimmung anwesend sind. Von diesen anwesenden Mitgliedern müssen jeweils mindestens ¾ der Mitglieder in namentlicher Abstimmung für die Auflösung stimmen.</p>
+          <p>Sollte bei der ersten Abstimmung die erforderlichen Stimmen zur Auflösung nicht erreicht werden, ist die zweite Versammlung damit gegenstandslos.</p>
+          <p class="text-xs text-brand-muted pt-4 border-t border-brand-border/40 font-semibold">
+            Beschlossen bei der am 20. Januar 2016 durchgeführten Hauptversammlung
+          </p>
+        </section>
+
+      </main>
+
+    </div>
+
+  </div>
+
+</Layout>

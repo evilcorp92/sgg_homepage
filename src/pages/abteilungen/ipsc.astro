@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  Zap, Clock, Shield, Award, Mail, ArrowLeft, ArrowRight, CheckCircle2, AlertCircle, Trophy, Users, Calendar, ExternalLink 
+} from 'lucide-react';
+
+const REQUIREMENTS = [
+  'BDS-Mitgliedschaft mit gültiger Jahressichtmarke',
+  'Erfahrung im sicheren Umgang mit Schusswaffen',
+  'Regelkonforme Ausrüstung (Holster / Rig nach Sportordnung, mind. 2–4 Magazine)',
+  'Augen- & Gehörschutzpflicht',
+  'Ziel: Vorbereitung & Absolvierung des Sicherheits- und Regeltests (SuRT)'
+];
+---
+
+<Layout title="IPSC Sparte - SG Gersfeld 1813 e.V." description="IPSC Schießen in Gersfeld: Einziger Schützenverein im Landkreis Fulda mit Level III Zulassung, Silver City Cup und dynamischem Parcoursschießen.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Hero Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <a href="/abteilungen/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors bg-white px-3 py-1 rounded-full border border-brand-border/60">
+            <ArrowLeft class="w-3.5 h-3.5" /> Alle Abteilungen
+          </a>
+        </div>
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          International Practical Shooting Confederation
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Zap class="w-10 h-10 text-brand-steel" /> IPSC — Dynamic Shooting
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-base sm:text-lg">
+          Diligentia, Vis, Celeritas (Präzision, Kraft, Schnelligkeit). Die Königsklasse des dynamischen Schießsports auf unseren zugelassenen Mehrdistanzständen.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* Quick Facts Bar */}
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white rounded-brand-lg border border-brand-border/70 p-6 shadow-sm">
+        <div class="space-y-1 text-center sm:text-left sm:border-r border-brand-border/40 sm:pr-4">
+          <span class="text-xs font-bold uppercase text-brand-muted">Besonderheit</span>
+          <p class="text-sm font-extrabold text-brand-dark">Einziger Verein im Landkreis Fulda</p>
+        </div>
+        <div class="space-y-1 text-center sm:text-left sm:border-r border-brand-border/40 sm:pr-4">
+          <span class="text-xs font-bold uppercase text-brand-muted">Schießzeiten</span>
+          <p class="text-sm font-extrabold text-brand-dark">Alle 2 Wochen Do (Dienstplan) & Fr nach Absprache</p>
+        </div>
+        <div class="space-y-1 text-center sm:text-left">
+          <span class="text-xs font-bold uppercase text-brand-muted">Turniere</span>
+          <p class="text-sm font-extrabold text-brand-dark">Matches bis Level III & Silver City Cup</p>
+        </div>
+      </div>
+
+      {/* Dynamic Shooting Section */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <h2 class="text-2xl font-extrabold text-brand-dark flex items-center gap-2">
+          <Zap class="w-6 h-6 text-brand-steel" /> Dynamischer Schießsport auf Mehrdistanzständen
+        </h2>
+        <div class="text-brand-content text-sm sm:text-base leading-relaxed space-y-4">
+          <p>
+            Als einziger Schützenverein im Landkreis Fulda und näherer Umgebung trainieren wir nach den sportlichen Regeln der <strong>IPSC</strong>. Uns stehen zwei moderne, mehrdistanzfähige Schießstände zur Verfügung, auf denen wir anspruchsvolle Parcours aufbauen und offizielle Wettkämpfe bis <strong>Level III</strong> ausrichten können.
+          </p>
+          <p>
+            Beim IPSC-Schießen verschmelzen Schusspräzision, Bewegung im Parcours und Zeitbedarf zu einer dynamischen Gesamtwertung (Hit-Faktor).
+          </p>
+        </div>
+      </div>
+
+      {/* Schießzeiten Callout Box */}
+      <div class="bg-slate-50 border border-slate-200 rounded-brand-lg p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center sm:text-left">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-muted flex items-center gap-1.5 justify-center sm:justify-start">
+            <Clock class="w-4 h-4 text-brand-steel" /> Trainingszeiten IPSC
+          </span>
+          <h3 class="text-xl font-extrabold text-brand-dark">Regelmäßiges IPSC-Training</h3>
+          <p class="text-xs sm:text-sm text-brand-steel max-w-xl leading-relaxed">
+            Das Training findet <strong>alle zwei Wochen donnerstags</strong> statt (die genauen Termine sind im Online-Dienstplan hinterlegt). Zusätzliche Trainingseinheiten am <strong>Freitag finden nur nach Absprache</strong> statt.
+          </p>
+        </div>
+        <a 
+          href="https://dp.sg-gersfeld.de/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-brand bg-brand-dark hover:bg-brand-steel text-white font-bold text-xs transition-colors shadow-sm"
+        >
+          <Calendar class="w-4 h-4" /> Dienstplan prüfen <ExternalLink class="w-3.5 h-3.5 opacity-70" />
+        </a>
+      </div>
+
+      {/* Silver City Cup & Wettbewerbe */}
+      <div class="bg-slate-900 text-white rounded-brand-lg p-8 shadow-md grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        <div class="md:col-span-2 space-y-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30">
+            <Trophy class="w-3.5 h-3.5" /> Traditionswettkampf
+          </span>
+          <h3 class="text-2xl font-black tracking-tight">Der „Silver City“-Cup</h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+            Unser traditioneller IPSC-Wettbewerb lockt jährlich hochkarätige Schützinnen und Schützen aus ganz Deutschland in die Rhön. Mit technisch herausfordernden Stages gehört der Cup zu den jährlichen Höhepunkten.
+          </p>
+        </div>
+        <div class="text-center md:text-right">
+          <a 
+            href="/fotos/events/" 
+            class="inline-flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-5 py-3 rounded-brand font-bold text-sm transition-colors shadow"
+          >
+            Fotos vom Cup ansehen →
+          </a>
+        </div>
+      </div>
+
+      {/* Hinweise für Interessenten & Einsteiger */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 border-b border-brand-border/40 pb-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
+            <AlertCircle class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold text-brand-dark">Hinweise für Neueinsteiger & Interessenten</h3>
+            <p class="text-xs text-brand-muted">Voraussetzungen für die Teilnahme am IPSC-Training</p>
+          </div>
+        </div>
+
+        <ul class="space-y-3 text-sm">
+          {REQUIREMENTS.map(req => (
+            <li class="flex items-start gap-2.5 text-brand-content bg-slate-50 p-3 rounded-lg border border-slate-100">
+              <CheckCircle2 class="w-4 h-4 text-brand-steel shrink-0 mt-0.5" />
+              <span>{req}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="p-4 rounded-brand bg-brand-bg border border-brand-border text-xs text-brand-steel">
+          <strong>Hinweis zum SuRT:</strong> Das selbstständige Schießen bei offiziellen IPSC-Wettkämpfen erfordert das Bestehen des Sicherheits- und Regeltests (SuRT). Wir bereiten interessierte Schützen im Training gezielt darauf vor.
+        </div>
+      </div>
+
+      {/* Kontakt Box */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center sm:text-left">
+          <h3 class="text-lg font-extrabold text-brand-dark">Interesse am IPSC-Training?</h3>
+          <p class="text-xs text-brand-muted">Kontaktiere unsere Schießleiter IPSC für Fragen oder Vorababsprachen.</p>
+        </div>
+        <a 
+          href="mailto:ipsc@sg-gersfeld.de" 
+          class="inline-flex items-center gap-2 bg-brand-dark hover:bg-brand-steel text-white px-5 py-2.5 rounded-brand font-bold text-xs transition-colors shadow"
+        >
+          <Mail class="w-4 h-4" /> ipsc@sg-gersfeld.de
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>

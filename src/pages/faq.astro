@@ -1,0 +1,187 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  HelpCircle, Target, Users, Euro, Hammer, ShieldAlert, Award, ChevronDown, ArrowRight, Sparkles, Compass, ShieldCheck
+} from 'lucide-react';
+
+const FAQ_SECTIONS = [
+  {
+    category: 'Schnuppertraining & Einstieg',
+    icon: Compass,
+    items: [
+      {
+        q: 'Wie läuft ein Schnuppertraining ab und wie kann ich mitmachen?',
+        a: 'Interessenten sind bei uns jederzeit herzlich willkommen! Bei einem ersten Besuch wirst du von einer erfahrenen Standaufsicht oder einem Trainer begrüßt, in die Sicherheitsregeln eingewiesen und machst unter direkter 1:1-Betreuung deine ersten Schüsse mit Vereinswaffen.'
+      },
+      {
+        q: 'Muss ich mich für ein Probetraining vorher anmelden?',
+        a: 'Eine kurze Voranmeldung über unser <a href="/kontakt/" class="text-brand-steel font-bold underline">Kontaktformular</a> oder per E-Mail ist sehr empfehlenswert. So können wir sicherstellen, dass ein Betreuer genügend Zeit für dich hat und passende Vereinswaffen sowie Stände bereitstehen.'
+      },
+      {
+        q: 'Brauche ich eigene Ausrüstung oder eine Waffe für den Einstieg?',
+        a: 'Nein, für den Anfang benötigst du keinerlei eigene Ausrüstung. Vereinswaffen in verschiedenen Kalibern (Luftdruck, Kleinkaliber, Großkaliber), Gehörschutz und Schutzbrillen werden für das Training kostenfrei zur Verfügung gestellt. Benötigte Munition kann direkt vor Ort zum Selbstkostenpreis erworben werden.'
+      },
+      {
+        q: 'Was muss ich zum ersten Training mitbringen?',
+        a: 'Bitte bringe einen <strong>gültigen amtlichen Lichtbildausweis</strong> (Personalausweis oder Reisepass) mit. Zudem empfehlen wir bequeme Freizeitkleidung und festes, geschlossenes Schuhwerk.'
+      }
+    ]
+  },
+  {
+    category: 'Schießsport & Disziplinen',
+    icon: Target,
+    items: [
+      {
+        q: 'Welche Disziplinen können bei uns geschossen werden?',
+        a: 'Grundsätzlich ist bei uns das Schießen mit Kleinkaliber, Großkaliber (inkl. Schwarzpulver/Vorderlader) sowie Luftgewehr/Luftpistole und Bogenschießen möglich. Da sowohl der 25m- als auch der 50m-Stand voll begehbar sind, können dynamische Disziplinen wie IPSC, Westernschießen (CAS), Speed und Mehrdistanz geschossen werden. Zudem verfügen wir über moderne Klappfallscheibenanlagen für Kurzwaffe und Flinte.'
+      },
+      {
+        q: 'Welche Verbände sind bei der SG Gersfeld vertreten?',
+        a: 'Wir sind Mitglied im <strong>Deutschen Schützenbund (DSB / Hessischer Schützenverband)</strong> sowie im <strong>Bund Deutscher Sportschützen (BDS 1975 e.V.)</strong> über unsere eigenständige BDS-Gruppe. Dadurch können nahezu alle Disziplinen beider Verbände bis 50m Distanz trainiert und bei Meisterschaften geschossen werden.'
+      },
+      {
+        q: 'Kann ich mit eigenen Waffen als Gastschütze schießen?',
+        a: 'Ja, Gastschützen mit eigener waffenrechtlicher Erlaubnis (WBK) sind zu den regulären Trainingszeiten willkommen. Bitte bringe deine WBK und ggf. deinen Verbands-/Versicherungsausweis mit. Es fällt lediglich eine geringe Standgebühr an.'
+      },
+      {
+        q: 'Welche Kaliber und Energiebegrenzungen gelten auf den Ständen?',
+        a: 'Auf dem <strong>25m-Stand</strong> sind Kurzwaffen aller gängigen Kaliber (KK bis .44 Mag / .45 ACP) bis 1.500 Joule sowie Schrot für Fallplatten zugelassen. Der <strong>50m-Stand</strong> ist für Langwaffen (Kleinkaliber, Unterhebelrepetierer und Großkaliberbüchsen bis 4.000 Joule) sowie Kurzwaffen zugelassen.'
+      },
+      {
+        q: 'Gibt es bei euch eine Bogenabteilung?',
+        a: 'Ja! Auf unserem weitläufigen Vereinsgelände verfügen wir über eine eigene Bogenwiese. Wir bieten traditionelles und modernes Bogenschießen für alle Altersklassen an.'
+      }
+    ]
+  },
+  {
+    category: 'Mitgliedschaft, Voraussetzungen & Kosten',
+    icon: Users,
+    items: [
+      {
+        q: 'Wie werde ich Mitglied im Verein?',
+        a: 'Der Aufnahmeantrag kann schriftlich gestellt werden. Nach einem persönlichen Kennenlernen und ersten Trainingseinheiten entscheidet der Gesamtvorstand über die Aufnahme. Alle Antragsformulare und Hinweise findest du unter <a href="/verein/mitglied-werden/" class="text-brand-steel font-bold underline">Mitglied werden</a>.'
+      },
+      {
+        q: 'Welche Altersgrenzen gelten für Kinder und Jugendliche?',
+        a: 'Das Schießen mit modernen Licht-/Lasergewehren ist ohne Altersbeschränkung möglich. Mit Einverständnis der Erziehungsberechtigten kann ab 12 Jahren Luftdruck (Gewehr/Pistole) geschossen werden. Ab 14 Jahren ist das Schießen mit Kleinkaliber und Flinte erlaubt, ab 18 Jahren mit allen zugelassenen Sport- und Großkaliberwaffen.'
+      },
+      {
+        q: 'Wie hoch sind die Mitgliedsbeiträge?',
+        a: 'Die Beiträge sind transparent und staffeln sich nach Einzel-, Familien- und Jugendbeiträgen. Eine vollständige Kostenaufstellung inklusive der jährlichen Standsanierungsumlage und Munitionspreisen findest du unter <a href="/verein/kosten/" class="text-brand-steel font-bold underline">Kosten & Beiträge</a>.'
+      },
+      {
+        q: 'Ist eine Zweitmitgliedschaft möglich, wenn ich bereits in einem anderen Verein bin?',
+        a: 'Ja, Zweitmitgliedschaften sind problemlos möglich – sowohl für DSB- als auch BDS-Schützen, die unsere Stände und Trainingsmöglichkeiten regelmäßig nutzen möchten.'
+      }
+    ]
+  },
+  {
+    category: 'Vereinsleben & Pflichten',
+    icon: Hammer,
+    items: [
+      {
+        q: 'Gibt es bei euch vorgeschriebene Pflicht-Arbeitsstunden?',
+        a: 'Nein, vorgeschriebene Pflicht-Arbeitsstunden gibt es bei uns <strong>nicht</strong>. Da wir unsere Westernstadt Silver City und die Schießstände jedoch mit viel ehrenamtlichem Engagement pflegen, freuen wir uns über jede freiwillige Hilfe bei Festen und Arbeitseinsätzen.'
+      },
+      {
+        q: 'Wer übernimmt die Standaufsichten?',
+        a: 'Aktive Schützen mit Sachkunde und Aufsichtsnachweis beteiligen sich an den Standaufsichten gemäß unserem digitalen <a href="https://dp.sg-gersfeld.de/" target="_blank" rel="noopener noreferrer" class="text-brand-steel font-bold underline">Dienstplan</a>, um einen sicheren Schießbetrieb für alle zu gewährleisten.'
+      }
+    ]
+  },
+  {
+    category: 'Waffenrecht, Sachkunde & WBK',
+    icon: ShieldAlert,
+    items: [
+      {
+        q: 'Wann kann ich als Sportschütze eine eigene Waffenbesitzkarte (WBK) beantragen?',
+        a: 'Um ein waffenrechtliches Bedürfnis nach § 14 WaffG für eine eigene Waffe zu beantragen, muss man: 1. Mindestens 12 Monate Mitglied in einem anerkannten Schießsportverband sein, 2. Regelmäßige Trainingsaktivität im Schießbuch nachweisen (mind. 18-mal im Jahr bzw. 12-mal monatlich), 3. Die amtliche Waffensachkundeprüfung bestanden haben und 4. Die persönliche Eignung und Zuverlässigkeit nachweisen.'
+      },
+      {
+        q: 'Bietet der Verein Waffensachkundelehrgänge an?',
+        a: 'Ja, wir führen regelmäßig zertifizierte Waffensachkundelehrgänge inklusive Standaufsichten-Schulung und behördlicher Prüfung direkt in unserem Schützenhaus durch.'
+      },
+      {
+        q: 'Können eigene Waffen im Verein dauerhaft gelagert werden?',
+        a: 'Nein, eigene Schusswaffen müssen vom Besitzer nach den gesetzlichen Bestimmungen in einem zertifizierten Waffenschrank (Widerstandsgrad 0 oder 1 nach DIN/EN 1143-1) in den eigenen Wohnräumen aufbewahrt werden.'
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Häufige Fragen (FAQ) - SG Gersfeld 1813 e.V." description="Umfassende Antworten auf alle Fragen rund um Einstieg, Schnuppertraining, Mitgliedschaft, Schießstände, Disziplinen, Kosten und Waffenrecht bei der SG Gersfeld 1813 e.V.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="inline-flex items-center gap-1.5 text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          <HelpCircle class="w-3.5 h-3.5" /> Fragen & Antworten
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          Häufig gestellte Fragen (FAQ)
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-sm sm:text-base">
+          Hier findest du Antworten auf alle wichtigen Fragen zu Schnuppertraining, Mitgliedschaft, unseren Schießständen, Disziplinen und dem Waffenrecht.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* FAQ Category Sections */}
+      {FAQ_SECTIONS.map((sec) => {
+        const Icon = sec.icon;
+        return (
+          <div class="space-y-4">
+            <div class="flex items-center gap-3 border-b border-brand-border/60 pb-3">
+              <div class="p-2 rounded-brand bg-brand-steel/10 text-brand-steel">
+                <Icon class="w-5 h-5" />
+              </div>
+              <h2 class="text-xl font-extrabold text-brand-dark">
+                {sec.category}
+              </h2>
+            </div>
+
+            <div class="space-y-3">
+              {sec.items.map((item) => (
+                <details class="group bg-white rounded-brand-lg border border-brand-border/70 p-5 shadow-sm transition-all open:shadow-md open:border-brand-steel/40">
+                  <summary class="flex items-center justify-between gap-4 font-extrabold text-brand-dark cursor-pointer list-none select-none text-base">
+                    <span>{item.q}</span>
+                    <span class="p-1 rounded-full bg-slate-100 group-open:bg-brand-steel group-open:text-white transition-all">
+                      <ChevronDown class="w-4 h-4 transition-transform group-open:rotate-180" />
+                    </span>
+                  </summary>
+                  <div class="mt-4 pt-3 border-t border-slate-100 text-sm sm:text-base text-brand-content/90 leading-relaxed space-y-2">
+                    <p set:html={item.a}></p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Contact CTA Box */}
+      <div class="p-8 rounded-brand-lg bg-white border border-brand-border/70 shadow-sm text-center space-y-4">
+        <h3 class="text-xl font-black text-brand-dark">Noch Fragen offen?</h3>
+        <p class="text-sm text-brand-muted max-w-lg mx-auto">
+          Du möchtest bei uns reinschnuppern oder hast eine spezielle Frage? Schreib uns einfach oder komm zu den regulären Trainingszeiten vorbei!
+        </p>
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
+          <a href="/kontakt/" class="inline-flex items-center gap-2 px-6 py-3 rounded-brand bg-brand-dark hover:bg-brand-steel text-white font-extrabold text-sm shadow-sm transition-all">
+            Kontakt aufnehmen <ArrowRight class="w-4 h-4" />
+          </a>
+          <a href="/verein/schiesszeiten/" class="inline-flex items-center gap-2 px-6 py-3 rounded-brand bg-slate-100 hover:bg-slate-200 text-brand-steel font-extrabold text-sm transition-all">
+            Schießzeiten ansehen
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>

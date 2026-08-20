@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  Compass, Clock, Shield, Award, Mail, ArrowLeft, ArrowRight, CheckCircle2, Flame, Music, ExternalLink, Image as ImageIcon, Sparkles, Building 
+} from 'lucide-react';
+
+const HIGHLIGHTS = [
+  { title: 'Single Action Revolver', desc: 'Schießen mit originalgetreuen Single-Action-Revolvern (z.B. Colt Peacemaker).' },
+  { title: 'Unterhebelrepetierer (Lever Action)', desc: 'Klassische Westernbüchsen auf Stahl- und Fallscheibenziele unserer Stände.' },
+  { title: 'Kutscherflinte (Coach Gun)', desc: 'Schrotflinten mit Hahnschlössern für authentischen Western-Schießsport.' },
+  { title: 'Festareal „Silver City“', desc: 'Vereinseigene Westerntown mit Saloon, Cantina, Music-Hall für Feiern & Feste.' }
+];
+---
+
+<Layout title="Westernschießen & Westerngruppe - SG Gersfeld" description="Cowboy Action Shooting (CAS) & Westerngruppe der SG Gersfeld: Historischer Schießsport, Westerntown Silver City und jährliches großes Westernfest.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Hero Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <a href="/abteilungen/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors bg-white px-3 py-1 rounded-full border border-brand-border/60">
+            <ArrowLeft class="w-3.5 h-3.5" /> Alle Abteilungen
+          </a>
+        </div>
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          Cowboy Action Shooting & Brauchtum
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Compass class="w-10 h-10 text-brand-steel" /> Western — CAS & Westerngruppe
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-base sm:text-lg">
+          Historischer Schießsport mit originalgetreuen Westernwaffen auf den Schießständen unseres Schützenhauses sowie Feierlichkeiten in unserer Westernstadt „Silver City“.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* Quick Facts Bar */}
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white rounded-brand-lg border border-brand-border/70 p-6 shadow-sm">
+        <div class="space-y-1 text-center sm:text-left sm:border-r border-brand-border/40 sm:pr-4">
+          <span class="text-xs font-bold uppercase text-brand-muted">Disziplin</span>
+          <p class="text-sm font-extrabold text-brand-dark">Cowboy Action Shooting (BDS)</p>
+        </div>
+        <div class="space-y-1 text-center sm:text-left sm:border-r border-brand-border/40 sm:pr-4">
+          <span class="text-xs font-bold uppercase text-brand-muted">Schießstände</span>
+          <p class="text-sm font-extrabold text-brand-dark">25m & 50m Mehrdistanz-Stände</p>
+        </div>
+        <div class="space-y-1 text-center sm:text-left">
+          <span class="text-xs font-bold uppercase text-brand-muted">Feiern & Feste</span>
+          <p class="text-sm font-extrabold text-brand-dark">Westernstadt „Silver City“</p>
+        </div>
+      </div>
+
+      {/* Western & CAS Description */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <h2 class="text-2xl font-extrabold text-brand-dark">
+          Cowboy Action Shooting (CAS) auf unseren Schießständen
+        </h2>
+        <div class="text-brand-content text-sm sm:text-base leading-relaxed space-y-4">
+          <p>
+            Eine der traditionsreichsten Disziplinen bei uns ist das <strong>Cowboy Action Shooting</strong> des BDS. Das Schießen findet auf unseren <strong>zugelassenen 25-Meter- und 50-Meter-Schießständen</strong> statt. Geschossen wird mit historischen oder originalgetreuen Nachbauten von Westernwaffen (Single Action Revolver, Unterhebelrepetierbüchsen und Kutscherflinten) auf reaktive Stahlziele.
+          </p>
+          <p>
+            Traditionelle zeitgenössische Kleidung und Westernflair gehören beim CAS genauso dazu wie der sportliche Wettbewerb um beste Trefferzeiten.
+          </p>
+        </div>
+      </div>
+
+      {/* Highlights Grid */}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {HIGHLIGHTS.map(h => (
+          <div class="bg-white border border-brand-border/70 rounded-brand p-6 shadow-sm space-y-2">
+            <h3 class="font-extrabold text-brand-dark text-base flex items-center gap-2">
+              <CheckCircle2 class="w-4 h-4 text-brand-steel" /> {h.title}
+            </h3>
+            <p class="text-xs text-brand-steel leading-relaxed">
+              {h.desc}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {/* Silver City Westernstadt als Veranstaltungsort */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 border-b border-brand-border/40 pb-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center">
+            <Building class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold text-brand-dark">Die Westernstadt „Silver City“</h3>
+            <p class="text-xs text-brand-muted">Unsere Kulisse für Feste, Country-Abende und Feierlichkeiten</p>
+          </div>
+        </div>
+        <p class="text-sm text-brand-content leading-relaxed">
+          Auf unserem Außengelände haben unsere Mitglieder mit viel Liebe zum Detail eine authentische Westernstadt errichtet. Mit <strong>Saloon, Cantina, Music-Hall und Cocktail-Bar</strong> dient Silver City ausschließlich als stimmungsvoller Veranstaltungs- und Feierbereich für unser großes Westernfest, Grillabende und geselliges Beisammensein.
+        </p>
+      </div>
+
+      {/* Westernfest Banner */}
+      <div class="bg-gradient-to-tr from-amber-950 via-slate-900 to-slate-950 text-white rounded-brand-lg p-8 shadow-lg space-y-6">
+        <div class="flex items-center gap-3">
+          <Flame class="w-8 h-8 text-amber-400" />
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-300">Jahreshöhepunkt</span>
+            <h3 class="text-2xl font-black">Das große Gersfelder Westernfest</h3>
+          </div>
+        </div>
+        <p class="text-sm text-slate-200 leading-relaxed max-w-3xl">
+          Jedes Jahr reisen Schützinnen und Schützen aus ganz Deutschland an, um das traditionelle 3-tägige Westernfest mit Unterhebel- und Revolverschießen auf den Ständen, Country-Livemusik, Lagerfeuer und bester Westernstimmung in Silver City zu feiern.
+        </p>
+        <div class="pt-2 flex flex-wrap gap-4">
+          <a 
+            href="/fotos/events/" 
+            class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs px-5 py-2.5 rounded-brand transition-colors shadow"
+          >
+            <ImageIcon class="w-4 h-4" /> Fotos vom Westernfest
+          </a>
+          <a 
+            href="https://www.bdsnet.de/western/western.html" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-xs px-5 py-2.5 rounded-brand transition-colors"
+          >
+            BDS Westernordnung <ExternalLink class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>

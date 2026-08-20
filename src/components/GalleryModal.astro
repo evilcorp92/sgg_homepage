@@ -1,0 +1,183 @@
+---
+// GalleryModal.astro - Universal Fullscreen Lightbox Modal for Photo Galleries
+---
+
+<div 
+  id="galleryLightbox" 
+  class="fixed inset-0 z-50 bg-black/95 hidden items-center justify-center p-2 sm:p-6 backdrop-blur-md transition-opacity select-none"
+  tabindex="-1"
+  role="dialog"
+  aria-modal="true"
+>
+  {/* Close Button Top Right */}
+  <button 
+    id="lightboxClose" 
+    class="absolute top-4 right-4 sm:top-6 sm:right-6 z-50 p-2.5 rounded-full bg-white/10 hover:bg-white/25 text-white backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-white"
+    title="Schließen (Esc)"
+    aria-label="Schließen"
+  >
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  {/* Prev Button */}
+  <button 
+    id="lightboxPrev" 
+    class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-white shadow-lg"
+    title="Vorheriges Bild (Pfeiltaste links)"
+    aria-label="Vorheriges Bild"
+  >
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+
+  {/* Next Button */}
+  <button 
+    id="lightboxNext" 
+    class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-50 p-3 rounded-full bg-white/10 hover:bg-white/25 text-white backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-white shadow-lg"
+    title="Nächstes Bild (Pfeiltaste rechts)"
+    aria-label="Nächstes Bild"
+  >
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </button>
+
+  {/* Center Content Container */}
+  <div class="relative max-w-5xl w-full max-h-[92vh] flex flex-col items-center justify-center p-2">
+    
+    {/* Image Container */}
+    <div class="relative max-h-[78vh] flex items-center justify-center overflow-hidden rounded-brand-lg">
+      <img 
+        id="lightboxImage" 
+        src="" 
+        alt="" 
+        class="max-h-[78vh] max-w-full w-auto object-contain rounded-brand-lg shadow-2xl transition-transform duration-200"
+      />
+    </div>
+
+    {/* Metadata & Counter Bar */}
+    <div class="w-full max-w-2xl mt-4 px-4 py-3 rounded-brand bg-white/10 backdrop-blur-md border border-white/15 text-white flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+      <div class="space-y-0.5">
+        <h4 id="lightboxTitle" class="font-extrabold text-sm sm:text-base text-white"></h4>
+        <p id="lightboxSubtitle" class="text-xs text-slate-300"></p>
+      </div>
+      <div class="shrink-0 font-mono font-bold text-xs bg-white/20 px-3 py-1 rounded-full text-slate-100">
+        <span id="lightboxIndex">1</span> / <span id="lightboxTotal">1</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script is:inline>
+  let currentGallery = [];
+  let currentIndex = 0;
+  let currentAlbumTitle = '';
+
+  window.openGallery = function(albumTitle, images, startIndex = 0) {
+    currentGallery = images || [];
+    currentIndex = startIndex;
+    currentAlbumTitle = albumTitle || '';
+
+    if (currentGallery.length === 0) return;
+
+    updateLightboxImage();
+    const modal = document.getElementById('galleryLightbox');
+    if (modal) {
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      modal.focus();
+    }
+  };
+
+  window.closeGallery = function() {
+    const modal = document.getElementById('galleryLightbox');
+    if (modal) {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+  };
+
+  window.prevImage = function() {
+    if (currentGallery.length <= 1) return;
+    currentIndex = (currentIndex - 1 + currentGallery.length) % currentGallery.length;
+    updateLightboxImage();
+  };
+
+  window.nextImage = function() {
+    if (currentGallery.length <= 1) return;
+    currentIndex = (currentIndex + 1) % currentGallery.length;
+    updateLightboxImage();
+  };
+
+  function updateLightboxImage() {
+    const imgElem = document.getElementById('lightboxImage');
+    const titleElem = document.getElementById('lightboxTitle');
+    const subtitleElem = document.getElementById('lightboxSubtitle');
+    const indexElem = document.getElementById('lightboxIndex');
+    const totalElem = document.getElementById('lightboxTotal');
+
+    if (imgElem) {
+      imgElem.src = currentGallery[currentIndex];
+    }
+    if (titleElem) {
+      titleElem.textContent = currentAlbumTitle;
+    }
+    if (subtitleElem) {
+      subtitleElem.textContent = `Foto ${currentIndex + 1}`;
+    }
+    if (indexElem) {
+      indexElem.textContent = currentIndex + 1;
+    }
+    if (totalElem) {
+      totalElem.textContent = currentGallery.length;
+    }
+  }
+
+  // Keyboard navigation & click handlers
+  document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('galleryLightbox');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+
+    if (closeBtn) closeBtn.addEventListener('click', window.closeGallery);
+    if (prevBtn) prevBtn.addEventListener('click', window.prevImage);
+    if (nextBtn) nextBtn.addEventListener('click', window.nextImage);
+
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.classList.contains('backdrop-blur-md')) {
+          window.closeGallery();
+        }
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (modal && !modal.classList.contains('hidden')) {
+        if (e.key === 'Escape') window.closeGallery();
+        if (e.key === 'ArrowLeft') window.prevImage();
+        if (e.key === 'ArrowRight') window.nextImage();
+      }
+    });
+
+    // Touch swipe support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    if (modal) {
+      modal.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+      modal.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchEndX < touchStartX - 50) window.nextImage();
+        if (touchEndX > touchStartX + 50) window.prevImage();
+      }, { passive: true });
+    }
+  });
+</script>

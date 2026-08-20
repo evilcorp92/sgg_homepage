@@ -1,0 +1,30 @@
+# build output
+dist/
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# credentials & deployment cache
+creds.txt
+.deploy-manifest.json
+.env
+.env.*
+
+# Large media uploads (hosted directly on web server / FTP)
+public/wp-content/uploads/
+
+# macOS / OS specific files
+.DS_Store
+Thumbs.db
+
+# IDE setting folders
+.idea/
+.vscode/

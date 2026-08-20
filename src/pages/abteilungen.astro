@@ -1,0 +1,139 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  Target, Crosshair, Zap, Compass, Shield, ArrowRight, CheckCircle2, Clock, MapPin 
+} from 'lucide-react';
+
+const DEPARTMENTS = [
+  {
+    name: 'DSB (Deutscher Schützenbund)',
+    shortName: 'DSB',
+    badge: 'Präzision & Tradition',
+    icon: 'dsb',
+    description: 'Klassisches, olympisches Präzisionsschießen mit Fokus auf Ruhe, Atem- und Abzugstechnik. Luftgewehr & Luftpistole (10m), Kleinkaliber (50m) sowie traditionelle Großkaliber- und Kurzwaffendisziplinen.',
+    disciplines: ['10m Druckluft', '25m Kurzwaffe', '50m Langwaffe', 'Waffensachkunde'],
+    training: 'Mo 19:00–21:00, Sa 17:00–19:00, So 10:00–13:00',
+    url: '/abteilungen/dsb/'
+  },
+  {
+    name: 'BDS (Bund Deutscher Sportschützen)',
+    shortName: 'BDS',
+    badge: 'Dynamik & Großkaliber',
+    icon: 'bds',
+    description: 'Sportlicher, dynamischer Schießsport mit Kurz- und Langwaffen. Speed-Schießen auf Klappfallscheiben, Mehrdistanz und anspruchsvolle Disziplinen nach dem Sporthandbuch des BDS.',
+    disciplines: ['Fallscheibe', 'Mehrdistanz', 'Speed-Schießen', 'Großkaliber'],
+    training: 'Do 19:00–21:00 Uhr',
+    url: '/abteilungen/bds/'
+  },
+  {
+    name: 'IPSC (Dynamic Shooting)',
+    shortName: 'IPSC',
+    badge: 'Königsklasse der Dynamik',
+    icon: 'ipsc',
+    description: 'Die absolute Spitzenklasse des dynamischen Schießsports: Diligentia, Vis, Celeritas (Präzision, Kraft, Schnelligkeit). Flüssige Bewegung und Schießen unter Zeitdruck im Parcours.',
+    disciplines: ['Parcoursschießen', 'Level I–III Matches', 'Silver City Cup', 'SuRT'],
+    training: 'Alle 2 Wochen Do (Dienstplan) & Fr nach Absprache',
+    url: '/abteilungen/ipsc/'
+  },
+  {
+    name: 'Western (Cowboy Action Shooting)',
+    shortName: 'Western',
+    badge: 'Brauchtum & CAS',
+    icon: 'western',
+    description: 'Historisches Schießen mit originalgetreuen Westernwaffen (Single Action Revolver, Unterhebelrepetierer, Kutscherflinten) auf unseren Schießständen. Für stimmungsvolle Feiern und das traditionelle Westernfest steht unsere Westernstadt „Silver City“ bereit.',
+    disciplines: ['Cowboy Action Shooting', 'Unterhebelschießen', 'Westernfest', 'Revolver'],
+    training: 'Nach Vereinbarung & Events',
+    url: '/abteilungen/western/'
+  },
+  {
+    name: 'Bogen (Traditionell & Sport)',
+    shortName: 'Bogen',
+    badge: 'Reaktivierung & Aufbau',
+    icon: 'bogen',
+    description: 'Lautloser Sport, mentale Ruhe und Konzentration auf unserer Bogensportanlage im Grünen. Wir suchen engagierte Bogenschützen und Übungsleiter für die Reaktivierung!',
+    disciplines: ['Recurve', 'Compound', 'Blankbogen', 'Freizeitgruppe'],
+    training: 'Im Wiederaufbau (Interessenten willkommen)',
+    url: '/abteilungen/bogen/'
+  }
+];
+---
+
+<Layout title="Sportabteilungen & Disziplinen - SG Gersfeld 1813 e.V." description="Entdecke die sportliche Vielfalt der Schützengesellschaft Gersfeld: DSB, BDS, IPSC, Westernschießen und Bogensport.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-extrabold tracking-widest uppercase text-brand-steel">
+          Sportarten & Disziplinen
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight">
+          Unsere sportlichen Abteilungen
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto">
+          Ob olympische Präzision, rasante Fallscheibenserien, actionreiches IPSC oder authentisches Westernschießen – bei uns findet jeder Schießsportbegeisterte die passende Sparte.
+        </p>
+      </div>
+    </header>
+
+    {/* Departments List container */}
+    <div class="max-w-5xl mx-auto px-6 mt-16 space-y-8">
+      {DEPARTMENTS.map((dept) => (
+        <article class="bg-white border border-brand-border/70 rounded-brand-lg shadow-sm p-6 sm:p-8 flex flex-col md:flex-row gap-6 hover:shadow-lg hover:border-brand-steel/30 transition-all duration-300 group">
+          
+          {/* Icon Box */}
+          <div class="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center text-brand-steel shrink-0 group-hover:bg-brand-dark group-hover:text-white transition-all duration-300 shadow-inner">
+            {dept.icon === 'dsb' && <Target class="w-8 h-8" />}
+            {dept.icon === 'bds' && <Crosshair class="w-8 h-8" />}
+            {dept.icon === 'ipsc' && <Zap class="w-8 h-8" />}
+            {dept.icon === 'western' && <Compass class="w-8 h-8" />}
+            {dept.icon === 'bogen' && <Shield class="w-8 h-8" />}
+          </div>
+
+          {/* Department Information */}
+          <div class="space-y-4 flex-grow">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <h2 class="text-2xl font-black text-brand-dark tracking-tight leading-tight group-hover:text-brand-steel transition-colors">
+                <a href={dept.url}>{dept.name}</a>
+              </h2>
+              <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-slate-100 text-brand-steel border border-slate-200">
+                {dept.badge}
+              </span>
+            </div>
+
+            <p class="text-brand-content text-sm sm:text-base leading-relaxed">
+              {dept.description}
+            </p>
+
+            {/* Discipline Badges */}
+            <div class="flex flex-wrap gap-2 pt-1">
+              {dept.disciplines.map(d => (
+                <span class="text-xs font-semibold px-2.5 py-1 rounded-md bg-brand-bg text-brand-steel border border-brand-border/60 flex items-center gap-1">
+                  <CheckCircle2 class="w-3 h-3 text-brand-steel" /> {d}
+                </span>
+              ))}
+            </div>
+
+            {/* Meta & Button Row */}
+            <div class="pt-3 border-t border-brand-border/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <div class="flex items-center gap-1.5 text-brand-muted font-medium">
+                <Clock class="w-3.5 h-3.5 text-brand-steel" />
+                <span>{dept.training}</span>
+              </div>
+              <a 
+                href={dept.url} 
+                class="inline-flex items-center gap-1.5 font-bold text-brand-steel group-hover:text-brand-dark hover:underline transition-colors text-sm"
+              >
+                Abteilungsseite & Details <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </a>
+            </div>
+
+          </div>
+        </article>
+      ))}
+    </div>
+
+  </div>
+
+</Layout>

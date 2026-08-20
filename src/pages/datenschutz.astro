@@ -1,0 +1,189 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { 
+  Shield, Lock, FileText, Server, Mail, ExternalLink, CheckCircle2, UserCheck, AlertCircle 
+} from 'lucide-react';
+---
+
+<Layout title="Datenschutzerklärung - SG Gersfeld 1813 e.V." description="Datenschutzerklärung der Schützengesellschaft Gersfeld 1813 e.V. nach der Datenschutz-Grundverordnung (DSGVO).">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-extrabold tracking-widest uppercase text-brand-steel">
+          Rechtliches & Transparenz
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Shield class="w-8 h-8 text-brand-steel" /> Datenschutzerklärung
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto">
+          Informationen über die Verarbeitung Ihrer personenbezogenen Daten beim Besuch unserer Website gemäß Art. 13 und 14 der Datenschutz-Grundverordnung (DSGVO).
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-4xl mx-auto px-6 mt-12 space-y-12 leading-relaxed text-brand-content text-sm sm:text-base">
+
+      {/* 1. Verantwortliche Stelle */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-4">
+        <h2 class="text-xl font-extrabold text-brand-dark flex items-center gap-2 border-b border-brand-border/40 pb-3">
+          <UserCheck class="w-5 h-5 text-brand-steel" /> 1. Name und Kontaktdaten des Verantwortlichen
+        </h2>
+        <p>Verantwortlicher für die Datenverarbeitung auf dieser Website im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
+        
+        <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 text-xs sm:text-sm space-y-1">
+          <p class="font-extrabold text-brand-dark">Schützengesellschaft Gersfeld 1813 e.V.</p>
+          <p class="text-brand-steel">Rommerser Str. 32, 36129 Gersfeld (Rhön)</p>
+          <p class="text-brand-steel">Eingetragen im Vereinsregister des Amtsgerichts Fulda (VR 160)</p>
+          <p class="pt-2 text-brand-steel"><strong>Vertreten durch den geschäftsführenden Vorstand</strong></p>
+          <p class="text-brand-steel">E-Mail: <a href="mailto:info@sg-gersfeld.de" class="font-bold text-brand-dark hover:underline">info@sg-gersfeld.de</a> / <a href="mailto:vorstand@sg-gersfeld.de" class="font-bold text-brand-dark hover:underline">vorstand@sg-gersfeld.de</a></p>
+        </div>
+      </div>
+
+      {/* 2. SSL/TLS & Hosting */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <h2 class="text-xl font-extrabold text-brand-dark flex items-center gap-2 border-b border-brand-border/40 pb-3">
+          <Lock class="w-5 h-5 text-brand-steel" /> 2. Bereitstellung der Website & Server-Logfiles
+        </h2>
+        
+        <div class="space-y-3 text-xs sm:text-sm">
+          <h3 class="font-bold text-brand-dark text-base">SSL- bzw. TLS-Verschlüsselung</h3>
+          <p>
+            Diese Seite nutzt aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie daran, dass die Adresszeile des Browsers von „http://“ auf „https://“ wechselt und an dem Schloss-Symbol in Ihrer Browserzeile.
+          </p>
+        </div>
+
+        <div class="space-y-3 text-xs sm:text-sm pt-2">
+          <h3 class="font-bold text-brand-dark text-base">Erfassung von Zugriffsdaten (Server-Logfiles)</h3>
+          <p>
+            Beim Aufrufen unserer Website werden durch den Webserver automatisch Informationen erfasst und in sogenannten Server-Logdateien gespeichert. Dies sind:
+          </p>
+          <ul class="list-disc list-inside space-y-1 pl-2 text-brand-steel">
+            <li>Browsertyp und Browserversion</li>
+            <li>Verwendetes Betriebssystem</li>
+            <li>Referrer URL (die zuvor besuchte Seite)</li>
+            <li>Hostname des zugreifenden Rechners / IP-Adresse (anonymisiert)</li>
+            <li>Uhrzeit und Datum der Serveranfrage</li>
+          </ul>
+          <p>
+            Die Verarbeitung erfolgt gemäß <strong>Art. 6 Abs. 1 lit. f DSGVO</strong> auf Basis unseres berechtigten Interesses an der Stabilität, Funktionalität und Sicherheit unserer Website. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.
+          </p>
+        </div>
+      </div>
+
+      {/* 3. Kontaktaufnahme & Mitgliederverwaltung */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-4">
+        <h2 class="text-xl font-extrabold text-brand-dark flex items-center gap-2 border-b border-brand-border/40 pb-3">
+          <Mail class="w-5 h-5 text-brand-steel" /> 3. Kontaktaufnahme & Mitgliederverwaltung
+        </h2>
+        <div class="space-y-3 text-xs sm:text-sm">
+          <p>
+            Wenn Sie uns per E-Mail oder Telefon kontaktieren, wird Ihre Anfrage inklusive aller daraus hervorgehenden personenbezogenen Daten (Name, E-Mail-Adresse, Anfrage) zum Zwecke der Bearbeitung Ihres Anliegens bei uns gespeichert und verarbeitet. Die Verarbeitung dieser Daten erfolgt auf Grundlage von <strong>Art. 6 Abs. 1 lit. b DSGVO</strong>, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen (z.B. Mitgliedschaft) erforderlich ist. In allen übrigen Fällen beruht die Verarbeitung auf unserem berechtigten Interesse an der effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO).
+          </p>
+          <p>
+            Für die Online-Mitgliederverwaltung und Aufnahmeanträge nutzen wir die Plattform <em>easyVerein</em> (SD Software-Design GmbH). Die Datenverarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO zur Durchführung und Verwaltung des Mitgliedschaftsverhältnisses.
+          </p>
+        </div>
+      </div>
+
+      {/* 4. Externe Dienste (Kalender, YouTube, Maps) */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <h2 class="text-xl font-extrabold text-brand-dark flex items-center gap-2 border-b border-brand-border/40 pb-3">
+          <Server class="w-5 h-5 text-brand-steel" /> 4. Eingebundene Dienste Dritter
+        </h2>
+
+        <div class="space-y-2 text-xs sm:text-sm">
+          <h3 class="font-bold text-brand-dark text-base">Google Kalender</h3>
+          <p>
+            Auf unserer Terminseite binden wir den Google Kalender der Schützengesellschaft Gersfeld ein (Anbieter: Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Beim Aufruf der Seite wird eine direkte Verbindung zu den Servern von Google aufgebaut, um Termindaten abzurufen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer aktuellen und übersichtlichen Darstellung unserer Vereinstermine).
+          </p>
+        </div>
+
+        <div class="space-y-2 text-xs sm:text-sm pt-2">
+          <h3 class="font-bold text-brand-dark text-base">YouTube (Erweiterter Datenschutzmodus)</h3>
+          <p>
+            Wir binden auf unserer Website Videos von YouTube ein (Google Ireland Limited). Die Einbindung erfolgt im erweiterten Datenschutzmodus (über die Domain <code>youtube-nocookie.com</code>), sodass nach Angaben von Google keine Cookies zur Nutzeranalyse gesetzt werden, solange das Video nicht abgespielt wird. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+        </div>
+
+        <div class="space-y-2 text-xs sm:text-sm pt-2">
+          <h3 class="font-bold text-brand-dark text-base">Google Maps</h3>
+          <p>
+            Auf unserer Kontaktseite nutzen wir den Kartendienst Google Maps zur visuellen Darstellung unseres Standorts und zur Erleichterung der Anfahrt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.
+          </p>
+        </div>
+      </div>
+
+      {/* 5. Betroffenenrechte nach DSGVO */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <h2 class="text-xl font-extrabold text-brand-dark flex items-center gap-2 border-b border-brand-border/40 pb-3">
+          <CheckCircle2 class="w-5 h-5 text-brand-steel" /> 5. Ihre Rechte als betroffene Person
+        </h2>
+        
+        <p class="text-xs sm:text-sm">
+          Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen der DSGVO jederzeit folgende Rechte:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200/80 space-y-1">
+            <h4 class="font-extrabold text-brand-dark">Auskunftsrecht (Art. 15 DSGVO)</h4>
+            <p class="text-brand-steel text-xs">Sie haben das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten.</p>
+          </div>
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200/80 space-y-1">
+            <h4 class="font-extrabold text-brand-dark">Berichtigungsrecht (Art. 16 DSGVO)</h4>
+            <p class="text-brand-steel text-xs">Sie haben das Recht, unverzüglich die Berichtigung unrichtiger Daten zu verlangen.</p>
+          </div>
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200/80 space-y-1">
+            <h4 class="font-extrabold text-brand-dark">Löschungsrecht (Art. 17 DSGVO)</h4>
+            <p class="text-brand-steel text-xs">Sie können die Löschung Ihrer bei uns gespeicherten personenbezogenen Daten verlangen.</p>
+          </div>
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200/80 space-y-1">
+            <h4 class="font-extrabold text-brand-dark">Einschränkung (Art. 18 DSGVO)</h4>
+            <p class="text-brand-steel text-xs">Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer Daten zu verlangen.</p>
+          </div>
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200/80 space-y-1">
+            <h4 class="font-extrabold text-brand-dark">Datenübertragbarkeit (Art. 20)</h4>
+            <p class="text-brand-steel text-xs">Sie haben das Recht, Ihre Daten in einem strukturierten, maschinenlesbaren Format zu erhalten.</p>
+          </div>
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200/80 space-y-1">
+            <h4 class="font-extrabold text-brand-dark">Widerspruchsrecht (Art. 21 DSGVO)</h4>
+            <p class="text-brand-steel text-xs">Sie haben das Recht, aus Gründen Ihrer besonderen Situation jederzeit Widerspruch einzulegen.</p>
+          </div>
+        </div>
+
+        {/* Aufsichtsbehörde */}
+        <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 text-xs sm:text-sm space-y-2 mt-4">
+          <h4 class="font-bold text-brand-dark">Beschwerderecht bei der zuständigen Aufsichtsbehörde (Art. 77 DSGVO)</h4>
+          <p class="text-brand-steel text-xs">
+            Im Falle von datenschutzrechtlichen Verstößen steht Ihnen ein Beschwerderecht bei der zuständigen Aufsichtsbehörde zu. Die für unser Bundesland Hessen zuständige Aufsichtsbehörde ist:
+          </p>
+          <div class="font-mono text-xs text-brand-dark pt-1">
+            Der Hessische Beauftragte für Datenschutz und Informationsfreiheit (HBDI)<br />
+            Postfach 3163, 65021 Wiesbaden<br />
+            Website: <a href="https://datenschutz.hessen.de" target="_blank" rel="noopener noreferrer" class="text-brand-steel hover:underline">https://datenschutz.hessen.de</a>
+          </div>
+        </div>
+      </div>
+
+      {/* 6. Videoüberwachung des Vereinsgeländes */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-4">
+        <h2 class="text-xl font-extrabold text-brand-dark flex items-center gap-2 border-b border-brand-border/40 pb-3">
+          <Shield class="w-5 h-5 text-brand-steel" /> 6. Videoüberwachung auf dem Vereinsgelände
+        </h2>
+        <div class="space-y-3 text-xs sm:text-sm text-brand-content leading-relaxed">
+          <p>
+            Zur Wahrnehmung des Hausrechts, zum Schutz von Gebäuden und Schießsportanlagen vor Einbruch und Vandalismus sowie zur Beweissicherung bei Straftaten wird das Vereinsgelände videoüberwacht (Art. 6 Abs. 1 lit. f DSGVO).
+          </p>
+          <p>
+            Ausführliche Informationen zu Zwecken, Rechtsgrundlagen, Speicherdauern und Ihren Betroffenenrechten finden Sie auf unserer Informationsseite zur <a href="/videoueberwachung/" class="text-brand-steel font-bold underline">Videoüberwachung (Art. 13 DSGVO)</a>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>

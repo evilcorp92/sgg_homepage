@@ -1,0 +1,248 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  Crosshair, Clock, Shield, Award, Mail, ArrowLeft, ArrowRight, CheckCircle2, FileText, Download, ExternalLink, Play, ShoppingBag 
+} from 'lucide-react';
+
+const KURZWAFFE_BDS = [
+  '25-Meter-Präzisionsschießen (Kurzwaffe)',
+  'Mehrdistanzschießen (Fertigkeits- & Parcoursteil)',
+  'Fallscheibenschießen (Kurzwaffe GK & KK)',
+  '25-Meter-Speed-Schießen'
+];
+
+const LANGWAFFE_BDS = [
+  '50-Meter-Präzision & Zeitserie (Langwaffe)',
+  '50-Meter-Symbolscheibe',
+  '25-Meter-Fallscheibenschießen mit GK & KK',
+  'Speedschießen mit Büchse & Flinte',
+  'Fallscheibenschießen Flinte',
+  'Mehrdistanzschießen Flinte'
+];
+
+const VORSTAND_BDS = [
+  { role: 'Vorsitzender', name: 'Dominik Schmidt', email: 'd.schmidt@sg-gersfeld.de' },
+  { role: 'Sportleiter', name: 'Frank Schmidt', email: 'f.schmidt@sg-gersfeld.de' },
+  { role: 'Schriftführer', name: 'Michael Ultsch', email: 'm.ultsch@sg-gersfeld.de' },
+  { role: 'Kassiererin', name: 'Kerstin Schmidt', email: 'k.schmidt@sg-gersfeld.de' },
+];
+
+const DOWNLOADS = [
+  { title: 'Sporthandbuch Kurzwaffen', url: 'https://www.bdsnet.de/ressourcen/downloads/sph%20k%20bva%2026-11-2019%20red%2005_12_2019.pdf', size: 'BDS PDF' },
+  { title: 'Sporthandbuch Langwaffen', url: 'https://www.bdsnet.de/ressourcen/downloads/bds-shb_langwaffe_2019.pdf', size: 'BDS PDF' },
+  { title: 'Waffenbefürwortung / Bedürfnisantrag', url: 'https://bdshessen.de/wp-content/uploads/2026/02/BDS_Beduerfnisantrag.pdf', size: 'BDS Hessen PDF' },
+  { title: 'BDS Wettkampf Meldesystem', url: 'https://bdsmeisterschaft.de/', size: 'Online Portal', isExternal: true },
+];
+---
+
+<Layout title="BDS-Schützen SG Gersfeld e.V. - Großkaliber & Dynamik" description="BDS-Schützen SG Gersfeld e.V.: Mehrdistanz, Fallscheiben, Speed-Schießen und Großkaliber-Schießsport nach BDS-Sporthandbuch.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Hero Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <a href="/abteilungen/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors bg-white px-3 py-1 rounded-full border border-brand-border/60">
+            <ArrowLeft class="w-3.5 h-3.5" /> Alle Abteilungen
+          </a>
+        </div>
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          Bund Deutscher Sportschützen
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Crosshair class="w-10 h-10 text-brand-steel" /> BDS-Schützen SG Gersfeld e.V.
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-base sm:text-lg">
+          Dynamischer Großkalibersport, Fallscheibenschießen, Speed-Serien und anspruchsvolles Mehrdistanzschießen in einem rechtlich eigenständigen Verein.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* Quick Facts Bar */}
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white rounded-brand-lg border border-brand-border/70 p-6 shadow-sm">
+        <div class="space-y-1 text-center sm:text-left sm:border-r border-brand-border/40 sm:pr-4">
+          <span class="text-xs font-bold uppercase text-brand-muted">Schießzeit</span>
+          <p class="text-sm font-extrabold text-brand-dark">Jeden Donnerstag 19:00 — 21:00 Uhr</p>
+        </div>
+        <div class="space-y-1 text-center sm:text-left sm:border-r border-brand-border/40 sm:pr-4">
+          <span class="text-xs font-bold uppercase text-brand-muted">Schwerpunkte</span>
+          <p class="text-sm font-extrabold text-brand-dark">Fallscheibe, Mehrdistanz, Speed, Flinte</p>
+        </div>
+        <div class="space-y-1 text-center sm:text-left">
+          <span class="text-xs font-bold uppercase text-brand-muted">Kontakt</span>
+          <p class="text-sm font-extrabold text-brand-dark">bds@sg-gersfeld.de</p>
+        </div>
+      </div>
+
+      {/* Disciplines Grid */}
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        {/* Kurzwaffe */}
+        <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+          <div class="flex items-center gap-3 border-b border-brand-border/40 pb-4">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-brand-steel">
+              <Crosshair class="w-5 h-5" />
+            </div>
+            <div>
+              <h2 class="text-xl font-extrabold text-brand-dark">BDS Kurzwaffe</h2>
+              <span class="text-xs text-brand-muted font-medium">25m Mehrdistanz & Fallscheiben</span>
+            </div>
+          </div>
+          <ul class="space-y-2.5 text-sm">
+            {KURZWAFFE_BDS.map(d => (
+              <li class="flex items-start gap-2 text-brand-content bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                <CheckCircle2 class="w-4 h-4 text-brand-steel shrink-0 mt-0.5" />
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Langwaffe */}
+        <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+          <div class="flex items-center gap-3 border-b border-brand-border/40 pb-4">
+            <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-brand-steel">
+              <Shield class="w-5 h-5" />
+            </div>
+            <div>
+              <h2 class="text-xl font-extrabold text-brand-dark">BDS Langwaffe & Flinte</h2>
+              <span class="text-xs text-brand-muted font-medium">50m Präzision, Speed & Fallscheibe</span>
+            </div>
+          </div>
+          <ul class="space-y-2.5 text-sm">
+            {LANGWAFFE_BDS.map(d => (
+              <li class="flex items-start gap-2 text-brand-content bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+                <CheckCircle2 class="w-4 h-4 text-brand-steel shrink-0 mt-0.5" />
+                <span>{d}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      {/* Mehrdistanz Highlight Box */}
+      <div class="bg-slate-900 text-white rounded-brand-lg p-8 shadow-md space-y-4">
+        <h3 class="text-xl font-black text-white flex items-center gap-2">
+          <Crosshair class="w-6 h-6 text-brand-steel" /> Mehrdistanzschießen
+        </h3>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          Die Disziplin Mehrdistanz ist eine beliebte, actionreiche Disziplin im BDS. Geschossen wird aus unterschiedlichen Distanzen (z.B. 25m, 20m, 15m, 10m) auf Scheiben – aufgeteilt in 20 Schuss Fertigkeitsschießen und 20 Schuss Parcoursschießen. Hier zählen Schnelligkeit, Konzentration und Zielpräzision gleichermaßen!
+        </p>
+      </div>
+
+      {/* Vorstand Card */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-brand-border/40 pb-4">
+          <div>
+            <h3 class="text-xl font-extrabold text-brand-dark">Vorstand der BDS-Gruppe</h3>
+            <p class="text-xs text-brand-muted">BDS-Schützen SG Gersfeld e.V.</p>
+          </div>
+          <a 
+            href="mailto:bds@sg-gersfeld.de" 
+            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-brand-bg text-brand-steel font-bold text-xs hover:text-brand-dark self-start sm:self-auto"
+          >
+            <Mail class="w-3.5 h-3.5" /> bds@sg-gersfeld.de
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {VORSTAND_BDS.map(v => (
+            <div class="p-4 rounded-brand bg-slate-50 border border-slate-200/80 flex flex-col justify-between space-y-2">
+              <div>
+                <span class="text-xs font-bold text-brand-muted uppercase">{v.role}</span>
+                <p class="font-extrabold text-brand-dark text-base">{v.name}</p>
+              </div>
+              <a 
+                href={`mailto:${v.email}`} 
+                class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors"
+              >
+                <Mail class="w-3.5 h-3.5" /> {v.email}
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Downloads & Links Grid */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <h3 class="text-xl font-extrabold text-brand-dark border-b border-brand-border/40 pb-4">
+          BDS Downloads, Handbücher & Formulare
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {DOWNLOADS.map(d => (
+            <a 
+              href={d.url} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="p-4 rounded-brand bg-brand-bg/60 hover:bg-brand-bg border border-brand-border/60 hover:border-brand-steel/40 flex items-center justify-between transition-all group"
+            >
+              <div class="flex items-center gap-3">
+                <FileText class="w-5 h-5 text-brand-steel group-hover:scale-110 transition-transform" />
+                <div>
+                  <span class="font-bold text-brand-dark text-sm block group-hover:text-brand-steel transition-colors">{d.title}</span>
+                  <span class="text-xs text-brand-muted">{d.size}</span>
+                </div>
+              </div>
+              <ExternalLink class="w-4 h-4 text-brand-steel opacity-50 group-hover:opacity-100" />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* BDS Patch Banner */}
+      <div class="bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-brand-lg p-6 sm:p-8 shadow-md flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-2 text-center sm:text-left">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-white/10 text-white border border-white/20">
+            <ShoppingBag class="w-3.5 h-3.5" /> Offizielles Abzeichen
+          </span>
+          <h3 class="text-xl font-extrabold">BDS-Patch SG Gersfeld</h3>
+          <p class="text-xs text-slate-300 max-w-md">
+            Der gestickte Klett-Patch (8,5 x 10,5 cm) kann direkt im Schützenhaus erworben werden. Preis: 10 € / Stück.
+          </p>
+        </div>
+        <img 
+          src="https://www.sg-gersfeld.de/wp-content/uploads/2020/07/BDS-Logo-1-884x1024.png" 
+          alt="BDS Logo Patch" 
+          class="w-24 h-auto rounded-lg shadow-lg border border-white/20"
+          onerror="this.style.display='none'"
+        />
+      </div>
+
+      {/* Videos Section */}
+      <div class="space-y-6">
+        <h3 class="text-2xl font-extrabold text-brand-dark flex items-center gap-2">
+          <Play class="w-6 h-6 text-brand-steel" /> Videos & Impressionen zum BDS-Schießsport
+        </h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="rounded-brand-lg overflow-hidden border border-brand-border/70 shadow-sm bg-black aspect-video">
+            <iframe 
+              src="https://www.youtube-nocookie.com/embed/iX_UZvuolcI" 
+              class="w-full h-full" 
+              title="BDS Schießsport Vorstellung" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="rounded-brand-lg overflow-hidden border border-brand-border/70 shadow-sm bg-black aspect-video">
+            <iframe 
+              src="https://www.youtube-nocookie.com/embed/FT6QKreZ7bE" 
+              class="w-full h-full" 
+              title="BDS Disziplinen" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>

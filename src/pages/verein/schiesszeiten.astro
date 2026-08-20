@@ -1,0 +1,349 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  Clock, Shield, Target, Calendar, ArrowRight, ExternalLink, AlertCircle, Info, CheckCircle2, Zap 
+} from 'lucide-react';
+
+const WEEKLY_SCHEDULE = [
+  {
+    day: 'Montag',
+    kurz: [
+      { time: '19:00 — 20:00', text: 'KK Kurzwaffe (KK hat Vorrang, DSB / BDS)' },
+      { time: '20:00 — 21:00', text: 'GK Kurzwaffe (Großkaliber, DSB / BDS)' }
+    ],
+    lang: [
+      { time: '19:00 — 20:00', text: 'KK Langwaffe (KK hat Vorrang, DSB / BDS)' },
+      { time: '20:00 — 21:00', text: 'GK Langwaffe (Großkaliber, DSB / BDS)' }
+    ],
+    luft: [
+      { time: '19:00 — 21:00', text: 'DSB Druckluftwaffenstand' }
+    ],
+    badge: 'Statisch (DSB & BDS)',
+    badgeColor: 'bg-blue-50 text-blue-800 border-blue-200'
+  },
+  {
+    day: 'Dienstag',
+    kurz: [{ time: '—', text: 'Kein regulärer Schießbetrieb' }],
+    lang: [{ time: '—', text: 'Kein regulärer Schießbetrieb' }],
+    luft: [{ time: '—', text: 'Kein regulärer Schießbetrieb' }],
+    isRest: true
+  },
+  {
+    day: 'Mittwoch',
+    kurz: [{ time: '—', text: 'Kein regulärer Schießbetrieb' }],
+    lang: [{ time: '—', text: 'Kein regulärer Schießbetrieb' }],
+    luft: [{ time: '—', text: 'Kein regulärer Schießbetrieb' }],
+    isRest: true
+  },
+  {
+    day: 'Donnerstag',
+    kurz: [
+      { time: '19:00 — 21:00', text: 'BDS Klappfallscheibe (15m / 25m) & Speed' },
+      { time: '19:00 — 21:00', text: 'IPSC alle 2 Wochen (siehe Dienstplan)' }
+    ],
+    lang: [
+      { time: '19:00 — 21:00', text: 'BDS Speed + Mehrdistanz' }
+    ],
+    luft: [
+      { time: '—', text: 'Kein Schießbetrieb' }
+    ],
+    badge: 'BDS & Dynamisch',
+    badgeColor: 'bg-amber-50 text-amber-900 border-amber-200'
+  },
+  {
+    day: 'Freitag',
+    kurz: [{ time: 'Nach Absprache', text: 'Sondertraining / IPSC nur nach Vereinbarung' }],
+    lang: [{ time: 'Nach Absprache', text: 'Sondertraining nur nach Vereinbarung' }],
+    luft: [{ time: '—', text: 'Kein Schießbetrieb' }],
+    badge: 'Nach Absprache',
+    badgeColor: 'bg-slate-100 text-slate-700 border-slate-200'
+  },
+  {
+    day: 'Samstag',
+    kurz: [
+      { time: '17:00 — 19:00', text: 'Kurzwaffe (25 m) DSB / BDS' }
+    ],
+    lang: [
+      { time: '17:00 — 19:00', text: 'Langwaffe (50 m) DSB / BDS' }
+    ],
+    luft: [
+      { time: '17:00 — 19:00', text: 'DSB Druckluftwaffenstand' }
+    ],
+    badge: 'Statisch (DSB & BDS)',
+    badgeColor: 'bg-blue-50 text-blue-800 border-blue-200'
+  },
+  {
+    day: 'Sonntag',
+    kurz: [
+      { time: '10:00 — 13:00', text: 'Kurzwaffe (25 m) DSB / BDS' }
+    ],
+    lang: [
+      { time: '10:00 — 13:00', text: 'Langwaffe (50 m) DSB / BDS' }
+    ],
+    luft: [
+      { time: '10:00 — 13:00', text: 'DSB Druckluftwaffenstand' }
+    ],
+    badge: 'Statisch (DSB & BDS)',
+    badgeColor: 'bg-blue-50 text-blue-800 border-blue-200'
+  }
+];
+---
+
+<Layout title="Schießzeiten & Dienstplan - SG Gersfeld 1813 e.V." description="Übersicht aller regulären Schießzeiten und Schießstände der SG Gersfeld 1813 e.V. sowie Live-Dienstplan der Standaufsichten.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-extrabold tracking-widest uppercase text-brand-steel">
+          Trainingsbetrieb & Schießzeiten
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Clock class="w-8 h-8 text-brand-steel" /> Schießzeiten & Dienstplan
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto">
+          Reguläre Trainingszeiten auf den 25m-, 50m- und 10m-Ständen sowie die nächste Schießzeit mit Standaufsicht direkt live aus dem Dienstplan.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* 1. Live Dienstplan Box */}
+      <section class="bg-white rounded-brand-lg border border-brand-border/80 shadow-sm p-6 sm:p-8 flex flex-col lg:flex-row items-center justify-between gap-8">
+        <div class="space-y-4 max-w-xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Automatisch live synchronisiert
+          </div>
+          <h2 class="text-2xl font-black text-brand-dark tracking-tight">
+            Nächste Schießzeit & Standaufsicht
+          </h2>
+          <p class="text-sm text-brand-content leading-relaxed">
+            Dieses Widget bezieht die Daten in <strong>Echtzeit</strong> direkt vom Dienstplan-Server (<code>dp.sg-gersfeld.de</code>). Änderungen und eingeteilte Standaufsichten werden <strong>sofort und automatisch</strong> aktualisiert.
+          </p>
+          <div class="pt-2 flex flex-wrap items-center gap-3">
+            <a 
+              href="https://dp.sg-gersfeld.de/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="inline-flex items-center gap-2 px-4 py-2.5 rounded-brand bg-brand-dark hover:bg-brand-steel text-white font-bold text-xs transition-all duration-200 shadow-sm"
+            >
+              <Calendar class="w-4 h-4" /> Zum vollständigen Dienstplan <ExternalLink class="w-3.5 h-3.5 opacity-70" />
+            </a>
+          </div>
+        </div>
+        
+        {/* Widget Frame */}
+        <div class="w-full lg:w-[380px] shrink-0">
+          <div class="bg-slate-50 p-2.5 rounded-2xl border border-slate-200 shadow-inner">
+            <iframe 
+              src="https://dp.sg-gersfeld.de/widget2.php" 
+              class="w-full h-[195px] rounded-xl border-0" 
+              loading="lazy" 
+              title="Nächste Schießzeit Live-Widget"
+              scrolling="no"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Reguläre Schießzeiten Tabelle */}
+      <section class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-brand-border/40 pb-4">
+          <div>
+            <h2 class="text-2xl font-black text-brand-dark flex items-center gap-2">
+              <Target class="w-6 h-6 text-brand-steel" /> Reguläre Schießzeiten der SG Gersfeld
+            </h2>
+            <p class="text-xs text-brand-muted mt-0.5">
+              Übersicht nach Wochentag und Schießständen (Rommerser Str. 32, 36129 Gersfeld)
+            </p>
+          </div>
+          <span class="text-xs font-bold text-brand-steel bg-slate-100 px-3 py-1 rounded-full border border-slate-200 self-start sm:self-auto">
+            Stand: 2026
+          </span>
+        </div>
+
+        {/* Desktop Table */}
+        <div class="hidden md:block overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b border-brand-border bg-slate-50 text-xs font-extrabold text-brand-steel uppercase">
+                <th class="py-3 px-4 w-36">Wochentag</th>
+                <th class="py-3 px-4">Kurzwaffenstand (25m)</th>
+                <th class="py-3 px-4">Langwaffenstand (50m)</th>
+                <th class="py-3 px-4">Druckluftstand (10m)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brand-border/40">
+              {WEEKLY_SCHEDULE.map(row => (
+                <tr class={row.isRest ? 'bg-slate-50/40 text-slate-400' : 'hover:bg-slate-50/60 transition-colors'}>
+                  {/* Day Column */}
+                  <td class="py-4 px-4 align-top">
+                    <span class="font-extrabold text-brand-dark block text-base">{row.day}</span>
+                    {row.badge && (
+                      <span class={`inline-block mt-1 text-[10px] font-bold px-2 py-0.5 rounded border ${row.badgeColor}`}>
+                        {row.badge}
+                      </span>
+                    )}
+                    {row.isRest && (
+                      <span class="inline-block mt-1 text-[10px] font-semibold text-slate-400">
+                        Ruhetag
+                      </span>
+                    )}
+                  </td>
+
+                  {/* 25m Stand */}
+                  <td class="py-4 px-4 align-top">
+                    <div class="space-y-1.5">
+                      {row.kurz.map(k => (
+                        <div class="text-xs">
+                          {k.time !== '—' && <strong class="text-brand-steel font-bold block">{k.time}</strong>}
+                          <span class={row.isRest ? 'text-slate-400' : 'text-brand-dark font-medium'}>{k.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </td>
+
+                  {/* 50m Stand */}
+                  <td class="py-4 px-4 align-top">
+                    <div class="space-y-1.5">
+                      {row.lang.map(l => (
+                        <div class="text-xs">
+                          {l.time !== '—' && <strong class="text-brand-steel font-bold block">{l.time}</strong>}
+                          <span class={row.isRest ? 'text-slate-400' : 'text-brand-dark font-medium'}>{l.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </td>
+
+                  {/* 10m Druckluft Stand */}
+                  <td class="py-4 px-4 align-top">
+                    <div class="space-y-1.5">
+                      {row.luft.map(lu => (
+                        <div class="text-xs">
+                          {lu.time !== '—' && <strong class="text-brand-steel font-bold block">{lu.time}</strong>}
+                          <span class={row.isRest ? 'text-slate-400' : 'text-brand-dark font-medium'}>{lu.text}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {/* Mobile View (Cards) */}
+        <div class="md:hidden space-y-4">
+          {WEEKLY_SCHEDULE.map(row => (
+            <div class={`p-4 rounded-brand border ${row.isRest ? 'bg-slate-50/50 border-slate-200/60 opacity-60' : 'bg-white border-brand-border/80 shadow-sm'} space-y-3`}>
+              <div class="flex items-center justify-between border-b border-brand-border/40 pb-2">
+                <span class="font-extrabold text-brand-dark text-base">{row.day}</span>
+                {row.badge && (
+                  <span class={`text-[10px] font-bold px-2 py-0.5 rounded border ${row.badgeColor}`}>
+                    {row.badge}
+                  </span>
+                )}
+              </div>
+
+              {!row.isRest ? (
+                <div class="space-y-2 text-xs">
+                  <div class="bg-slate-50 p-2 rounded border border-slate-200/60">
+                    <span class="font-bold text-brand-steel block">25m Kurzwaffenstand:</span>
+                    {row.kurz.map(k => (
+                      <p class="text-brand-dark">{k.time}: {k.text}</p>
+                    ))}
+                  </div>
+                  <div class="bg-slate-50 p-2 rounded border border-slate-200/60">
+                    <span class="font-bold text-brand-steel block">50m Langwaffenstand:</span>
+                    {row.lang.map(l => (
+                      <p class="text-brand-dark">{l.time}: {l.text}</p>
+                    ))}
+                  </div>
+                  <div class="bg-slate-50 p-2 rounded border border-slate-200/60">
+                    <span class="font-bold text-brand-steel block">10m Druckluftstand:</span>
+                    {row.luft.map(lu => (
+                      <p class="text-brand-dark">{lu.time}: {lu.text}</p>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <p class="text-xs text-slate-400">Kein regulärer Schießbetrieb</p>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Important Notes */}
+        <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 text-xs text-brand-steel flex items-start gap-2.5">
+          <Info class="w-4 h-4 text-brand-steel shrink-0 mt-0.5" />
+          <div class="space-y-1">
+            <p>
+              * <strong>IPSC & Zusatzeinheiten:</strong> IPSC findet alle 2 Wochen donnerstags statt (aktuelle Termine siehe Dienstplan). Freitags finden Schießzeiten ausschließlich nach vorheriger Vereinbarung statt.
+            </p>
+            <p>
+              * <strong>Gastschützen:</strong> Bitte vorab über die <a href="/kontakt/" class="font-bold text-brand-dark hover:underline">Kontaktseite</a> oder per E-Mail anmelden.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Schießstandaufsichten Info */}
+      <section class="bg-slate-900 text-white rounded-brand-lg p-6 sm:p-8 space-y-6 shadow-md">
+        <div class="flex items-center gap-3">
+          <Shield class="w-7 h-7 text-amber-400" />
+          <div>
+            <h3 class="text-lg font-black">
+              Hinweise für Schießstandaufsichten
+            </h3>
+            <p class="text-xs text-slate-300">
+              Organisation, Sicherheit und Dienstplankoordination
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs text-slate-300">
+          <div class="bg-slate-800/80 p-4 rounded-brand border border-slate-700 space-y-1.5">
+            <h4 class="font-bold text-white flex items-center gap-1.5">
+              <CheckCircle2 class="w-3.5 h-3.5 text-emerald-400" /> Dienstplan einsehen
+            </h4>
+            <p class="leading-relaxed">
+              Bitte überprüfe regelmäßig deine eingeteilten Termine im Online-Dienstplan.
+            </p>
+          </div>
+          <div class="bg-slate-800/80 p-4 rounded-brand border border-slate-700 space-y-1.5">
+            <h4 class="font-bold text-white flex items-center gap-1.5">
+              <CheckCircle2 class="w-3.5 h-3.5 text-emerald-400" /> Vertretung regeln
+            </h4>
+            <p class="leading-relaxed">
+              Bei Verhinderung bitte rechtzeitig mit einem anderen Berechtigten tauschen.
+            </p>
+          </div>
+          <div class="bg-slate-800/80 p-4 rounded-brand border border-slate-700 space-y-1.5">
+            <h4 class="font-bold text-white flex items-center gap-1.5">
+              <CheckCircle2 class="w-3.5 h-3.5 text-emerald-400" /> Schießkladde führen
+            </h4>
+            <p class="leading-relaxed">
+              Die Schießkladden sind sorgfältig und lückenlos auszufüllen.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-2 text-center sm:text-left">
+          <a 
+            href="https://dp.sg-gersfeld.de/" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center gap-2 bg-white text-slate-950 hover:bg-slate-200 px-5 py-2.5 rounded-brand font-bold text-xs shadow transition-all duration-200"
+          >
+            Dienstplan auf dp.sg-gersfeld.de öffnen <ExternalLink class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+</Layout>

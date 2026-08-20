@@ -1,0 +1,133 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import GalleryModal from '../../components/GalleryModal.astro';
+import photoAlbums from '../../data/photoAlbums.json';
+import { 
+  PartyPopper, ArrowLeft, ZoomIn, Calendar, Trophy, Sparkles, Layers, ArrowRight
+} from 'lucide-react';
+
+const albums = photoAlbums.events;
+const totalPhotos = albums.reduce((sum, a) => sum + a.images.length, 0);
+---
+
+<Layout title="Fotoalben: Events & Feste - SG Gersfeld 1813 e.V." description="Fotogalerien der SG Gersfeld: Westernfeste in Silver City, Landesmeisterschaften im Westernschießen (CAS), Silver City Cups (IPSC) und Vereinsfeiern.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="flex items-center justify-center gap-2">
+          <a href="/fotos/" class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark transition-colors bg-white px-3 py-1 rounded-full border border-brand-border/60">
+            <ArrowLeft class="w-3.5 h-3.5" /> Zurück zu allen Alben
+          </a>
+        </div>
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          Fotoalben & Galerien
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <PartyPopper class="w-9 h-9 text-brand-steel" /> Events & Feste
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-sm sm:text-base">
+          {albums.length} Alben mit insgesamt {totalPhotos} Fotos: Westernfeste, IPSC Matches, Meisterschaften und unvergessliche Vereinsmomente in Silver City.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 mt-12 space-y-12">
+      
+      {/* Quick Jump Navigation Bar */}
+      <div class="bg-white p-4 sm:p-5 rounded-brand-lg border border-brand-border/70 shadow-sm space-y-3">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-brand-steel block">
+          Alben-Direktauswahl ({albums.length} Alben):
+        </span>
+        <div class="flex flex-wrap gap-2">
+          {albums.map((album) => (
+            <a 
+              href={`#${album.id}`}
+              class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100 text-brand-steel hover:bg-brand-dark hover:text-white transition-all shadow-xs"
+            >
+              <span>{album.title}</span>
+              <span class="text-[10px] opacity-75 font-mono">({album.images.length})</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Album Sections */}
+      <div class="space-y-16">
+        {albums.map((album, albumIdx) => (
+          <section id={album.id} class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6 scroll-mt-24">
+            
+            {/* Album Header */}
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-brand-border/50 pb-5">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-black bg-brand-steel/10 text-brand-steel uppercase tracking-wider">
+                    {album.date}
+                  </span>
+                  <span class="text-xs font-bold text-brand-muted">
+                    {album.images.length} Fotos
+                  </span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-black text-brand-dark tracking-tight">
+                  {album.title}
+                </h2>
+                <p class="text-sm text-brand-content/85 max-w-2xl leading-relaxed">
+                  {album.description}
+                </p>
+              </div>
+
+              {/* Fullscreen Button */}
+              <div class="shrink-0">
+                <button 
+                  onclick={`openGallery('${album.title.replace(/'/g, "\\'")}', ${JSON.stringify(album.images)}, 0)`}
+                  class="inline-flex items-center gap-2 px-4 py-2.5 rounded-brand bg-brand-dark hover:bg-brand-steel text-white text-xs sm:text-sm font-extrabold shadow-sm transition-all"
+                >
+                  <ZoomIn class="w-4 h-4" /> Diashow starten
+                </button>
+              </div>
+            </div>
+
+            {/* Thumbnail Grid */}
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4">
+              {album.images.map((imgUrl, imgIdx) => (
+                <div 
+                  class="relative aspect-[4/3] rounded-brand overflow-hidden bg-slate-900 cursor-pointer group shadow-xs hover:shadow-md transition-all"
+                  onclick={`openGallery('${album.title.replace(/'/g, "\\'")}', ${JSON.stringify(album.images)}, ${imgIdx})`}
+                >
+                  <img 
+                    src={imgUrl} 
+                    alt={`${album.title} - Foto ${imgIdx + 1}`}
+                    class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-108"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+                    <span class="p-1.5 rounded-full bg-white/90 text-brand-dark opacity-0 group-hover:opacity-100 transition-opacity shadow-sm">
+                      <ZoomIn class="w-4 h-4" />
+                    </span>
+                  </div>
+                  <span class="absolute bottom-1.5 right-1.5 text-[10px] font-bold text-white/90 bg-black/60 px-1.5 py-0.5 rounded backdrop-blur-xs">
+                    #{imgIdx + 1}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+          </section>
+        ))}
+      </div>
+
+      <div class="mt-12 text-center">
+        <a href="/fotos/" class="inline-flex items-center gap-2 px-6 py-3 rounded-brand bg-white hover:bg-slate-100 text-brand-steel hover:text-brand-dark border border-brand-border font-bold text-sm transition-colors shadow-sm">
+          <ArrowLeft class="w-4 h-4" /> Zurück zur Fotoalben-Übersicht
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <GalleryModal />
+
+</Layout>

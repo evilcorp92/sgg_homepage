@@ -1,0 +1,307 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  Trophy, Download, FileText, ExternalLink, Calendar, Users, Award, ArrowUpRight, Zap, Target, Crown, Sparkles 
+} from 'lucide-react';
+
+const GKP_DATA = [
+  {
+    year: '2025',
+    title: 'Großkaliber Pokalrunde 2025',
+    badge: 'Aktuell',
+    downloads: [
+      { name: 'Rangliste aller Teilnehmer (Einzel)', file: '250628_GKP_E.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2025/06/250628_GKP_E.pdf' },
+      { name: 'Rangliste Mannschaften', file: '250628_GKP_M.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2025/06/250628_GKP_M.pdf' },
+      { name: 'Ausschreibung GKP 2025', file: 'GKP-2025-Ausschreibung.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2025/05/GKP-2025-Ausschreibung.pdf' },
+    ]
+  },
+  {
+    year: '2024',
+    title: 'Großkaliber Pokalrunde 2024',
+    downloads: [
+      { name: 'Rangliste aller Teilnehmer (Einzel)', file: '241102_GK2024-Einzel.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2024/11/241102_GK2024-Einzel.pdf' },
+      { name: 'Rangliste Mannschaften', file: '241102_GK2024-Mannschaft.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2024/11/241102_GK2024-Mannschaft.pdf' },
+      { name: 'Ausschreibung GKP 2024', file: 'Ausschreibung-GKP-2024-1.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2024/03/Ausschreibung-GKP-2024-1.pdf' },
+    ]
+  },
+  {
+    year: '2023',
+    title: 'Großkaliber Pokalrunde 2023',
+    downloads: [
+      { name: 'Rangliste aller Teilnehmer (Einzel)', file: '231014_GK2023-Einzel.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2023/10/231014_GK2023-Einzel.pdf' },
+      { name: 'Rangliste Mannschaften', file: '231014_GK2023-Mannschaft.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2023/10/231014_GK2023-Mannschaft.pdf' },
+    ]
+  }
+];
+
+const IPSC_DATA = [
+  {
+    title: 'VM IPSC 2025',
+    subtitle: 'Vereinsmeisterschaft IPSC 2025',
+    downloads: [
+      { name: 'Ergebnisse Overall', file: 'overall.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2025/10/overall.pdf' },
+      { name: 'Ergebnisse Category', file: 'category.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2025/10/category.pdf' },
+      { name: 'Stage Results', file: 'stage_results.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2025/10/stage_results.pdf' },
+    ]
+  },
+  {
+    title: 'Gersfeld Open 2023',
+    subtitle: 'Offizielles IPSC Match',
+    downloads: [
+      { name: 'Results Overall', file: 'Gersfeld_Open_2023_results.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2023/10/Gersfeld_Open_2023_results.pdf' },
+      { name: 'Category Results', file: 'Gersfeld_Open_2023_catresults.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2023/10/Gersfeld_Open_2023_catresults.pdf' },
+      { name: 'Stage Results', file: 'Gersfeld_Open_2023_stageresults.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2023/10/Gersfeld_Open_2023_stageresults.pdf' },
+    ]
+  },
+  {
+    title: 'IPSC Testmatch 2022',
+    subtitle: 'Match vom 13.10.2022',
+    downloads: [
+      { name: 'Results Overall', file: 'match_13_overall.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2022/10/match_13__20221014025737-1.pdf' },
+      { name: 'Results by Stage', file: 'match_13_stage.pdf', url: 'https://www.sg-gersfeld.de/wp-content/uploads/2022/10/match_13__20221014025903.pdf' },
+    ]
+  }
+];
+
+const KINGS = [
+  { year: '2024', king: 'Thomas Berthold', knights: 'Karl Romeis, Egon Berg' },
+  { year: '2023', king: 'Timo II. (Heumüller)', knights: 'Egon Berg, Alexander Birger, Rudi Graf' },
+  { year: '2021', king: 'Die drei Musketiere', knights: 'Thomas Benndorff, Matthias Müller, Wolfgang Benndorff' },
+  { year: '2020', king: 'Timo Heumüller', knights: 'Matthias Müller, Volker Ott-Engelmann' },
+  { year: '2019', king: 'Frank Schmidt', knights: 'Harald Knüttel, Lukas Röder' },
+];
+---
+
+<Layout title="Ergebnisse & Wettkämpfe - SG Gersfeld 1813 e.V." description="Ergebnislisten und Ranglisten der SG Gersfeld: Großkaliber Pokalrunden, IPSC Matches, Königsschießen und Vereinsmeisterschaften.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-extrabold tracking-widest uppercase text-brand-steel">
+          Sportliche Erfolge & Wettkämpfe
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Trophy class="w-8 h-8 text-brand-steel" /> Ergebnisse & Ranglisten
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto">
+          Offizielle Ergebnislisten und PDF-Downloads aller Pokalrunden, IPSC Matches, Königsschießen und Meisterschaften der SG Gersfeld.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 mt-12 space-y-16">
+
+      {/* Quick Jump Buttons */}
+      <div class="flex flex-wrap items-center justify-center gap-3 bg-white p-4 rounded-brand-lg border border-brand-border/70 shadow-sm">
+        <a 
+          href="#gkp" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-slate-100 text-brand-steel hover:bg-brand-dark hover:text-white transition-all shadow-sm flex items-center gap-1.5"
+        >
+          <Target class="w-4 h-4" /> Großkaliber Pokalrunde
+        </a>
+        <a 
+          href="#ipsc" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-slate-100 text-brand-steel hover:bg-brand-dark hover:text-white transition-all shadow-sm flex items-center gap-1.5"
+        >
+          <Zap class="w-4 h-4" /> IPSC Matches
+        </a>
+        <a 
+          href="#koenig" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-slate-100 text-brand-steel hover:bg-brand-dark hover:text-white transition-all shadow-sm flex items-center gap-1.5"
+        >
+          <Crown class="w-4 h-4" /> Königsschießen
+        </a>
+        <a 
+          href="#vm" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-slate-100 text-brand-steel hover:bg-brand-dark hover:text-white transition-all shadow-sm flex items-center gap-1.5"
+        >
+          <Award class="w-4 h-4" /> BDS & DSB Meisterschaften
+        </a>
+      </div>
+
+      {/* 1. Großkaliber Pokalrunde */}
+      <section id="gkp" class="space-y-6 scroll-mt-24">
+        <div class="border-b border-brand-border/40 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-2xl font-black text-brand-dark flex items-center gap-2">
+              <Target class="w-6 h-6 text-brand-steel" /> Großkaliber Pokalrunde (GKP)
+            </h2>
+            <p class="text-xs text-brand-muted">Einzel- und Mannschaftswertungen sowie offizielle Ausschreibungen</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {GKP_DATA.map(item => (
+            <div class="bg-white border border-brand-border/70 rounded-brand-lg p-6 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-black px-2.5 py-0.5 rounded-full bg-brand-dark text-white">
+                    {item.year}
+                  </span>
+                  {item.badge && (
+                    <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">
+                      {item.badge}
+                    </span>
+                  )}
+                </div>
+                <h3 class="font-extrabold text-brand-dark text-lg">{item.title}</h3>
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-brand-border/40">
+                {item.downloads.map(d => (
+                  <a 
+                    href={d.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="p-2.5 rounded-brand bg-slate-50 hover:bg-brand-steel/10 border border-slate-200/80 hover:border-brand-steel/40 flex items-center justify-between text-xs font-bold text-brand-steel hover:text-brand-dark transition-all group"
+                  >
+                    <span class="truncate pr-2">{d.name}</span>
+                    <Download class="w-3.5 h-3.5 shrink-0 opacity-60 group-hover:opacity-100" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 2. IPSC Matches */}
+      <section id="ipsc" class="space-y-6 scroll-mt-24">
+        <div class="border-b border-brand-border/40 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-2xl font-black text-brand-dark flex items-center gap-2">
+              <Zap class="w-6 h-6 text-brand-steel" /> IPSC Matches & Vereinsmeisterschaften
+            </h2>
+            <p class="text-xs text-brand-muted">Overall, Category und Stage Results der dynamischen Wettbewerbe</p>
+          </div>
+          <a href="/abteilungen/ipsc/" class="text-xs font-bold text-brand-steel hover:text-brand-dark self-start sm:self-auto">
+            Zur IPSC-Abteilung →
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {IPSC_DATA.map(item => (
+            <div class="bg-white border border-brand-border/70 rounded-brand-lg p-6 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+              <div class="space-y-1">
+                <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-slate-100 text-brand-steel">
+                  IPSC Dynamic
+                </span>
+                <h3 class="font-extrabold text-brand-dark text-lg pt-1">{item.title}</h3>
+                <p class="text-xs text-brand-muted">{item.subtitle}</p>
+              </div>
+
+              <div class="space-y-2 pt-2 border-t border-brand-border/40">
+                {item.downloads.map(d => (
+                  <a 
+                    href={d.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="p-2.5 rounded-brand bg-slate-50 hover:bg-brand-steel/10 border border-slate-200/80 hover:border-brand-steel/40 flex items-center justify-between text-xs font-bold text-brand-steel hover:text-brand-dark transition-all group"
+                  >
+                    <span class="truncate pr-2">{d.name}</span>
+                    <Download class="w-3.5 h-3.5 shrink-0 opacity-60 group-hover:opacity-100" />
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 3. Königsschießen */}
+      <section id="koenig" class="space-y-6 scroll-mt-24">
+        <div class="border-b border-brand-border/40 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-2xl font-black text-brand-dark flex items-center gap-2">
+              <Crown class="w-6 h-6 text-brand-steel" /> Königsschießen & Tradition
+            </h2>
+            <p class="text-xs text-brand-muted">Königsproklamationen und offizielle Schießergebnisse</p>
+          </div>
+          <a href="/fotos/events/" class="text-xs font-bold text-brand-steel hover:text-brand-dark self-start sm:self-auto">
+            Fotos der Königsproklamationen →
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          {/* Download Box */}
+          <div class="bg-white border border-brand-border/70 rounded-brand-lg p-6 shadow-sm flex flex-col justify-between space-y-4">
+            <div class="space-y-2">
+              <span class="text-xs font-black px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900">
+                Königsschießen 2025
+              </span>
+              <h3 class="font-extrabold text-brand-dark text-lg">Ergebnisse Königsschießen 2025</h3>
+              <p class="text-xs text-brand-steel leading-relaxed">
+                Vollständige Schießergebnisse der Königs- und Ritterwürden sowie des Blattlschießens.
+              </p>
+            </div>
+
+            <div class="pt-2 border-t border-brand-border/40">
+              <a 
+                href="https://www.sg-gersfeld.de/wp-content/uploads/2025/05/Koenigschiessen-2025-2.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="w-full inline-flex items-center justify-center gap-2 bg-brand-dark hover:bg-brand-steel text-white text-xs font-bold py-2.5 rounded-brand transition-colors shadow-sm"
+              >
+                <Download class="w-4 h-4" /> Königsschießen 2025 (PDF)
+              </a>
+            </div>
+          </div>
+
+          {/* Hall of Fame List */}
+          <div class="md:col-span-2 bg-white border border-brand-border/70 rounded-brand-lg p-6 shadow-sm space-y-4">
+            <h3 class="font-extrabold text-brand-dark text-base flex items-center gap-2">
+              <Sparkles class="w-4 h-4 text-amber-500" /> Schützenkönige der vergangenen Jahre
+            </h3>
+
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-xs">
+                <thead>
+                  <tr class="border-b border-brand-border bg-slate-50 text-[11px] font-extrabold text-brand-steel uppercase">
+                    <th class="py-2.5 px-3">Jahr</th>
+                    <th class="py-2.5 px-3">Schützenkönig</th>
+                    <th class="py-2.5 px-3">Ritter & Gefolge</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-brand-border/40">
+                  {KINGS.map(k => (
+                    <tr class="hover:bg-slate-50/50">
+                      <td class="py-2.5 px-3 font-bold text-brand-dark">{k.year}</td>
+                      <td class="py-2.5 px-3 font-extrabold text-brand-dark">{k.king}</td>
+                      <td class="py-2.5 px-3 text-brand-steel">{k.knights}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. BDS & DSB Meldesystem */}
+      <section id="vm" class="p-6 sm:p-8 rounded-brand-lg bg-slate-900 text-white shadow-md flex flex-col sm:flex-row items-center justify-between gap-6 scroll-mt-24">
+        <div class="space-y-2 text-center sm:text-left">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Verbandswettkämpfe</span>
+          <h3 class="text-xl font-black">BDS Wettkampf- & Meisterschafts-Meldesystem</h3>
+          <p class="text-xs text-slate-300 max-w-xl leading-relaxed">
+            Die Anmeldung zu Bezirks- und Landesmeisterschaften des BDS Hessen sowie die Einsicht überregionaler Ranglisten erfolgt direkt über das offizielle Meldeportal.
+          </p>
+        </div>
+        <a 
+          href="https://bdsmeisterschaft.de/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="shrink-0 inline-flex items-center gap-2 bg-white text-slate-950 hover:bg-slate-200 px-5 py-2.5 rounded-brand font-bold text-xs transition-colors shadow"
+        >
+          bdsmeisterschaft.de öffnen <ExternalLink class="w-3.5 h-3.5" />
+        </a>
+      </section>
+
+    </div>
+
+  </div>
+
+</Layout>

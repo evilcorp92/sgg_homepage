@@ -1,0 +1,173 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import photoAlbums from '../../data/photoAlbums.json';
+import { 
+  Image as ImageIcon, Building, Target, PartyPopper, ArrowRight, Eye, Calendar, Sparkles, Layers
+} from 'lucide-react';
+
+const totalEventPhotos = photoAlbums.events.reduce((sum, a) => sum + a.images.length, 0);
+const totalGebaeudePhotos = photoAlbums.gebaeude.reduce((sum, a) => sum + a.images.length, 0);
+const totalStandPhotos = photoAlbums.schiessstaende.reduce((sum, a) => sum + a.images.length, 0);
+const totalPhotos = totalEventPhotos + totalGebaeudePhotos + totalStandPhotos;
+
+const CATEGORIES = [
+  {
+    title: 'Events & Veranstaltungen',
+    slug: 'events',
+    url: '/fotos/events/',
+    count: `${photoAlbums.events.length} Alben · ${totalEventPhotos} Bilder`,
+    coverImage: photoAlbums.events[0]?.cover || '/images/schuetzenhaus-gersfeld.jpg',
+    description: 'Große Westernfeste in Silver City, Landesmeisterschaften im Westernschießen (CAS), Silver City Cups (IPSC), Meisterschaften und Vereinsaktionen.',
+    badge: 'Events & Turniere',
+    color: 'from-amber-600 to-amber-900',
+    icon: PartyPopper
+  },
+  {
+    title: 'Gebäude & Vereinsgelände',
+    slug: 'gebaeude',
+    url: '/fotos/gebaeude/',
+    count: `${photoAlbums.gebaeude.length} Bereiche · ${totalGebaeudePhotos} Bilder`,
+    coverImage: photoAlbums.gebaeude[0]?.cover || '/images/schuetzenhaus-gersfeld.jpg',
+    description: 'Unser einzigartiges Vereinsgelände im Western-Stil: Schützenhaus, Saloon, Cantina, Music-Hall, Cocktail-Bar, Lagerfeuerstätte und Zeltwiese.',
+    badge: 'Vereinsgelände',
+    color: 'from-emerald-700 to-emerald-950',
+    icon: Building
+  },
+  {
+    title: 'Moderne Schießstände',
+    slug: 'schiessstaende',
+    url: '/fotos/schiessstaende/',
+    count: `${photoAlbums.schiessstaende.length} Stände · ${totalStandPhotos} Bilder`,
+    coverImage: photoAlbums.schiessstaende[0]?.cover || '/images/schuetzenhaus-gersfeld.jpg',
+    description: 'Einblicke in unsere modernen 25m-Kurzwaffen- und 50m-Langwaffenstände mit Klappfallscheiben, Speed- und Mehrdistanzanlagen.',
+    badge: 'Sportstätten',
+    color: 'from-blue-700 to-blue-950',
+    icon: Target
+  }
+];
+---
+
+<Layout title="Fotoalben & Galerien - SG Gersfeld 1813 e.V." description="Entdecke unsere umfangreichen Fotoalben: Über 440 Bilder von Events, Westernfesten, Schießständen und Vereinsgebäuden der SG Gersfeld 1813 e.V.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="inline-flex items-center gap-1.5 text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          <Sparkles class="w-3.5 h-3.5" /> Bildergalerie & Fotoalben
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <ImageIcon class="w-9 h-9 text-brand-steel" /> Fotoalben der SG Gersfeld
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-sm sm:text-base">
+          Über {totalPhotos} Fotos in {photoAlbums.events.length + photoAlbums.gebaeude.length + photoAlbums.schiessstaende.length} Alben: Erlebe Westernfeste, sportliche Wettkämpfe, unsere Schießstände und das Vereinsgelände Silver City im Detail.
+        </p>
+      </div>
+    </header>
+
+    {/* Main Categories Grid */}
+    <div class="max-w-6xl mx-auto px-6 mt-16 space-y-16">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {CATEGORIES.map((cat) => {
+          const Icon = cat.icon;
+          return (
+            <article class="bg-white border border-brand-border/70 rounded-brand-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-steel/40 transition-all duration-300 flex flex-col group">
+              
+              {/* Cover Image Container */}
+              <a href={cat.url} class="relative block overflow-hidden aspect-[4/3] bg-slate-950">
+                <img 
+                  src={cat.coverImage} 
+                  alt={cat.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  loading="lazy"
+                  onerror="this.src='/images/schuetzenhaus-gersfeld.jpg'"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
+                <span class="absolute top-4 left-4 text-xs font-extrabold bg-white/95 backdrop-blur-sm text-brand-dark px-3 py-1 rounded-full shadow-sm flex items-center gap-1.5">
+                  <Icon class="w-3.5 h-3.5 text-brand-steel" /> {cat.badge}
+                </span>
+                <span class="absolute bottom-4 right-4 text-xs font-bold text-white/90 bg-black/60 px-3 py-1 rounded-full backdrop-blur-sm">
+                  {cat.count}
+                </span>
+              </a>
+
+              {/* Card Body */}
+              <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+                <div class="space-y-2">
+                  <h2 class="text-xl font-extrabold text-brand-dark group-hover:text-brand-steel transition-colors">
+                    <a href={cat.url}>{cat.title}</a>
+                  </h2>
+                  <p class="text-sm text-brand-content/90 leading-relaxed">
+                    {cat.description}
+                  </p>
+                </div>
+
+                <div class="pt-3 border-t border-brand-border/40">
+                  <a 
+                    href={cat.url} 
+                    class="inline-flex items-center gap-2 text-sm font-bold text-brand-steel group-hover:text-brand-dark transition-colors"
+                  >
+                    Alben & Bilder ansehen <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </a>
+                </div>
+              </div>
+
+            </article>
+          );
+        })}
+      </div>
+
+      {/* Featured Event Albums Preview */}
+      <section class="space-y-6 pt-6">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-brand-border/60 pb-4">
+          <div>
+            <h2 class="text-2xl font-black text-brand-dark tracking-tight">
+              Beliebte Fotoalben
+            </h2>
+            <p class="text-xs sm:text-sm text-brand-steel">
+              Direkt zu den Highlights unserer Vereinsveranstaltungen
+            </p>
+          </div>
+          <a href="/fotos/events/" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-steel hover:text-brand-dark transition-colors">
+            Alle {photoAlbums.events.length} Event-Alben ansehen <ArrowRight class="w-4 h-4" />
+          </a>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {photoAlbums.events.slice(0, 4).map((album) => (
+            <div class="bg-white border border-brand-border/70 rounded-brand overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col group">
+              <a href={`/fotos/events/#${album.id}`} class="relative block aspect-[4/3] bg-slate-900 overflow-hidden">
+                <img 
+                  src={album.cover} 
+                  alt={album.title}
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span class="absolute bottom-2.5 right-2.5 text-[11px] font-bold text-white bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm">
+                  {album.images.length} Bilder
+                </span>
+                <span class="absolute top-2.5 left-2.5 text-[11px] font-bold text-white bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm">
+                  {album.date}
+                </span>
+              </a>
+              <div class="p-4 flex flex-col justify-between flex-grow space-y-2">
+                <h3 class="font-extrabold text-brand-dark text-sm leading-snug group-hover:text-brand-steel transition-colors">
+                  <a href={`/fotos/events/#${album.id}`}>{album.title}</a>
+                </h3>
+                <p class="text-xs text-brand-muted line-clamp-2">
+                  {album.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+    </div>
+
+  </div>
+
+</Layout>

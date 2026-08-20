@@ -1,0 +1,176 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  Users, Clock, UserPlus, CreditCard, BookOpen, Shield, Video, ExternalLink, ArrowRight, Target, Award, MapPin 
+} from 'lucide-react';
+
+const SECTIONS = [
+  {
+    title: 'Schießzeiten & Dienstplan',
+    description: 'Wöchentliche Trainingszeiten auf 10m, 25m und 50m Ständen sowie der Live-Dienstplan der Schießleiter.',
+    url: '/verein/schiesszeiten/',
+    icon: 'clock',
+    badge: 'Trainingsbetrieb'
+  },
+  {
+    title: 'Mitglied werden',
+    description: 'Informationen zur Aufnahme in die SG Gersfeld und BDS-Gruppe, Online-Antrag via easyVerein und Downloads.',
+    url: '/verein/mitglied-werden/',
+    icon: 'userPlus',
+    badge: 'Aufnahme'
+  },
+  {
+    title: 'Mitgliedsbeiträge & Gebühren',
+    description: 'Transparente Übersicht aller Beiträge, Aufnahmegebühren und Standgelder für Mitglieder und Gastschützen.',
+    url: '/verein/kosten/',
+    icon: 'creditCard',
+    badge: 'Finanzen'
+  },
+  {
+    title: 'Satzung & Ordnungen',
+    description: 'Die vollständige Vereinssatzung der SG Gersfeld 1813 e.V. sowie Geschäftsordnung und Beitragsordnung.',
+    url: '/verein/satzung/',
+    icon: 'bookOpen',
+    badge: 'Rechtliches'
+  },
+  {
+    title: 'Vorstand & Ansprechpartner',
+    description: 'Lerne unseren geschäftsführenden und erweiterten Vorstand sowie die Ansprechpartner kennen.',
+    url: '/verein/vorstand/',
+    icon: 'shield',
+    badge: 'Vereinsführung'
+  },
+  {
+    title: 'Live-Dienstplan',
+    description: 'Aktuelle Einteilung der Standaufsichten und Schießleiter im Schützenhaus.',
+    url: 'https://dp.sg-gersfeld.de/',
+    icon: 'external',
+    badge: 'Online-Service',
+    isExternal: true
+  }
+];
+---
+
+<Layout title="Der Verein - SG Gersfeld 1813 e.V." description="Schützengesellschaft Gersfeld 1813 e.V.: Traditioneller Schießsport, moderne Schießstände, Abteilungen und Vereinsleben in der Rhön.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-4xl mx-auto space-y-4">
+        <span class="inline-block text-xs font-extrabold tracking-widest uppercase text-brand-steel bg-brand-steel/10 px-3 py-1 rounded-full">
+          Gegründet 1813 · Tradition & Sport
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <Users class="w-10 h-10 text-brand-steel" /> Schützengesellschaft Gersfeld 1813 e.V.
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+          Willkommen bei der SG Gersfeld. Seit über 210 Jahren verbinden wir traditionelles Brauchtum mit modernstem Sportschießen im Herzen der hessischen Rhön.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-6xl mx-auto px-6 mt-12 space-y-16">
+
+      {/* Intro Grid */}
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-brand-lg border border-brand-border/70 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-steel flex items-center justify-center">
+            <Award class="w-5 h-5" />
+          </div>
+          <h3 class="font-extrabold text-brand-dark text-lg">Über 210 Jahre Tradition</h3>
+          <p class="text-xs sm:text-sm text-brand-steel leading-relaxed">
+            1813 gegründet, bewahren wir Schützentraditionen wie das Königsschießen und das Böllerschießen mit Stolz und Leidenschaft.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-brand-lg border border-brand-border/70 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-steel flex items-center justify-center">
+            <Target class="w-5 h-5" />
+          </div>
+          <h3 class="font-extrabold text-brand-dark text-lg">Moderne Schießstände</h3>
+          <p class="text-xs sm:text-sm text-brand-steel leading-relaxed">
+            Zugelassene 10m, 25m und 50m Stände mit Mehrdistanzfähigkeit, Fallscheibenanlagen für Klein-, Großkaliber und Schrot.
+          </p>
+        </div>
+
+        <div class="bg-white p-6 rounded-brand-lg border border-brand-border/70 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-slate-100 text-brand-steel flex items-center justify-center">
+            <Users class="w-5 h-5" />
+          </div>
+          <h3 class="font-extrabold text-brand-dark text-lg">Vielseitige Sparten</h3>
+          <p class="text-xs sm:text-sm text-brand-steel leading-relaxed">
+            Vom klassischen DSB-Präzisionsschießen über dynamischen BDS-Großkalibersport und IPSC bis hin zum Westernschießen (CAS).
+          </p>
+        </div>
+      </div>
+
+      {/* Vereinsbereiche Cards Grid */}
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-2xl font-black text-brand-dark">Vereinsbereiche & Schnellzugriffe</h2>
+          <p class="text-xs text-brand-muted">Alles Wichtige rund um unsere Vereinsstruktur und Angebote</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {SECTIONS.map(s => (
+            <a 
+              href={s.url}
+              target={s.isExternal ? '_blank' : '_self'}
+              rel={s.isExternal ? 'noopener noreferrer' : undefined}
+              class="bg-white border border-brand-border/70 hover:border-brand-steel/50 rounded-brand-lg p-6 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group space-y-4"
+            >
+              <div class="space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-slate-100 text-brand-steel group-hover:bg-brand-dark group-hover:text-white transition-colors">
+                    {s.badge}
+                  </span>
+                  {s.isExternal ? (
+                    <ExternalLink class="w-4 h-4 text-brand-steel opacity-60 group-hover:opacity-100 transition-opacity" />
+                  ) : (
+                    <ArrowRight class="w-4 h-4 text-brand-steel opacity-60 group-hover:translate-x-1 group-hover:opacity-100 transition-all" />
+                  )}
+                </div>
+                <h3 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-steel transition-colors">
+                  {s.title}
+                </h3>
+                <p class="text-xs text-brand-steel leading-relaxed">
+                  {s.description}
+                </p>
+              </div>
+
+              <div class="pt-2 text-xs font-bold text-brand-steel group-hover:text-brand-dark flex items-center gap-1">
+                {s.isExternal ? 'Extern aufrufen' : 'Bereich ansehen'} →
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Vereinsvideo Embed */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex items-center justify-between border-b border-brand-border/40 pb-4">
+          <div>
+            <h2 class="text-2xl font-black text-brand-dark flex items-center gap-2">
+              <Video class="w-6 h-6 text-brand-steel" /> Unser Verein im Video
+            </h2>
+            <p class="text-xs text-brand-muted">Einblicke in unsere Schießstände, Gebäude und das Vereinsleben</p>
+          </div>
+        </div>
+
+        <div class="relative w-full aspect-video rounded-brand-lg overflow-hidden border border-brand-border/80 shadow-inner bg-black">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/gRcAN3tkrT4" 
+            title="Schützengesellschaft Gersfeld 1813 e.V. Vereinsvorstellung" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            class="w-full h-full border-0"
+          ></iframe>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>

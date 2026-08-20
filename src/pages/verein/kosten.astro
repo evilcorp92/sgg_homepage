@@ -1,0 +1,323 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { 
+  CreditCard, Shield, Users, Target, CheckCircle2, AlertTriangle, Download, ArrowRight, ExternalLink, Info, Building, TrendingUp 
+} from 'lucide-react';
+
+const YEARLY_DYNAMIC_FEES = [
+  { year: '2025', single: '121,00 €', youth: '60,50 €', family: '181,50 €' },
+  { year: '2026', single: '123,50 €', youth: '61,75 €', family: '185,25 €', current: true },
+  { year: '2027', single: '126,00 €', youth: '63,00 €', family: '189,00 €' },
+  { year: '2028', single: '128,50 €', youth: '64,25 €', family: '192,75 €' },
+  { year: '2029', single: '131,00 €', youth: '65,50 €', family: '196,50 €' },
+];
+
+const AMMO_PRICES = [
+  { type: 'Kleinkaliber .22 lfb', qty: '50 Schuss', price: '6,50 €' },
+  { type: '9mm Para (Luger)', qty: '50 Schuss', price: '19,00 €' },
+  { type: '.357 Magnum', qty: '50 Schuss', price: '32,50 €' },
+  { type: '.38 Special', qty: '50 Schuss', price: '27,00 €' },
+  { type: '.32 S&W (WC)', qty: '50 Schuss', price: '29,00 €' },
+  { type: '.45 ACP', qty: '50 Schuss', price: '35,00 €' },
+  { type: '.223 Remington', qty: '20 Schuss', price: '24,00 €' },
+  { type: 'Schrot 12/70 (28g) Blei', qty: '25 Schuss', price: '10,50 €' },
+  { type: 'Schrot 12/70 Stahl', qty: '25 Schuss', price: '13,00 €' },
+  { type: 'Luftgewehr 4,5 mm Diabolo', qty: '500 Stück (1 Dose)', price: '7,00 €' },
+];
+---
+
+<Layout title="Kosten & Beiträge - SG Gersfeld 1813 e.V." description="Gültige Mitgliedsbeiträge, dynamische Beitragsstaffelung, Aufnahmegebühren, Standgebühren für Gastschützen und Munitionspreise der SG Gersfeld.">
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-extrabold tracking-widest uppercase text-brand-steel">
+          Transparenz & Vereinsbeiträge
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <CreditCard class="w-8 h-8 text-brand-steel" /> Mitgliedsbeiträge & Gebühren
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto">
+          Vollständige und aktuelle Übersicht aller Beiträge für den Hauptverein, die BDS-Gruppe, Gastschützen und Munitionspreise vor Ort.
+        </p>
+      </div>
+    </header>
+
+    <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* 1. Hauptverein SG Gersfeld 1813 e.V. */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-brand-border/40 pb-4">
+          <div>
+            <h2 class="text-2xl font-black text-brand-dark">
+              1. Vereinsbeitritt & Jahresbeiträge (SG Gersfeld 1813 e.V.)
+            </h2>
+            <p class="text-xs text-brand-muted">Hauptverein (DSB-Disziplinen, Tradition und allgemeiner Schießbetrieb)</p>
+          </div>
+          <a 
+            href="/verein/mitglied-werden/" 
+            class="inline-flex items-center gap-1 text-xs font-bold text-brand-steel hover:text-brand-dark self-start sm:self-auto"
+          >
+            Aufnahme beantragen →
+          </a>
+        </div>
+
+        {/* Aufnahmegebühr Info Box */}
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-5 rounded-brand bg-slate-50 border border-slate-200 space-y-1">
+            <span class="text-xs font-bold text-brand-muted uppercase">Aufnahmegebühr Hauptverein</span>
+            <p class="text-2xl font-black text-brand-dark">150,00 €</p>
+            <p class="text-xs text-brand-steel">Pro Mitglied (als Familienbeitrag nur einmalig fällig)</p>
+          </div>
+          <div class="p-5 rounded-brand bg-slate-50 border border-slate-200 space-y-1">
+            <span class="text-xs font-bold text-brand-muted uppercase">Jugendliche bis 18 Jahre</span>
+            <p class="text-2xl font-black text-brand-dark">0,00 €</p>
+            <p class="text-xs text-brand-steel">Keine Aufnahmegebühr für Jugendliche bis zum vollendeten 18. Lebensjahr</p>
+          </div>
+        </div>
+
+        {/* Dynamic Yearly Fees Table */}
+        <div class="space-y-3 pt-2">
+          <div class="flex items-center gap-2">
+            <TrendingUp class="w-4 h-4 text-brand-steel" />
+            <h3 class="text-base font-extrabold text-brand-dark">
+              Mitgliedsbeitrag (jährlich mit dynamischer Erhöhung um 2,50 €)
+            </h3>
+          </div>
+          <p class="text-xs text-brand-muted">
+            Beschlossen auf der Hauptversammlung am 20.03.2015 zur soliden und langfristigen Vereinsfinanzierung.
+          </p>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead>
+                <tr class="border-b border-brand-border bg-slate-50 text-xs font-extrabold text-brand-steel uppercase">
+                  <th class="py-3 px-4">Jahr</th>
+                  <th class="py-3 px-4">Einzelbeitrag (Erwachsene)</th>
+                  <th class="py-3 px-4">Jugendbeitrag *</th>
+                  <th class="py-3 px-4">Familienbeitrag **</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-brand-border/40">
+                {YEARLY_DYNAMIC_FEES.map(row => (
+                  <tr class={`${row.current ? 'bg-brand-steel/10 font-bold' : 'hover:bg-slate-50/50'} transition-colors`}>
+                    <td class="py-3 px-4 font-black text-brand-dark flex items-center gap-2">
+                      {row.year} {row.current && <span class="text-[10px] bg-brand-dark text-white px-2 py-0.5 rounded-full font-bold">Aktuell</span>}
+                    </td>
+                    <td class="py-3 px-4 text-brand-dark font-extrabold">{row.single}</td>
+                    <td class="py-3 px-4 text-brand-steel">{row.youth}</td>
+                    <td class="py-3 px-4 text-brand-dark">{row.family}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="space-y-1.5 text-xs text-brand-steel pt-2 leading-relaxed">
+            <p>
+              * <strong>Jugendbeitrag:</strong> Umfasst alle Jugendlichen bis zum 18. Lebensjahr, Auszubildende, Studenten und diesen gleichgestellte Personen.
+            </p>
+            <p>
+              ** <strong>Familienbeitrag:</strong> Schließt das Hauptmitglied, den (Ehe-)Partner und alle Kinder bis zum vollendeten 18. Lebensjahr ein.
+            </p>
+          </div>
+        </div>
+
+        {/* Standsanierung Umlage */}
+        <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 text-xs text-brand-dark flex items-start gap-2.5">
+          <Info class="w-4 h-4 text-brand-steel shrink-0 mt-0.5" />
+          <div>
+            <strong>Sonderumlage für Standsanierung:</strong> 50,00 € pro Jahr (gilt bis zum Jahr 2028, beschlossen auf der Jahreshauptversammlung am 18.03.2022).
+          </div>
+        </div>
+
+        {/* Bank Account Hauptverein */}
+        <div class="p-5 rounded-brand bg-slate-900 text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="space-y-1 text-center sm:text-left">
+            <span class="text-xs font-bold text-slate-400 uppercase">Bankverbindung SG Gersfeld 1813 e.V.</span>
+            <p class="text-sm font-extrabold text-white">VR Bank Fulda</p>
+          </div>
+          <div class="text-center sm:text-right font-mono text-xs sm:text-sm space-y-0.5">
+            <div><span class="text-slate-400">IBAN:</span> <strong class="text-slate-100">DE31 5306 0180 0001 8585 05</strong></div>
+            <div><span class="text-slate-400">BIC:</span> <strong class="text-slate-100">GENODE51FUL</strong></div>
+          </div>
+        </div>
+      </div>
+
+      {/* 2. BDS-Abteilung */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-brand-border/40 pb-4">
+          <h2 class="text-2xl font-black text-brand-dark">
+            2. BDS-Abteilung (BDS-Schützen SG Gersfeld e.V.)
+          </h2>
+          <p class="text-xs text-brand-muted">Großkaliber, Speed-Schießen, Fallscheiben und IPSC</p>
+        </div>
+
+        <p class="text-sm text-brand-content leading-relaxed">
+          Wer Mitglied in der BDS-Abteilung werden möchte, muss vorher zwingend Mitglied im Hauptverein sein. Für die BDS-Abteilung fallen zusätzlich folgende Kosten an:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="p-5 rounded-brand bg-slate-50 border border-slate-200 space-y-1">
+            <span class="text-xs font-bold text-brand-muted uppercase">Aufnahmegebühr (einmalig)</span>
+            <p class="text-2xl font-black text-brand-dark">10,00 €</p>
+            <p class="text-xs text-brand-steel">Einmalig bei Vereinseintritt in die BDS-Gruppe</p>
+          </div>
+          <div class="p-5 rounded-brand bg-slate-50 border border-slate-200 space-y-1">
+            <span class="text-xs font-bold text-brand-muted uppercase">Mitgliedsbeitrag (jährlich)</span>
+            <p class="text-2xl font-black text-brand-dark">50,00 €</p>
+            <p class="text-xs text-brand-steel">Jährlicher Beitrag an die BDS-Schützen SG Gersfeld</p>
+          </div>
+        </div>
+
+        {/* Bank Account BDS */}
+        <div class="p-5 rounded-brand bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="space-y-1 text-center sm:text-left">
+            <span class="text-xs font-bold text-brand-muted uppercase">Bankverbindung BDS-Gruppe</span>
+            <p class="text-sm font-extrabold text-brand-dark">VR-Bank Altenburger Land / Deutsche Skatbank</p>
+          </div>
+          <div class="text-center sm:text-right font-mono text-xs space-y-1">
+            <div><span class="text-slate-500">IBAN:</span> <strong class="text-brand-dark">DE11 8306 5408 0004 9109 58</strong></div>
+            <div><span class="text-slate-500">BIC:</span> <strong class="text-brand-dark">GENODEF1SLR</strong></div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between p-4 rounded-brand bg-blue-50 border border-blue-200 text-xs text-blue-900">
+          <div class="space-y-0.5">
+            <span class="font-bold block">Bequem per PayPal zahlen:</span>
+            <span class="text-blue-700">bds@sg-gersfeld.de</span>
+          </div>
+          <a 
+            href="https://paypal.me/bdssgg" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold transition-colors shadow-sm"
+          >
+            Zu PayPal.me/bdssgg <ExternalLink class="w-3 h-3" />
+          </a>
+        </div>
+      </div>
+
+      {/* 3. Gastschützen & Standgebühren */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-brand-border/40 pb-4">
+          <h2 class="text-2xl font-black text-brand-dark">
+            3. Standgebühren für Gastschützen & Leihwaffen
+          </h2>
+          <p class="text-xs text-brand-muted">Kosten für Gäste und Schießsportinteressierte je Besuch</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-5 rounded-brand bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-muted uppercase">Lang- und Kurzwaffenstand</span>
+            <p class="text-2xl font-black text-brand-dark">25,00 €</p>
+            <p class="text-xs text-brand-steel">Je angefangene Stunde (25m / 50m Stände)</p>
+          </div>
+          <div class="p-5 rounded-brand bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-muted uppercase">Druckluftwaffenstand</span>
+            <p class="text-2xl font-black text-brand-dark">10,00 €</p>
+            <p class="text-xs text-brand-steel">Je angefangene Stunde (10m Stand)</p>
+          </div>
+          <div class="p-5 rounded-brand bg-slate-50 border border-slate-200 space-y-2">
+            <span class="text-xs font-bold text-brand-muted uppercase">IPSC-Training (Gast)</span>
+            <p class="text-2xl font-black text-brand-dark">30,00 €</p>
+            <p class="text-xs text-brand-steel">Pro Trainingseinheit (*nach Voranmeldung)</p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-brand bg-emerald-50 border border-emerald-200 text-xs text-emerald-900 flex items-start gap-2.5">
+          <CheckCircle2 class="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+          <div>
+            <strong>Kostenlose Leihwaffen:</strong> Für die Benutzung von Leihwaffen fallen keine zusätzlichen Kosten an! Es muss lediglich die verschossene Munition bezahlt werden (direkt vor Ort zum sofortigen Verbrauch erhältlich).
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 text-xs">
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 flex items-center justify-between">
+            <span class="font-bold text-brand-dark">Schießbuch (nur für Vereinsmitglieder, Ausweis)</span>
+            <span class="font-extrabold text-brand-dark text-sm">2,00 €</span>
+          </div>
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 flex items-center justify-between">
+            <span class="font-bold text-brand-dark">Offizieller BDS-Patch</span>
+            <span class="font-extrabold text-brand-dark text-sm">10,00 €</span>
+          </div>
+        </div>
+      </div>
+
+      {/* 4. Munitionspreise vor Ort */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="border-b border-brand-border/40 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <h2 class="text-2xl font-black text-brand-dark">
+              4. Munitionspreise für Gastschützen
+            </h2>
+            <p class="text-xs text-brand-muted">Preisliste für den sofortigen Verbrauch auf dem Schießstand (Stand: 25.04.2023)</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="border-b border-brand-border bg-slate-50 text-xs font-extrabold text-brand-steel uppercase">
+                <th class="py-3 px-4">Munitionskaliber</th>
+                <th class="py-3 px-4">Inhalt / Packung</th>
+                <th class="py-3 px-4 text-right">Preis / Packung</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-brand-border/40">
+              {AMMO_PRICES.map(a => (
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="py-3 px-4 font-bold text-brand-dark">{a.type}</td>
+                  <td class="py-3 px-4 text-brand-steel text-xs">{a.qty}</td>
+                  <td class="py-3 px-4 text-right font-black text-brand-dark">{a.price}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 text-xs text-brand-steel leading-relaxed">
+          <strong>Hinweis:</strong> Die Munition ist zum sofortigen Verbrauch auf dem Schießstand bestimmt. Angefangene, nicht komplett verbrauchte Päckchen können bei uns für den nächsten Besuch kostenlos im Vereinstresor gelagert werden (ideal für Schützen ohne eigene WBK).
+        </div>
+      </div>
+
+      {/* 5. Gebührenordnung bei Standbeschädigungen */}
+      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+        <div class="flex items-center gap-3 border-b border-brand-border/40 pb-4">
+          <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center">
+            <AlertTriangle class="w-6 h-6" />
+          </div>
+          <div>
+            <h2 class="text-xl font-extrabold text-brand-dark">Kosten bei Beschädigungen am Stand</h2>
+            <p class="text-xs text-brand-muted">Pauschalen zur Deckung von Instandsetzungs- und Materialkosten</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 space-y-2">
+            <h4 class="font-extrabold text-brand-dark text-sm">25m / 50m-Stand</h4>
+            <ul class="space-y-1.5 text-brand-steel">
+              <li>• Schuss in Decke / Boden / Wand: <strong>40 €</strong> (pro getroffener Platte)</li>
+              <li>• Schuss in Tisch: <strong>100 €</strong></li>
+            </ul>
+          </div>
+          <div class="p-4 rounded-brand bg-slate-50 border border-slate-200 space-y-2">
+            <h4 class="font-extrabold text-brand-dark text-sm">Luftgewehr-Stand (10m)</h4>
+            <ul class="space-y-1.5 text-brand-steel">
+              <li>• Rahmen / Wagen-Schuss: <strong>25 €</strong></li>
+              <li>• Seil-Schuss: <strong>100 €</strong></li>
+            </ul>
+          </div>
+        </div>
+        <p class="text-xs text-slate-500">
+          * Alle anderen Beschädigungen (z.B. Lichtleiste, Drehscheibenanlage etc.) werden nach tatsächlichem Aufwand abgerechnet.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</Layout>
