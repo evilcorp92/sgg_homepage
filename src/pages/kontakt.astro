@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { 
-  Mail, Phone, MapPin, Clock, Send, Users, Shield, Target, ExternalLink, Navigation, CheckCircle2 
+  Mail, Phone, MapPin, Clock, Send, Users, Shield, Target, ExternalLink, Navigation, CheckCircle2, Receipt, AlertTriangle, FileText
 } from 'lucide-react';
 
 const CONTACT_CHANNELS = [
@@ -10,6 +10,12 @@ const CONTACT_CHANNELS = [
     role: 'Allgemeine Vereinsangelegenheiten',
     email: 'vorstand@sg-gersfeld.de',
     icon: 'users'
+  },
+  {
+    title: 'Rechnungen & Buchhaltung',
+    role: 'Rechnungseingang, Auslagen, Belege',
+    email: 'rechnung@sg-gersfeld.de',
+    icon: 'receipt'
   },
   {
     title: 'Mitgliederverwaltung',
@@ -123,6 +129,40 @@ const CONTACT_CHANNELS = [
           </a>
         </div>
 
+      </div>
+
+      {/* Rechnungsadresse & Buchhaltung Info Box */}
+      <div class="bg-gradient-to-br from-amber-50/90 to-amber-100/40 border-2 border-amber-200/90 rounded-brand-lg p-6 sm:p-8 shadow-xs space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div class="space-y-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-200/80 text-amber-950 text-xs font-black tracking-wide uppercase">
+              <Receipt class="w-3.5 h-3.5 text-amber-800" /> Rechnungsadresse & Buchhaltung
+            </div>
+            <h2 class="text-xl sm:text-2xl font-black text-brand-dark">
+              Digitale Rechnungsstellung & Belegeinreichung
+            </h2>
+            <p class="text-xs sm:text-sm text-brand-content/90 leading-relaxed max-w-3xl">
+              Bitte senden Sie Rechnungen, Lieferscheine und Abrechnungsbelege ausschließlich in elektronischer Form (PDF) an unsere zentrale Rechnungsadresse:
+            </p>
+            <div class="pt-1">
+              <a 
+                href="mailto:rechnung@sg-gersfeld.de" 
+                class="inline-flex items-center gap-2.5 text-base sm:text-lg font-black text-brand-dark bg-white hover:bg-slate-50 border border-amber-300 px-4 py-2.5 rounded-brand transition-all shadow-xs"
+              >
+                <Mail class="w-5 h-5 text-amber-700" /> rechnung@sg-gersfeld.de
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/90 border border-amber-300/70 rounded-brand p-4 space-y-1.5 text-xs text-amber-950 leading-relaxed">
+          <p class="font-bold flex items-center gap-1.5 text-amber-900 text-xs sm:text-sm">
+            <AlertTriangle class="w-4 h-4 text-amber-600 shrink-0" /> Wichtiger Hinweis für Vereinsmitglieder:
+          </p>
+          <p>
+            Bitte reiche alle verauslagten Belege, Einkaufsquittungen und Rechnungen <strong>ausschließlich per E-Mail an rechnung@sg-gersfeld.de</strong> ein. Belege oder Fotos, die per WhatsApp, Messenger, mündlich oder auf anderen Wegen eingereicht werden, können aus buchhalterischen, steuerrechtlichen und Nachweisgründen <strong>nicht bearbeitet oder erstattet</strong> werden.
+          </p>
+        </div>
       </div>
 
       {/* Fachbezogene Ansprechpartner */}
