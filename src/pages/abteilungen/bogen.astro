@@ -10,6 +10,7 @@ const ARCHERY_TYPES = [
   { title: 'Traditioneller Langbogen & Jagdbogen', desc: 'Instinktives Schießen ohne Visiereinrichtung mit Naturmaterialien.' },
   { title: 'Bogensportanlage im Grünen', desc: 'Weitläufige Schießwiese auf unserem Vereinsgelände direkt am Schützenhaus.' }
 ];
+import NextDepartmentTraining from '../../components/NextDepartmentTraining.jsx';
 ---
 
 <Layout title="Bogenabteilung - SG Gersfeld 1813 e.V." description="Bogenschießen bei der SG Gersfeld: Traditioneller und olympischer Bogensport im Grünen. Wir suchen engagierte Schützen zur Reaktivierung!">
@@ -37,6 +38,9 @@ const ARCHERY_TYPES = [
     </header>
 
     <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* Live Next Training Badge */}
+      <NextDepartmentTraining client:load department="bogen" departmentTitle="Bogen" />
 
       {/* Callout Reaktivierungs-Banner */}
       <div class="bg-gradient-to-tr from-emerald-950 via-slate-900 to-slate-950 text-white rounded-brand-lg p-8 shadow-xl space-y-6">

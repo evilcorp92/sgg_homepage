@@ -10,6 +10,7 @@ const HIGHLIGHTS = [
   { title: 'Kutscherflinte (Coach Gun)', desc: 'Schrotflinten mit Hahnschlössern für authentischen Western-Schießsport.' },
   { title: 'Festareal „Silver City“', desc: 'Vereinseigene Westerntown mit Saloon, Cantina, Music-Hall für Feiern & Feste.' }
 ];
+import NextDepartmentTraining from '../../components/NextDepartmentTraining.jsx';
 ---
 
 <Layout title="Westernschießen & Westerngruppe - SG Gersfeld" description="Cowboy Action Shooting (CAS) & Westerngruppe der SG Gersfeld: Historischer Schießsport, Westerntown Silver City und jährliches großes Westernfest.">
@@ -37,6 +38,9 @@ const HIGHLIGHTS = [
     </header>
 
     <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* Live Next Training Badge */}
+      <NextDepartmentTraining client:load department="western" departmentTitle="Western" />
 
       {/* Quick Facts Bar */}
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white rounded-brand-lg border border-brand-border/70 p-6 shadow-sm">

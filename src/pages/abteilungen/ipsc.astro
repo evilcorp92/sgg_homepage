@@ -11,6 +11,7 @@ const REQUIREMENTS = [
   'Augen- & Gehörschutzpflicht',
   'Ziel: Vorbereitung & Absolvierung des Sicherheits- und Regeltests (SuRT)'
 ];
+import NextDepartmentTraining from '../../components/NextDepartmentTraining.jsx';
 ---
 
 <Layout title="IPSC Sparte - SG Gersfeld 1813 e.V." description="IPSC Schießen in Gersfeld: Einziger Schützenverein im Landkreis Fulda mit Level III Zulassung, Silver City Cup und dynamischem Parcoursschießen.">
@@ -38,6 +39,9 @@ const REQUIREMENTS = [
     </header>
 
     <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
+
+      {/* Live Next Training Badge */}
+      <NextDepartmentTraining client:load department="ipsc" departmentTitle="IPSC" />
 
       {/* Quick Facts Bar */}
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-white rounded-brand-lg border border-brand-border/70 p-6 shadow-sm">

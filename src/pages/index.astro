@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import { 
   Target, Crosshair, Zap, UserPlus, Clock, ArrowRight, Calendar, ArrowUpRight, Video 
 } from 'lucide-react';
+import LiveStatusHero from '../components/LiveStatusHero.jsx';
 
 // Query latest 3 posts dynamically
 const allPosts = await getCollection('posts');
@@ -65,38 +66,9 @@ const getCleanSummary = (body: string) => {
     </div>
   </section>
 
-  <!-- Live Widget: Nächste Schießzeit -->
+  <!-- Live Widget: Nächste Schießzeit & Live-Status -->
   <section class="relative -mt-12 z-20 max-w-5xl mx-auto px-6 mb-8">
-    <div class="bg-white rounded-brand-lg border border-brand-border/80 shadow-xl p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-8">
-      <div class="space-y-3 max-w-md">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-green-50 text-green-700 border border-green-200">
-          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live aus dem Dienstplan
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-dark tracking-tight">
-          Nächste Schießzeit
-        </h2>
-        <p class="text-sm text-brand-steel leading-relaxed">
-          Aktuelle Übersicht zum nächsten Trainingsabend inklusive Disziplin und eingeteilter Standaufsicht.
-        </p>
-        <div class="pt-2 flex flex-wrap items-center gap-4 text-xs font-bold">
-          <a href="https://dp.sg-gersfeld.de/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-brand-bg text-brand-steel hover:text-brand-dark hover:bg-brand-steel/10 transition-colors">
-            Dienstplan aufrufen <ArrowUpRight class="w-3.5 h-3.5" />
-          </a>
-          <a href="/verein/schiesszeiten/" class="inline-flex items-center gap-1 text-brand-steel hover:text-brand-dark transition-colors">
-            Alle Schießzeiten <ArrowRight class="w-3.5 h-3.5" />
-          </a>
-        </div>
-      </div>
-      <div class="w-full md:w-[380px] shrink-0">
-        <iframe 
-          src="https://dp.sg-gersfeld.de/widget2.php" 
-          class="w-full h-[260px] rounded-xl border border-slate-100 shadow-sm" 
-          loading="lazy" 
-          title="Nächste Schießzeit Live-Widget"
-          scrolling="no"
-        ></iframe>
-      </div>
-    </div>
+    <LiveStatusHero client:load />
   </section>
 
   <!-- 2. Welcome Section -->
