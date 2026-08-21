@@ -180,7 +180,7 @@ export const GET: APIRoute = async () => {
     {
       id: 'page-easyverein',
       title: 'Mitgliederportal (easyVerein & Dienstplan)',
-      url: '/easyverein/',
+      url: 'https://easyverein.com/public/SGGersfeld/',
       category: 'Mitglieder',
       description: 'Digitaler Zugang zu easyVerein, Mitgliederdaten, Arbeitsstunden und Standaufsichts-Dienstplan.',
       keywords: 'easyVerein, Dienstplan, Standaufsicht, Mitgliederbereich, Login, Portal'

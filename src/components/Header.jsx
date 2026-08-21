@@ -16,7 +16,7 @@ const MENU_ITEMS = [
       { name: 'Vorstand & Ansprechpartner', url: '/verein/vorstand/' },
       { name: 'Satzung & Ordnungen', url: '/verein/satzung/' },
       { name: 'Dienstplan (Standaufsichten)', url: 'https://dp.sg-gersfeld.de/' },
-      { name: 'easyVerein Portal', url: '/easyverein/' },
+      { name: 'easyVerein Portal', url: 'https://easyverein.com/public/SGGersfeld/' },
     ]
   },
   {
