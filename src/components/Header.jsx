@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
-  Users, Newspaper, Target, Image, Calendar, Mail, Trophy, Laptop, Menu, X, ChevronDown, ExternalLink 
+  Users, Newspaper, Target, Image, Calendar, Mail, Trophy, Laptop, Menu, X, ChevronDown, ExternalLink, Search 
 } from 'lucide-react';
+import SearchModal from './SearchModal.jsx';
 
 const MENU_ITEMS = [
   {
@@ -80,6 +81,22 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [closeTimeout, setCloseTimeout] = useState(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // Global shortcut (Cmd+K / Ctrl+K / /)
+  useEffect(() => {
+    const handleGlobalKey = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        setSearchOpen(prev => !prev);
+      } else if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKey);
+    return () => window.removeEventListener('keydown', handleGlobalKey);
+  }, []);
 
   const handleMouseEnter = (index) => {
     if (closeTimeout) clearTimeout(closeTimeout);
@@ -127,7 +144,7 @@ export default function Header() {
                   {hasChildren && <ChevronDown className="w-3.5 h-3.5 opacity-60" />}
                 </a>
 
-                {/* Dropdown Menu with Seamless Invisible Hover Bridge */}
+                {/* Dropdown Menu */}
                 {hasChildren && activeDropdown === index && (
                   <div 
                     className="absolute top-full left-0 pt-2 w-56 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
@@ -156,21 +173,60 @@ export default function Header() {
               </div>
             );
           })}
+
+          {/* Search Trigger Button (Desktop) */}
+          <button
+            onClick={() => setSearchOpen(true)}
+            className="flex items-center gap-2 px-3 py-1.5 ml-2 rounded-lg text-xs font-semibold text-brand-steel bg-slate-100 hover:bg-slate-200/80 hover:text-brand-dark transition-all border border-slate-200/60 shadow-2xs cursor-pointer"
+            aria-label="Homepage durchsuchen (Strg+K)"
+            title="Suche öffnen (Strg+K)"
+          >
+            <Search className="w-3.5 h-3.5 text-slate-500" />
+            <span className="hidden xl:inline">Suchen...</span>
+            <kbd className="hidden xl:inline-block px-1.5 py-0.5 text-[10px] font-bold text-slate-400 bg-white rounded border border-slate-300">
+              ⌘K
+            </kbd>
+          </button>
         </nav>
 
-        {/* Mobile Toggle Button */}
-        <button 
-          className="lg:hidden p-2 rounded-lg text-brand-steel hover:text-brand-dark hover:bg-brand-bg transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle Menu"
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile Header Buttons */}
+        <div className="flex items-center gap-1 lg:hidden">
+          <button 
+            className="p-2 rounded-lg text-brand-steel hover:text-brand-dark hover:bg-brand-bg transition-colors"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Suche öffnen"
+          >
+            <Search className="w-5 h-5" />
+          </button>
+
+          <button 
+            className="p-2 rounded-lg text-brand-steel hover:text-brand-dark hover:bg-brand-bg transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle Menu"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu Panel */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-brand-border bg-white px-6 py-4 flex flex-col gap-2 max-h-[calc(100vh-4rem)] overflow-y-auto z-50 shadow-inner">
+          {/* Mobile Search Button in Menu */}
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setSearchOpen(true);
+            }}
+            className="flex items-center justify-between px-4 py-3 rounded-xl bg-slate-100 text-slate-700 font-bold text-sm mb-2 text-left"
+          >
+            <span className="flex items-center gap-2">
+              <Search className="w-4 h-4 text-slate-500" />
+              <span>Inhalte suchen...</span>
+            </span>
+            <span className="text-xs text-slate-400">Tippen</span>
+          </button>
+
           {MENU_ITEMS.map((item, index) => {
             const hasChildren = !!item.children;
             const isOpen = activeDropdown === index;
@@ -225,6 +281,9 @@ export default function Header() {
           })}
         </div>
       )}
+
+      {/* Global Search Modal */}
+      <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
