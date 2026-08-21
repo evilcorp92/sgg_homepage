@@ -139,11 +139,11 @@ export const GET: APIRoute = async () => {
     },
     {
       id: 'page-arbeitseinsaetze',
-      title: 'Arbeitseinsätze & Instandhaltung',
-      url: '/termine/arbeitseinsaetze/',
+      title: 'Arbeitseinsätze & Standpflege',
+      url: '/termine/',
       category: 'Termine',
-      description: 'Gemeinsame Termine zur Pflege und Instandhaltung von Schießständen und Vereinsgelände.',
-      keywords: 'Arbeitseinsatz, Arbeitsdienst, Pflege, Standbau, Instandhaltung, Helfer'
+      description: 'Termine für Arbeitseinsätze, Pflege und Instandhaltung der Schießstände im Vereinskalender.',
+      keywords: 'Arbeitseinsatz, Arbeitsdienst, Pflege, Standbau, Instandhaltung, Helfer, Termine'
     },
     {
       id: 'page-ergebnisse',

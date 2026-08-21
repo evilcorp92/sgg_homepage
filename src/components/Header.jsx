@@ -36,12 +36,7 @@ const MENU_ITEMS = [
   {
     name: 'Termine',
     icon: <Calendar className="w-4 h-4" />,
-    url: '/termine/',
-    children: [
-      { name: 'Vereinskalender (Alle Termine)', url: '/termine/' },
-      { name: 'Arbeitseinsätze', url: '/termine/arbeitseinsaetze/' },
-      { name: 'Dienstplan', url: 'https://dp.sg-gersfeld.de/' },
-    ]
+    url: '/termine/'
   },
   {
     name: 'News',
