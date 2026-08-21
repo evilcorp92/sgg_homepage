@@ -2,7 +2,7 @@
 title: "Aktuelle Info:"
 date: 2019-09-06T23:30:54
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 UPDATE 16.09.2019:

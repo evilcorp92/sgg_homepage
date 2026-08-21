@@ -2,7 +2,7 @@
 title: "Ein Wochenende „Wilder Westen“ in Gersfeld"
 date: 2018-05-25T08:06:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Traditionelles Unterhebel- & Westernfest in Gersfeld vom 1. bis 3. Juni 2018**

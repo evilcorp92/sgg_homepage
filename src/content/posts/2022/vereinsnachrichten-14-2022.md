@@ -2,7 +2,7 @@
 title: "<strong>VEREINSNACHRICHTEN  14/2022</strong>"
 date: 2022-12-12T15:56:35
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Liebe Schützenschwestern, liebe Schützenbrüder,**

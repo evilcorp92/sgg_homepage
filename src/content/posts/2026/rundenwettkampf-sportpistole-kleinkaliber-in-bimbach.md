@@ -2,7 +2,7 @@
 title: "Rundenwettkampf Sportpistole Kleinkaliber in Bimbach"
 date: 2026-05-28T22:00:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Am 28. Mai 2026 wurde der Rundenwettkampf in der Disziplin Sportpistole Kleinkaliber nach den Regeln des Deutschen Schützenbundes (DSB) fortgesetzt. In der Rückrunde trat die Schützengesellschaft Gersfeld 1813 e.V. auswärts gegen die Mannschaft aus Bimbach an.

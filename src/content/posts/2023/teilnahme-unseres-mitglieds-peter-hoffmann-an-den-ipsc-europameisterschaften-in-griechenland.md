@@ -2,7 +2,7 @@
 title: "Teilnahme unseres Mitglieds Peter Hoffmann an den IPSC Europameisterschaften in Griechenland"
 date: 2023-09-22T11:33:05
 draft: false
-categories: ['BDS']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Die IPSC Europameisterschaft im dynamischen Schießsport findet vom 18. bis zum 30. September 2023 im griechischen Korinth statt.

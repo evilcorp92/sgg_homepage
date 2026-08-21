@@ -2,7 +2,7 @@
 title: "Waffensachkundekurs für Sportschützen"
 date: 2025-08-19T18:57:04
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Am **13. und 14. September 2025** findet in den Räumlichkeiten der Schützengesellschaft Gersfeld 1813 e.V. ein **Waffensachkundekurs für Sportschützen **statt.

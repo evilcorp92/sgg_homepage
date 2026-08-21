@@ -7,6 +7,10 @@ import {
 const CATEGORY_ICONS = {
   'Verein': <Users className="w-4 h-4 text-emerald-600 shrink-0" />,
   'Sport': <Target className="w-4 h-4 text-blue-600 shrink-0" />,
+  'Sport & Wettkämpfe': <Trophy className="w-4 h-4 text-amber-600 shrink-0" />,
+  'Vereinsleben & Vorstand': <Newspaper className="w-4 h-4 text-brand-dark shrink-0" />,
+  'Schießstände & Termine': <Calendar className="w-4 h-4 text-emerald-600 shrink-0" />,
+  'Western & Feste': <Sparkles className="w-4 h-4 text-orange-600 shrink-0" />,
   'Schießstände': <Building className="w-4 h-4 text-slate-600 shrink-0" />,
   'Termine': <Calendar className="w-4 h-4 text-amber-600 shrink-0" />,
   'Ergebnisse': <Trophy className="w-4 h-4 text-yellow-600 shrink-0" />,
@@ -18,7 +22,6 @@ const CATEGORY_ICONS = {
 };
 
 function getCategoryIcon(cat) {
-  if (cat.startsWith('News')) return <Newspaper className="w-4 h-4 text-brand-dark shrink-0" />;
   return CATEGORY_ICONS[cat] || <FileText className="w-4 h-4 text-slate-400 shrink-0" />;
 }
 

@@ -2,7 +2,7 @@
 title: "Information zur Jahreshauptversammlung 2026"
 date: 2026-03-17T13:48:44
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Die Jahreshauptversammlung 2026 wird in diesem Jahr zu einem späteren Zeitpunkt stattfinden.

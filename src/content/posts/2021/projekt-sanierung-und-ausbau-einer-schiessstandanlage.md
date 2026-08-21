@@ -2,7 +2,7 @@
 title: "Projekt: Sanierung und Ausbau der Schießstandanlage"
 date: 2021-05-10T12:29:57
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 *Gefördert durch die Bundesrepublik Deutschland und das Land Hessen im Rahmen der Gemeinschaftsaufgabe "Verbesserung der Agrarstruktur und des Küstenschutzes"*

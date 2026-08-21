@@ -2,7 +2,7 @@
 title: "Ausbildung für Schießleiter und Aufsichten"
 date: 2024-05-15T11:42:29
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Liebe Schützenschwestern, liebe Schützenbrüder,**

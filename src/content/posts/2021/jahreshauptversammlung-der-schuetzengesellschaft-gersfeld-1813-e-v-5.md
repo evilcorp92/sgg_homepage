@@ -2,7 +2,7 @@
 title: "Jahreshauptversammlung der Schützengesellschaft Gersfeld 1813 e.V."
 date: 2021-09-13T15:57:16
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Anlässlich der jährlich stattfindenden Jahreshauptversammlung im Schützenhaus Gersfeld konnte der 1. Vorsitzende Wolfgang Benndorff im zweiten Pandemiejahr 45 stimmberechtigte Mitglieder begrüßen. Bedingt durch Corona fand die Jahreshauptversammlung nicht wie üblich im März sondern Ende August statt. Nach der Feststellung der Beschlussfähigkeit gab es eine Schweigeminute zum Gedenken an die verstorbenen Mitglieder. Stellvertretend wurde namentlich den zuletzt verstorbenen Mitgliedern Volkmar Trittin und Josef Wagner gedacht.

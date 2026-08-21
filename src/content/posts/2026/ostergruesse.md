@@ -2,7 +2,7 @@
 title: "Ostergrüße"
 date: 2026-04-06T11:14:44
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Vereinskameraden, liebe Angehörige,

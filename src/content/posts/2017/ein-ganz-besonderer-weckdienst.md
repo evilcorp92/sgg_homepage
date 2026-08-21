@@ -2,7 +2,7 @@
 title: "Ein ganz besonderer Weckdienst"
 date: 2017-02-26T18:13:08
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Die Gersfelder Schützen salutieren dem amtierenden Haimbacher Westendmarshall**

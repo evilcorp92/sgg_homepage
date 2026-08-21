@@ -2,7 +2,7 @@
 title: "VM  Wurfscheiben Trap"
 date: 2016-03-20T12:05:07
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Gestern, am 19.03.2016 fand die Vereinsmeisterschaft Wurfscheiben Trap in Flieden statt.

@@ -2,7 +2,7 @@
 title: "Vereinsnachrichten 03/2022"
 date: 2022-04-06T16:15:04
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Liebe Mitglieder,**

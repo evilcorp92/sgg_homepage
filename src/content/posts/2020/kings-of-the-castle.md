@@ -2,7 +2,7 @@
 title: "Kings of the Castle"
 date: 2020-09-20T13:00:07
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## **Gersfelder gewinnen Mannschaftstitel beim „Kingdom & Castle“- Turnier**

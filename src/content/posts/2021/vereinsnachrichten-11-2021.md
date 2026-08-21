@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN 11/2021"
 date: 2021-07-03T15:47:25
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ### Aufnahme des Schießbetriebs und Termine

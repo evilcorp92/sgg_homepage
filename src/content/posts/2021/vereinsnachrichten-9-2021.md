@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN  9/2021"
 date: 2021-06-13T20:26:51
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ### **Erweiterte  Nutzungsmöglichkeit  der  Schießanlage**

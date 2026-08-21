@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN  2/2022"
 date: 2022-03-21T16:48:15
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Jahreshauptversammlung

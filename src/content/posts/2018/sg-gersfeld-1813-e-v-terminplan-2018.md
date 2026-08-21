@@ -2,7 +2,7 @@
 title: "SG Gersfeld 1813 e.V.  Terminplan 2018"
 date: 2018-01-09T15:23:34
 draft: false
-categories: ['Termine']
+categories: ['Schießstände & Termine']
 ---
 
 SG Gersfeld 1813 e.V. Terminplan 2018

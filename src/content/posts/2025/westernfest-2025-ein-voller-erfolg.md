@@ -2,7 +2,7 @@
 title: "Westernfest 2025 – ein voller Erfolg"
 date: 2025-06-08T13:29:07
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Western & Feste']
 ---
 
 Vom 30. Mai bis 2. Juni 2025 fand das traditionelle Westernfest der Schützengesellschaft Gersfeld 1813 e.V. statt – und es wurde in jeder Hinsicht ein voller Erfolg. Bei bestem Wetter und ausgezeichneter Stimmung strömten zahlreiche Besucherinnen und Besucher auf das Festgelände und sorgten für ein lebendiges und fröhliches Miteinander.

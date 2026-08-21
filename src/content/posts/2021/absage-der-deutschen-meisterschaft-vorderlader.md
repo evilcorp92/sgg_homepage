@@ -2,7 +2,7 @@
 title: "Absage der Deutschen Meisterschaft Vorderlader"
 date: 2021-04-28T12:42:13
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Western & Feste']
 ---
 
 Liebe Mitglieder,

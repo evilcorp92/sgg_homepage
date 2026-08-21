@@ -2,7 +2,7 @@
 title: "lautlos und präzise..."
 date: 2016-06-06T13:07:54
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 tags: ['Andreas Kolb', 'Bogenschützen Gersfeld', 'Compound']
 ---
 

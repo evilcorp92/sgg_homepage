@@ -2,7 +2,7 @@
 title: "Vereinsnachrichten 2021-1 // Jahresrückblick"
 date: 2021-02-06T12:54:37
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Mitglieder,

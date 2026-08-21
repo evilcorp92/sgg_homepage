@@ -2,7 +2,7 @@
 title: "Arbeitseinsatz zur Vorbereitung des 5th Silver City Cup"
 date: 2026-04-11T13:00:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Schießstände & Termine']
 ---
 
 Am heutigen Tag fand von 8:30 Uhr bis 14:00 Uhr ein weiterer Arbeitseinsatz zur Vorbereitung des 5th Silver City Cup (IPSC Match) statt, der von der Schützengesellschaft Gersfeld 1813 e.V. ausgerichtet wird.

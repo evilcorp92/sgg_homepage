@@ -2,7 +2,7 @@
 title: "König Harald der I."
 date: 2018-08-22T12:46:58
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 **Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2018/2019**

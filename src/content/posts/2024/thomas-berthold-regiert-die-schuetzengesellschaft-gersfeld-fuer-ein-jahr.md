@@ -2,7 +2,7 @@
 title: "Thomas Berthold „regiert“ die Schützengesellschaft Gersfeld für ein Jahr"
 date: 2024-10-02T14:46:55
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Proklamation der neuen Gersfelder Königsfamilie

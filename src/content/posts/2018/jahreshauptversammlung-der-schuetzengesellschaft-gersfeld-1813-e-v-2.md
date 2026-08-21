@@ -2,7 +2,7 @@
 title: "Jahreshauptversammlung der  Schützengesellschaft Gersfeld 1813 e.V."
 date: 2018-04-04T10:19:55
 draft: false
-categories: ['JHV']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Anlässlich der diesjährigen Jahreshauptversammlung im Schützenhaus Gersfeld konnte der 1. Vorsitzende Mario Hartmann 68 stimmberechtigte Mitglieder begrüßen. Nach der Feststellung der Beschlussfähigkeit gab es eine Schweigeminute zum Gedenken an die verstorbenen Mitglieder.

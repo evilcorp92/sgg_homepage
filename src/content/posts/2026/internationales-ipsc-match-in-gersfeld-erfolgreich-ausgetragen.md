@@ -2,7 +2,7 @@
 title: "Internationales IPSC-Match in Gersfeld erfolgreich ausgetragen"
 date: 2026-05-17T18:00:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Vom 14. bis 17. Mai 2026 fand auf der Anlage der Schützengesellschaft Gersfeld 1813 e.V. der 5th Silver City Cup 2026 statt. Veranstaltet wurde das IPSC-Handgun-Level-III-Match gemeinsam von den BDS-Schützen SG Gersfeld und der Schützengesellschaft Gersfeld 1813 e.V.

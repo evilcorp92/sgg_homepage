@@ -2,7 +2,7 @@
 title: "Cowboys, Cowgirls und Sonnenwendfeuer"
 date: 2022-08-05T10:17:20
 draft: false
-categories: ['BDS']
+categories: ['Western & Feste']
 ---
 
 ## **Erste BDS-Landesmeisterschaft in der Disziplin „Western“ in Gersfeld**

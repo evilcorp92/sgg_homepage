@@ -2,7 +2,7 @@
 title: "Pfingstlicher Kommentar zur Lage des Vereins"
 date: 2026-05-24T10:00:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 An Pfingsten soll bekanntlich der Heilige Geist Klarheit, Verständigung und neue Kraft bringen. Ein wenig davon kann auch einem Verein nicht schaden, wenn nach einem Wechsel in der Verantwortung noch alte Konflikte nachhallen und manche Stimmen lieber zurück als nach vorn schauen.

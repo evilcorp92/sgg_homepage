@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN 3/2024"
 date: 2024-07-03T10:42:11
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Schützenschwestern, liebe Schützenbrüder,

@@ -2,7 +2,7 @@
 title: "Aufnahmestopp für Bewerber – Qualität vor Quantität"
 date: 2025-10-04T10:17:31
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Schützenschwestern und Schützenbrüder,

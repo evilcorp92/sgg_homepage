@@ -2,7 +2,7 @@
 title: "Jahreshauptversammlung der BDS-Schützen Gersfeld e.V."
 date: 2019-03-31T15:03:13
 draft: false
-categories: ['JHV']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Anlässlich der ersten ordentlich stattfindenden Jahreshauptversammlung der BDS-Schützen Gersfeld im Schützenhaus Gersfeld konnte der 1. Vorsitzende Martin Reus 24 stimmberechtigte Mitglieder begrüßen. Nach der Feststellung der Beschlussfähigkeit stellte Reus seinen Jahresbericht den anwesenden Mitgliedern vor. In seinem Jahresbericht umriss der 1. Vorsitzende die Entwicklung des Vereins seit Gründung im Jahr 2015 sowie die Mitgliederbewegungen. Erfreulich ist, dass dem Verein seit Gründung 48 Mitglieder beigetreten sind. Ferner berichtete Reus, dass dem Verein ebenfalls offiziell die Gemeinnützigkeit bestätigt wurde, so dass nun der Verein mit allen Rechten und Pflichten ausgestattet ist. 

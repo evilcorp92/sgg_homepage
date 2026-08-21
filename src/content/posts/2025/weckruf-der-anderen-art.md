@@ -2,7 +2,7 @@
 title: "Weckruf der anderen Art"
 date: 2025-03-04T08:21:24
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Traditionelles Marshallwecken des Haimbacher Westendmarshalls

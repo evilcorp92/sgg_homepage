@@ -2,7 +2,7 @@
 title: "Jahreshauptversammlung der  Schützengesellschaft Gersfeld 1813 e.V."
 date: 2020-03-18T22:12:15
 draft: false
-categories: ['JHV']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Anlässlich der jährlich

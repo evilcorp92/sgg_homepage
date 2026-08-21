@@ -2,7 +2,7 @@
 title: "Direktmeldung zur DM 2021 / Klärung von aufgekommenen Fragen"
 date: 2020-12-09T09:05:10
 draft: false
-categories: ['BDS']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Sehr geehrte Teilnehmerinnen und Teilnehmer der DM Kurz- und Langwaffen,

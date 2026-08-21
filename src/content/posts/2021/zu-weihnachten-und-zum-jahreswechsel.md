@@ -2,7 +2,7 @@
 title: "Zu Weihnachten und zum Jahreswechsel"
 date: 2021-12-17T13:45:15
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Liebe Mitglieder,******

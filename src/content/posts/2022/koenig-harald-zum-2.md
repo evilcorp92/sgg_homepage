@@ -2,7 +2,7 @@
 title: "König Harald, zum 2."
 date: 2022-08-22T10:55:36
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Sport & Wettkämpfe']
 ---
 
 ## Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2022/2023

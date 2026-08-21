@@ -2,7 +2,7 @@
 title: "Teilnahme von Gastschützen derzeit nicht möglich"
 date: 2025-10-05T15:34:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Auf Grundlage eines Vorstandsbeschlusses können derzeit keine Gastschützen am Schießbetrieb teilnehmen. Diese Maßnahme steht im Zusammenhang mit den bestehenden Kapazitätsgrenzen sowie dem aktuell geltenden Aufnahmestopp.

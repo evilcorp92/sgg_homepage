@@ -2,7 +2,7 @@
 title: "Alles andere als konservativ und langweilig"
 date: 2017-05-01T20:17:16
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Teilnahme der Schützengesellschaft Gersfeld am 60. Deutschen Schützentag in Frankfurt am Main

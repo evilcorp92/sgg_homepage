@@ -2,7 +2,7 @@
 title: "Rundenwettkampf Sportpistole Kleinkaliber in Gersfeld"
 date: 2026-05-23T08:00:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Am 22. Mai 2026 fand im Schützenhaus der Schützengesellschaft Gersfeld 1813 e.V. die nächste Runde der Rundenwettkämpfe in der Disziplin Sportpistole Kleinkaliber statt. Zu Gast war die Mannschaft des SV Fulda.

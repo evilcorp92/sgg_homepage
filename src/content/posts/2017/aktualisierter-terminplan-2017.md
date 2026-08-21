@@ -2,7 +2,7 @@
 title: "aktualisierter Terminplan 2017"
 date: 2017-01-25T21:36:51
 draft: false
-categories: ['Termine']
+categories: ['Schießstände & Termine']
 ---
 
 Hier der geänderte, aktualisierte Terminplan 2017.

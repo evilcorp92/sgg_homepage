@@ -2,7 +2,7 @@
 title: "Peter Hoffmann für die IPSC-Weltmeisterschaft in Südafrika qualifiziert"
 date: 2025-09-26T13:41:55
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Unser 2. Vorsitzender Peter Hoffmann ist zur IPSC Handgun World Shoot XX nach Südafrika gereist – der Weltmeisterschaft im dynamischen Kurzwaffenschießen. Rund 1.800 Schützinnen und Schützen aus aller Welt nehmen an diesem internationalen Top-Event des Sportschießens teil.

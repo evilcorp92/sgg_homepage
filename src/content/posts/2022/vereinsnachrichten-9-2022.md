@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN  9/2022"
 date: 2022-07-20T09:52:31
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Liebe Schützenschwestern, liebe Schützenbrüder,**

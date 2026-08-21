@@ -2,7 +2,7 @@
 title: "Königsproklamation"
 date: 2014-09-28T14:44:50
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2014/15

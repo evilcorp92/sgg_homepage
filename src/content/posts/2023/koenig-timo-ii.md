@@ -2,7 +2,7 @@
 title: "König Timo II."
 date: 2023-11-23T10:30:14
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 ## Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2023/2024

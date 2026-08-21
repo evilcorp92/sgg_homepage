@@ -2,7 +2,7 @@
 title: "Cowboys, Countrymusic & Lagerfeuer"
 date: 2022-07-06T12:41:41
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Western & Feste']
 ---
 
 ## Ein Wochenende lang „Wilder Westen“ am Schützenplatz in Gersfeld

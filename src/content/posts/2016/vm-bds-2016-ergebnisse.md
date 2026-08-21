@@ -2,7 +2,7 @@
 title: "VM BDS 2016 - Ergebnisse"
 date: 2016-02-13T12:31:34
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 tags: ['BDS', 'Vereinsmeisterschaft', 'VM']
 ---
 

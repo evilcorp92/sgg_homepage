@@ -2,7 +2,7 @@
 title: "Bogenschiessen verbindet Generationen"
 date: 2017-06-03T18:32:36
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Am 25.05.2017 - dem diesjährigen „Vatertag“ - organisierte die Bogenabteilung der Schützengesellschaft Gersfeld 1813 e.V. einen Familiennachmittag mit der Möglichkeit grundverschiedene Bögen sowohl in der eigens hierfür ausgebauten 25 Meter Bogenhalle, der

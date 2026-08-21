@@ -2,7 +2,7 @@
 title: "Peter Hoffmann bei der IPSC-Weltmeisterschaft 2025 in Südafrika"
 date: 2025-10-06T09:49:40
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Unser 2. Vorsitzender Peter Hoffmann hat den Verein und Deutschland im September 2025 bei der IPSC Handgun World Shoot in Südafrika vertreten – dem größten und bedeutendsten Wettkampf im sportlichen Kurzwaffenschießen weltweit.

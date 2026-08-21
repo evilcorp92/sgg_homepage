@@ -2,7 +2,7 @@
 title: "Einladung zum Helferfest"
 date: 2023-11-05T13:00:00
 draft: false
-categories: ['Termine']
+categories: ['Western & Feste']
 ---
 
 Samstag, 18.11.2023 ab 18 Uhr

@@ -2,7 +2,7 @@
 title: "Mehr Sicherheit auf unserem Vereinsgelände – Erweiterung der Videoüberwachung"
 date: 2025-10-06T09:46:46
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Der Gesamtvorstand hat beschlossen, unsere Videoüberwachungsanlage zu erweitern, um die Sicherheit auf dem gesamten Vereinsgelände weiter zu erhöhen.

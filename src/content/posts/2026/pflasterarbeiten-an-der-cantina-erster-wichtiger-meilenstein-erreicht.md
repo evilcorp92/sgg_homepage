@@ -2,7 +2,7 @@
 title: "Pflasterarbeiten an der Cantina: Erster wichtiger Meilenstein erreicht"
 date: 2026-05-15T17:10:27
 draft: false
-categories: ['Uncategorized']
+categories: ['Schießstände & Termine']
 ---
 
 Unsere Vereinsmitglieder Fanel und Marius haben heute die Randsteine für die Pflasterarbeiten vor unserer Cantina gesetzt und sämtliche vorbereitenden Arbeiten durchgeführt. Auch die Randsteine und Fahrzeuge wurden von Vereinsmitgliedern kostenlos zur Verfügung gestellt. Vielen Dank an alle Beteiligten für die Unterstützung!

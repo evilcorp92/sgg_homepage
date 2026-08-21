@@ -2,7 +2,7 @@
 title: "Startzeiten KM Luftdruck"
 date: 2016-12-24T18:00:04
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Hier finden Sie die Startzeiten der Kreismeisterschaft Luftdruck:

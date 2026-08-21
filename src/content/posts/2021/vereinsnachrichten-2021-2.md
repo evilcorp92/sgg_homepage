@@ -2,7 +2,7 @@
 title: "Vereinsnachrichten 2021-2"
 date: 2021-02-01T10:40:20
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Mitglieder,

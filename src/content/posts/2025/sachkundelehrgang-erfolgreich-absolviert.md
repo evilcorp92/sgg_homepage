@@ -2,7 +2,7 @@
 title: "Sachkundelehrgang erfolgreich absolviert"
 date: 2025-09-15T13:38:34
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Am 13.-14.09.2025 fand in den Räumen der Schützengesellschaft Gersfeld 1813 e.V. ein Sachkundelehrgang für Sportschützen statt. Unter der Leitung des Lehrbeauftragten Holger Krischik sowie unseres Oberschießwarts Frank Schmidt absolvierten fünf Teilnehmer aus den Reihen unseres Vereins den anspruchsvollen Lehrgang – und bestanden ihn erfolgreich.

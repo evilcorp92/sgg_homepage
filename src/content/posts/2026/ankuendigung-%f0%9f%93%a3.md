@@ -2,7 +2,7 @@
 title: "Ankündigung &#x1f4e3;"
 date: 2026-04-29T08:11:06
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Westernfest in der Silver City – 5. bis 7. Juni 2026

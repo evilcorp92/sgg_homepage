@@ -227,13 +227,13 @@ export const GET: APIRoute = async () => {
       .trim();
 
     const snippet = plainBody.length > 200 ? plainBody.slice(0, 200) + '...' : plainBody;
-    const cat = (post.data.categories && post.data.categories[0]) || 'News';
+    const cat = (post.data.categories && post.data.categories[0]) || 'Vereinsleben & Vorstand';
 
     items.push({
       id: `post-${cleanSlug}`,
       title: post.data.title,
       url: `/posts/${cleanSlug}/`,
-      category: `News: ${cat}`,
+      category: cat,
       description: snippet || 'Bericht und Vereinsnachricht der Schützengesellschaft Gersfeld 1813 e.V.',
       keywords: `${post.data.title} ${cat} ${(post.data.tags || []).join(' ')} ${plainBody.slice(0, 500)}`,
       date: post.data.date.toISOString().split('T')[0]

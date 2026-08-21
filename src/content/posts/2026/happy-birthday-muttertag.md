@@ -2,7 +2,7 @@
 title: "Westernfest: Geburtstagsfest der Schützengesellschaft Gersfeld"
 date: 2026-05-10T11:57:55
 draft: false
-categories: ['Uncategorized']
+categories: ['Western & Feste']
 ---
 
 Das Leben ist schön.

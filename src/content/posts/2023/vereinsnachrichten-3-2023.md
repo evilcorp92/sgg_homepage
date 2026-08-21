@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN  3/2023"
 date: 2023-06-19T08:13:11
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Liebe Schützenschwestern, liebe Schützenbrüder,**

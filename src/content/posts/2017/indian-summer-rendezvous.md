@@ -2,7 +2,7 @@
 title: "Indian Summer Rendezvous"
 date: 2017-09-25T17:24:40
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## **Traditionelles Vorderlader- und Westernwochenende in Gersfeld**

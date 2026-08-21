@@ -2,7 +2,7 @@
 title: "Spendenaktion"
 date: 2019-09-19T23:16:00
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Spender … :-)

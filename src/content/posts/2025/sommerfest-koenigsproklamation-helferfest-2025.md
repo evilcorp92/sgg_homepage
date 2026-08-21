@@ -2,7 +2,7 @@
 title: "Sommerfest, Königsproklamation &amp; Helferfest 2025"
 date: 2025-09-08T13:36:28
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Western & Feste']
 ---
 
 Am Freitag, den 5. September 2025, fand das diesjährige Sommerfest der Schützengesellschaft Gersfeld 1813 e.V. statt – ein rundum gelungener Abend bei bester Stimmung, gutem Wetter und vielen fröhlichen Gästen. Im festlichen Rahmen wurde traditionell die Königsproklamation durchgeführt – ein Höhepunkt des Vereinsjahres, der wieder viele Mitglieder und Freunde des Vereins zusammenbrachte.

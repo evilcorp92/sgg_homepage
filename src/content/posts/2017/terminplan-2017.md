@@ -2,7 +2,7 @@
 title: "Terminplan 2017"
 date: 2017-01-03T21:00:27
 draft: false
-categories: ['Termine']
+categories: ['Schießstände & Termine']
 ---
 
 Der Terminplan 2017 ist nun online!

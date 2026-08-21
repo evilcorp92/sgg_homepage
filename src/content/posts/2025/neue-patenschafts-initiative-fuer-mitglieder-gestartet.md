@@ -2,7 +2,7 @@
 title: "Neue Patenschafts-Initiative für Mitglieder gestartet"
 date: 2025-10-06T09:48:15
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Auf Anregung unseres ersten Vorsitzenden Martin Reus hat die Schützengesellschaft Gersfeld 1813 e.V. ein neues Patenschaftsprogramm ins Leben gerufen.

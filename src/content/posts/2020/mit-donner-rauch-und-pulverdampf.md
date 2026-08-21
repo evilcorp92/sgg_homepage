@@ -2,7 +2,7 @@
 title: "Mit Donner, Rauch und Pulverdampf"
 date: 2020-02-23T19:22:57
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Die Gersfelder Schützen „wecken“ dem amtierenden Haimbacher Westendmarshall**

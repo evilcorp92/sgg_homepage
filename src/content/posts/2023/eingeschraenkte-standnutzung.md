@@ -2,7 +2,7 @@
 title: "Eingeschränkte Standnutzung"
 date: 2023-10-10T13:46:09
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Schießstände & Termine']
 ---
 
 Gegenwärtig ist der [Kurzwaffenstand nicht benutzbar](https://www.sg-gersfeld.de/reparaturarbeiten-am-25m-stand/), da an diesem Stand erst Reparaturen im Bereich des Kugelfangs durchgeführt werden müssen.

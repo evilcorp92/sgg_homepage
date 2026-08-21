@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN 13/2021"
 date: 2021-08-11T12:21:31
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 #### ACHTUNG !!! Wichtiger Hinweis

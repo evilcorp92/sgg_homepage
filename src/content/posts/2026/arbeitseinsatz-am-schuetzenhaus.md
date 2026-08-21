@@ -2,7 +2,7 @@
 title: "Arbeitseinsatz am Schützenhaus"
 date: 2026-04-25T15:01:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Schießstände & Termine']
 ---
 
 Am Samstag, den 25.04.2026, fand ab 9:00 Uhr ein Arbeitseinsatz am Schützenhaus statt.

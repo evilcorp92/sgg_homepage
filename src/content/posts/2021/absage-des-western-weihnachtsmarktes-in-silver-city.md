@@ -2,7 +2,7 @@
 title: "Absage des Western-Weihnachtsmarktes in Silver City"
 date: 2021-11-21T17:00:39
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Western & Feste']
 ---
 
 Liebe Mitglieder,

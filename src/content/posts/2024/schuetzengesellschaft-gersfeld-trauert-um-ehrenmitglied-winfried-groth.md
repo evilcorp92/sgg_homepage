@@ -2,7 +2,7 @@
 title: "Schützengesellschaft Gersfeld trauert um  Ehrenmitglied Winfried Groth"
 date: 2024-02-16T15:57:06
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Die Schützengesellschaft Gersfeld trauert um ihr langjähriges Ehrenmit-glied Winfried Groth. Er war ein begeisterter und sehr erfolgreicher Kurzwaffenschütze, der mit der Luftpistole, Sportpistole und später mit Vorderladerkurzwaffen auf Kreis-, Gau-, und Landesmeisterschaften über viele Jahre große Erfolge erzielte. Bei Rundenwettkämpfen war er stets ein verlässlicher Leistungsträger der Mannschaft. Mehrfach nahm er auch an Landes- und Deutschen Meisterschaften teil, auf denen er immer eine gute Platzierung erreichte.

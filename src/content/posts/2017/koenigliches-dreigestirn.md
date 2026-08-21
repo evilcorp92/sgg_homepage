@@ -2,7 +2,7 @@
 title: "Königliches Dreigestirn"
 date: 2017-06-25T19:39:19
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 **Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2017/2018**

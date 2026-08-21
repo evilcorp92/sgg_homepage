@@ -2,7 +2,7 @@
 title: "Jahreshauptversammlung der  Schützengesellschaft Gersfeld 1813 e.V."
 date: 2017-04-06T20:21:50
 draft: false
-categories: ['JHV']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Anlässlich der diesjährigen Jahreshauptversammlung im Schützenhaus Gersfeld konnte der 1. Vorsitzende Mario Hartmann 62 stimmberechtigte Mitglieder begrüßen. Nach der Feststellung der Beschlussfähigkeit gab es eine Schweigeminute zum Gedenken an die verstorbenen Mitglieder. Stellvertretend wurde hier der ehemalige 1. Vorsitzende, Schützenbruder und Ehrenmitglied Hartmut Trittin genannt, der im Dezember des vergangenen Jahres verstarb.

@@ -2,7 +2,7 @@
 title: "Drei Musketiere"
 date: 2021-10-21T11:27:41
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2021/2022

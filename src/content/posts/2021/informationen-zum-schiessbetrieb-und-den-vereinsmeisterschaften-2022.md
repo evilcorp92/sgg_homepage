@@ -2,7 +2,7 @@
 title: "Informationen zum Schießbetrieb und den Vereinsmeisterschaften 2022"
 date: 2021-09-14T10:40:19
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Sport & Wettkämpfe']
 ---
 
 **Liebe Mitglieder,**

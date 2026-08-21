@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN  12/2021"
 date: 2021-08-10T13:37:24
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 #### [Termine](https://www.sg-gersfeld.de/termine/) und Veranstaltungen im Spätsommer und Herbst

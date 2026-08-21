@@ -2,7 +2,7 @@
 title: "Vereinsnachrichten 2021-6"
 date: 2021-03-21T10:56:07
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Änderung der Schießzeiten

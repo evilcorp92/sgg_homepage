@@ -2,7 +2,7 @@
 title: "Bereit für die Zukunft"
 date: 2018-09-01T16:10:55
 draft: false
-categories: ['JHV']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Außerordentliche Hauptversammlung der Schützengesellschaft Gersfeld 1813 e.V.**

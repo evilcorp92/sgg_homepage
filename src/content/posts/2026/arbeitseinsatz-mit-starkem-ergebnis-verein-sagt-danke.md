@@ -2,7 +2,7 @@
 title: "Arbeitseinsatz mit starkem Ergebnis – Verein sagt Danke"
 date: 2026-02-28T17:30:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Schießstände & Termine']
 ---
 
 Am heutigen Tag trafen sich zahlreiche engagierte Mitglieder zu einem umfangreichen Arbeitseinsatz rund um das Vereinsheim. In rund fünf Stunden gemeinsamer Arbeit wurden nicht nur das Vereinsheim und die Sanitäranlagen gründlich gereinigt, sondern auch die Geschossfänge fachgerecht instandgesetzt.

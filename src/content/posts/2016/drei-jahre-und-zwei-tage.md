@@ -2,7 +2,7 @@
 title: "Drei Jahre und zwei Tage"
 date: 2016-10-09T17:56:01
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 #### Kameraden und die SG Gersfeld verabschieden den Kommandeur der Truppenübungskommandatur Süd in Wildflecken

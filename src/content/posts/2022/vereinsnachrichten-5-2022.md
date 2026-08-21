@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN 5/2022"
 date: 2022-06-10T10:26:32
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Mitglieder,

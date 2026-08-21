@@ -2,7 +2,7 @@
 title: "Was lange währt, wird endlich gut …"
 date: 2021-01-28T18:21:21
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Coronabedingt hat es leider etwas länger gedauert … trotzdem haben wir es geschafft. Unser neuer Schießstand ist FERTIG !!

@@ -2,7 +2,7 @@
 title: "Schuss und Schluss"
 date: 2014-01-18T17:20:22
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 ## Weihnachts- und Jahresabschlussfeier der Schützengesellschaft Gersfeld

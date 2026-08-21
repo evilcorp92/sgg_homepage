@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN  1/2024"
 date: 2024-05-13T13:40:09
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Liebe Schützenschwestern, liebe Schützenbrüder,**

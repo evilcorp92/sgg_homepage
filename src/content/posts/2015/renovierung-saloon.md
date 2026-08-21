@@ -2,7 +2,7 @@
 title: "Renovierung Saloon"
 date: 2015-02-02T14:40:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Western & Feste']
 ---
 
 Die SG Gersfeld steckt mitten in der Renovierung des Saloons der Westernstadt.

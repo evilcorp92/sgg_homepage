@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN  10/2021"
 date: 2021-06-26T21:34:56
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ### Normalisierung des Vereinslebens und des Schießbetriebs

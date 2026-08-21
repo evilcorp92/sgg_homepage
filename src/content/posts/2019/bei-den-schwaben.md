@@ -2,7 +2,7 @@
 title: "Bei den Schwaben"
 date: 2019-10-10T13:30:31
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## **Teilnahme der

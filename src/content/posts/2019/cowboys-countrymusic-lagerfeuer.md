@@ -2,7 +2,7 @@
 title: "Cowboys, Countrymusic & Lagerfeuer"
 date: 2019-06-29T13:51:10
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Western & Feste']
 ---
 
 #### Ein

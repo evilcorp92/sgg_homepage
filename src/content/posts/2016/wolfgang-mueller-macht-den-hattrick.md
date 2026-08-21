@@ -2,7 +2,7 @@
 title: "Wolfgang Müller macht den Hattrick"
 date: 2016-10-09T18:00:56
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 #### Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2016/2017

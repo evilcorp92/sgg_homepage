@@ -2,7 +2,7 @@
 title: "Cowboys in der Rhön"
 date: 2016-06-27T10:02:01
 draft: false
-categories: ['Uncategorized']
+categories: ['Western & Feste']
 ---
 
 ### Ein Wochenende lang ‚Wilder Westen’ am Schützenplatz in Gersfeld

@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN 14/2021"
 date: 2021-08-23T18:08:01
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ### Aktuelle Hinweise zur Coronasituation und die Auswirkung auf die Hauptversammlung und Schießbetrieb

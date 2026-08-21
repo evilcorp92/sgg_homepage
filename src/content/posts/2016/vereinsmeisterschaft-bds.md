@@ -2,7 +2,7 @@
 title: "Vereinsmeisterschaft BDS"
 date: 2016-01-11T22:10:03
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Liebe Schützen der BDS-Abteilung,

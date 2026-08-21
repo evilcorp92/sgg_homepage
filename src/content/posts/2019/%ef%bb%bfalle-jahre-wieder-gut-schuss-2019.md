@@ -2,7 +2,7 @@
 title: "﻿Alle Jahre wieder - Gut Schuss 2019!"
 date: 2019-01-10T23:37:19
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ### **Einladung zum Neujahrsschießen der Gersfelder Schützen**

@@ -2,7 +2,7 @@
 title: "Bogenschützen auf Medaillenkurs"
 date: 2016-06-24T15:01:09
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 tags: ['Andreas Kolb', 'Bayerischer Meister', 'Bogenschütze', 'BVBA', 'Compound', 'DBSV', 'Fünfstetten', 'Schützengesellschaft Gersfeld']
 ---
 

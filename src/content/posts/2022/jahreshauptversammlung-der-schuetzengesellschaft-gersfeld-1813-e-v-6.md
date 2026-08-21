@@ -2,7 +2,7 @@
 title: "Jahreshauptversammlung der Schützengesellschaft Gersfeld 1813 e.V."
 date: 2022-04-22T09:51:18
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Anlässlich der Jahreshauptversammlung im Schützenhaus Gersfeld konnte der 1. Vorsitzende Wolfgang Benndorff 38 stimmberechtigte Mitglieder begrüßen. Nach der Feststellung der Beschlussfähigkeit gab es eine Schweigeminute zum Gedenken an die verstorbenen Mitglieder.

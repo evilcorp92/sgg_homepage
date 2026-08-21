@@ -2,7 +2,7 @@
 title: "Umbau unserer Schießstände!!"
 date: 2019-08-22T20:12:01
 draft: false
-categories: ['Uncategorized']
+categories: ['Schießstände & Termine']
 ---
 
 Nachdem unsere Stände nicht mehr dem aktuellen Stand der Technik entsprachen, hat die SG Gersfeld Anfang Juni mit dem Umbau des 25-Meter-Kurzwaffen- und des 50-Meter-Langwaffenstandes begonnen.

@@ -2,7 +2,7 @@
 title: "Trauer um Hartmut Trittin"
 date: 2016-12-25T17:00:11
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 [![hartmut-trittin](http://www.sg-gersfeld.de/wp-content/uploads/2017/01/Hartmut-Trittin-298x300.jpg)](http://www.sg-gersfeld.de/wp-content/uploads/2017/01/Hartmut-Trittin.jpg)

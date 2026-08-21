@@ -2,7 +2,7 @@
 title: "Vereinsnachrichten 18/2021"
 date: 2021-11-11T09:09:14
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Aktuelle Informationen

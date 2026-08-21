@@ -2,7 +2,7 @@
 title: "VEREINSNACHRICHTEN  2/2023"
 date: 2023-04-24T08:22:53
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Liebe Schützenschwestern, liebe Schützenbrüder,**

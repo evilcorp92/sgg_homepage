@@ -2,7 +2,7 @@
 title: "Ein junger Franke"
 date: 2019-10-09T13:22:50
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2019/2020

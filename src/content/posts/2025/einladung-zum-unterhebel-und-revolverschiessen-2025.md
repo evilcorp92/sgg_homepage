@@ -2,7 +2,7 @@
 title: "Einladung zum Unterhebel- und Revolverschießen 2025"
 date: 2025-04-28T11:38:19
 draft: false
-categories: ['Uncategorized']
+categories: ['Western & Feste']
 ---
 
 [![](https://www.sg-gersfeld.de/wp-content/uploads/2025/04/IMG-20250505-WA0001-724x1024.jpg)](https://www.sg-gersfeld.de/wp-content/uploads/2025/04/IMG-20250505-WA0001.jpg)

@@ -2,7 +2,7 @@
 title: "&#x1f4e2; Information zum Einzug der Mitgliedsbeiträge &amp; Sonderumlage"
 date: 2026-03-18T15:40:35
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Vereinsmitglieder,

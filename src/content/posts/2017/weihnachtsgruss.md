@@ -2,7 +2,7 @@
 title: "Weihnachtsgruss"
 date: 2017-12-25T11:43:04
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Die **Schützengesellschaft Gersfeld 1813 e.V.** wünscht allen Mitgliedern und Freunden des Vereins ein erholsames, friedvolles Weihnachtsfest verbunden mit den Besten Wünschen für das bevorstehende neue Jahr.

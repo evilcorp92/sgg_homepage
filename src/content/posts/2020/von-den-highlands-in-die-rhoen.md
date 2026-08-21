@@ -2,7 +2,7 @@
 title: "Von den Highlands in die Rhön"
 date: 2020-09-13T18:00:55
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Western & Feste']
 ---
 
 ### **Proklamation der neuen Gersfelder Königsfamilie für das Jahr 2020/2021**

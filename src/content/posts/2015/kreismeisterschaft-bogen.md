@@ -2,7 +2,7 @@
 title: "Kreismeisterschaft Bogen"
 date: 2015-12-02T20:42:02
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Zum Auftakt in die Hallensaison der Bogenschützen 2016 fand am 22. November die Kreismeisterschaft Fita Halle auf 18 m in Hettenhausen statt.

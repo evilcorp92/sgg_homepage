@@ -2,7 +2,7 @@
 title: "Martin Reus kommissarisch zum 1. Vorsitzenden gewählt"
 date: 2025-06-27T13:34:18
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Martin Reus wurde vom geschäftsführenden und erweiterten Vorstand einstimmig zum kommissarischen 1. Vorsitzenden der Schützengesellschaft Gersfeld 1813 e.V. gewählt.

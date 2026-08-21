@@ -2,7 +2,7 @@
 title: "Geschäftsführender Vorstand wieder komplett"
 date: 2023-03-26T16:20:53
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Jahreshauptversammlung der Schützengesellschaft Gersfeld 1813 e.V.

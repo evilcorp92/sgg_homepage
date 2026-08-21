@@ -2,7 +2,7 @@
 title: "Kameradschaftlich verbunden"
 date: 2016-07-30T20:58:27
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Die Bundeswehr zu Gast bei den Gersfelder Schützen

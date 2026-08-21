@@ -2,7 +2,7 @@
 title: "Harry Knüttel ist Deutscher Meister"
 date: 2022-09-27T13:16:54
 draft: false
-categories: ['BDS', 'Vereinsnachrichten']
+categories: ['Sport & Wettkämpfe']
 ---
 
 ## Erfolge der BDS-Schützen Gersfeld bei den Deutschen Meisterschaften in Philippsburg

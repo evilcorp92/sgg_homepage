@@ -2,7 +2,7 @@
 title: "„Silver City“ Weihnachtsfeier – Gemeinsam das Jahr ausklingen lassen"
 date: 2025-10-16T09:41:08
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Western & Feste']
 ---
 
 Liebe Mitglieder, liebe Angehörige, liebe Freunde und Förderer,

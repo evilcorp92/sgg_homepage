@@ -2,7 +2,7 @@
 title: "Erfolgreiche Absolventen"
 date: 2021-08-19T10:05:08
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ### Gersfelder Schützen erfolgreich bei Lehrgang „Sicherheits- und Regeltest - Western“ des BDS

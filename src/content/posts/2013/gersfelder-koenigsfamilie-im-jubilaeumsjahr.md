@@ -2,7 +2,7 @@
 title: "Gersfelder Königsfamilie im Jubiläumsjahr"
 date: 2013-11-18T17:26:32
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Der neue Schützenkönig **Egon Berg** regiert für ein Jahr die Schützen

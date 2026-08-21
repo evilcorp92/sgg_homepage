@@ -2,7 +2,7 @@
 title: "Goldjunge"
 date: 2022-10-12T15:08:45
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Sport & Wettkämpfe']
 ---
 
 ## **Gersfelder Schütze Alexander Maul holt Landesmeistertitel**

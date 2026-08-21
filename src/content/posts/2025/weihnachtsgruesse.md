@@ -2,7 +2,7 @@
 title: "Weihnachtsgrüße"
 date: 2025-12-22T07:18:00
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Liebe Vereinsmitglieder,

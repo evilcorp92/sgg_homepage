@@ -2,7 +2,7 @@
 title: "Startzeiten"
 date: 2017-02-27T18:24:35
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Anbei diverste Startzeiten:

@@ -2,7 +2,7 @@
 title: "In Amt und Würden"
 date: 2024-04-21T15:20:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ## Jahreshauptversammlung der Schützengesellschaft Gersfeld 1813 e.V.

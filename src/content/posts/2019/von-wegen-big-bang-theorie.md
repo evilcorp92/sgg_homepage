@@ -2,7 +2,7 @@
 title: "Von wegen Big Bang „Theorie“"
 date: 2019-03-04T15:43:00
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 **Die Gersfelder Schützen „wecken“ dem amtierenden Haimbacher Westendmarshall**

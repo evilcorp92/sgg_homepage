@@ -2,7 +2,7 @@
 title: "Sachkundelehrgang"
 date: 2020-10-02T18:13:15
 draft: false
-categories: ['Termine']
+categories: ['Sport & Wettkämpfe']
 ---
 
 **ACHTUNG! Termin entfällt!**

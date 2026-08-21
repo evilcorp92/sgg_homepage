@@ -2,7 +2,7 @@
 title: "Ein kleines bisschen Amerika"
 date: 2017-06-19T18:52:14
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Ein Wochenende lang „Wilder Westen“ am Schützenplatz in Gersfeld**

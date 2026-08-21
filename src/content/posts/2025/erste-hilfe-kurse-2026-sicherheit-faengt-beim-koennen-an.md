@@ -2,7 +2,7 @@
 title: "Erste-Hilfe-Kurse 2026 - Sicherheit fängt beim Können an"
 date: 2025-10-20T08:11:30
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Zu Beginn des Jahres 2026 werden wir in unserem Verein zwei Erste-Hilfe-Kurse anbieten.

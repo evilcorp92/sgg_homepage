@@ -2,7 +2,7 @@
 title: "Neue Disziplinen und Erfolge"
 date: 2018-09-05T19:36:59
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 **Die BDS-Schützen Gersfeld holen erste Titel und Platzierungen**

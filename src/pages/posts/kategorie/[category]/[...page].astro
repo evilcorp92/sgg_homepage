@@ -1,0 +1,249 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { Calendar, ArrowRight, Newspaper, ChevronLeft, ChevronRight, Tag } from 'lucide-react';
+
+const CATEGORIES_CONFIG = {
+  sport: {
+    name: 'Sport & Wettkämpfe',
+    icon: '🏆',
+    description: 'Berichte zu Vereinsmeisterschaften, Rundenwettkämpfen, Pokalrunden und sportlichen Erfolgen.'
+  },
+  verein: {
+    name: 'Vereinsleben & Vorstand',
+    icon: '📢',
+    description: 'Offizielle Vereinsnachrichten, Vorstandswahlen, Jahreshauptversammlungen und Vereinsleben.'
+  },
+  staende: {
+    name: 'Schießstände & Termine',
+    icon: '🛠️',
+    description: 'Aktuelle Informationen zu Standumbau, Reparaturen, Schießzeiten und Arbeitseinsätzen.'
+  },
+  western: {
+    name: 'Western & Feste',
+    icon: '🤠',
+    description: 'Neuigkeiten rund um die Westernstadt Silver City, Westernfeste, Brauchtum und Feiern.'
+  }
+};
+
+export async function getStaticPaths({ paginate }) {
+  const allPosts = await getCollection('posts');
+  const validPosts = allPosts
+    .filter(post => !post.data.draft)
+    .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+  const categories = [
+    { slug: 'sport', name: 'Sport & Wettkämpfe' },
+    { slug: 'verein', name: 'Vereinsleben & Vorstand' },
+    { slug: 'staende', name: 'Schießstände & Termine' },
+    { slug: 'western', name: 'Western & Feste' }
+  ];
+
+  return categories.flatMap(cat => {
+    const filtered = validPosts.filter(p => (p.data.categories || []).includes(cat.name));
+    return paginate(filtered, {
+      params: { category: cat.slug },
+      pageSize: 9
+    });
+  });
+}
+
+const { page } = Astro.props;
+const { category } = Astro.params;
+
+const currentCatConfig = CATEGORIES_CONFIG[category as keyof typeof CATEGORIES_CONFIG] || {
+  name: 'Kategorie',
+  icon: '📰',
+  description: 'Gefilterte Beiträge nach Thema.'
+};
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString('de-DE', { year: 'numeric', month: '2-digit', day: '2-digit' });
+};
+
+const extractFirstImage = (body: string) => {
+  const mdMatch = body.match(/!\[.*?\]\((https?:\/\/[^\s\)]+|\/[^\s\)]+)\)/);
+  if (mdMatch && mdMatch[1]) return mdMatch[1];
+  const htmlMatch = body.match(/<img[^>]+src=["'](https?:\/\/[^"'>]+|\/[^"'>]+)["']/i);
+  if (htmlMatch && htmlMatch[1]) return htmlMatch[1];
+  return '/images/schuetzenhaus-gersfeld.jpg';
+};
+
+const getCleanSummary = (body: string) => {
+  return body
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    .replace(/\[.*?\]\(.*?\)/g, '')
+    .replace(/\[caption.*?\]/g, '')
+    .replace(/\[\/caption\]/g, '')
+    .replace(/<[^>]*>/g, '')
+    .replace(/[#*`_\[\]()]/g, '')
+    .trim()
+    .substring(0, 150);
+};
+---
+
+<Layout title={`${currentCatConfig.name} (Seite ${page.currentPage}) - SG Gersfeld`} description={currentCatConfig.description}>
+  
+  <div class="bg-brand-card min-h-screen pb-24">
+    
+    {/* Page Header */}
+    <header class="bg-brand-bg py-20 border-b border-brand-border/40 px-6 text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-extrabold tracking-widest uppercase text-brand-steel">
+          Kategorie
+        </span>
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-brand-dark tracking-tight flex items-center justify-center gap-3">
+          <span>{currentCatConfig.icon}</span> {currentCatConfig.name}
+        </h1>
+        <p class="text-brand-muted font-medium max-w-2xl mx-auto">
+          {currentCatConfig.description}
+        </p>
+      </div>
+    </header>
+
+    {/* Articles Grid Container */}
+    <div class="max-w-7xl mx-auto px-6 mt-12 space-y-12">
+      
+      {/* Category Filter Navigation */}
+      <div class="flex items-center justify-center gap-2 flex-wrap pb-4">
+        <a 
+          href="/posts/" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 transition-all shadow-2xs"
+        >
+          Alle
+        </a>
+        <a 
+          href="/posts/kategorie/sport/" 
+          class={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all shadow-2xs flex items-center gap-1.5 ${category === 'sport' ? 'bg-brand-dark text-white shadow-sm' : 'text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'}`}
+        >
+          🏆 Sport & Wettkämpfe
+        </a>
+        <a 
+          href="/posts/kategorie/verein/" 
+          class={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all shadow-2xs flex items-center gap-1.5 ${category === 'verein' ? 'bg-brand-dark text-white shadow-sm' : 'text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'}`}
+        >
+          📢 Vereinsleben & Vorstand
+        </a>
+        <a 
+          href="/posts/kategorie/staende/" 
+          class={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all shadow-2xs flex items-center gap-1.5 ${category === 'staende' ? 'bg-brand-dark text-white shadow-sm' : 'text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'}`}
+        >
+          🛠️ Schießstände & Termine
+        </a>
+        <a 
+          href="/posts/kategorie/western/" 
+          class={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all shadow-2xs flex items-center gap-1.5 ${category === 'western' ? 'bg-brand-dark text-white shadow-sm' : 'text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80'}`}
+        >
+          🤠 Western & Feste
+        </a>
+      </div>
+
+      {page.data.length === 0 ? (
+        <div class="text-center py-16 bg-white rounded-brand-lg border border-brand-border/70 p-8 space-y-3">
+          <p class="text-base font-bold text-brand-dark">Keine Beiträge in dieser Kategorie gefunden.</p>
+          <a href="/posts/" class="text-xs font-bold text-brand-steel hover:underline">Zurück zu allen Beiträgen →</a>
+        </div>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {page.data.map(post => {
+            const thumbnail = extractFirstImage(post.body);
+            const summary = getCleanSummary(post.body);
+            const category = (post.data.categories && post.data.categories[0]) || null;
+            const slug = post.slug.replace(/^.*\//, '');
+
+            return (
+              <article class="bg-white border border-brand-border/70 rounded-brand-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-brand-steel/40 transition-all duration-300 flex flex-col group">
+                
+                {/* Thumbnail Container */}
+                <a href={`/posts/${slug}/`} class="relative block aspect-[16/10] bg-slate-950 overflow-hidden">
+                  <img 
+                    src={thumbnail} 
+                    alt={post.data.title}
+                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                    loading="lazy"
+                    onerror="this.src='/images/schuetzenhaus-gersfeld.jpg'"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                  {category && (
+                    <span class="absolute top-3 left-3 text-xs font-bold bg-black/60 backdrop-blur-sm text-white px-2.5 py-1 rounded">
+                      {category}
+                    </span>
+                  )}
+                  <span class="absolute bottom-3 left-3 text-xs font-bold text-white/90 flex items-center gap-1.5 backdrop-blur-sm bg-black/40 px-2 py-0.5 rounded">
+                    <Calendar class="w-3.5 h-3.5" /> {formatDate(post.data.date)}
+                  </span>
+                </a>
+
+                {/* Card Body */}
+                <div class="p-6 flex flex-col flex-grow justify-between space-y-4">
+                  <div class="space-y-2">
+                    <h2 class="text-lg font-extrabold text-brand-dark group-hover:text-brand-steel transition-colors leading-snug">
+                      <a href={`/posts/${slug}/`}>{post.data.title}</a>
+                    </h2>
+                    <p class="text-xs sm:text-sm leading-relaxed text-brand-content/90 line-clamp-3">
+                      {summary}...
+                    </p>
+                  </div>
+
+                  <div class="pt-3 border-t border-brand-border/40">
+                    <a 
+                      href={`/posts/${slug}/`} 
+                      class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-brand-steel group-hover:text-brand-dark transition-colors"
+                    >
+                      Vollständigen Bericht lesen <ArrowRight class="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </a>
+                  </div>
+                </div>
+
+              </article>
+            );
+          })}
+        </div>
+      )}
+
+      {/* Pagination Bar */}
+      {page.lastPage > 1 && (
+        <nav class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-brand-border/60" aria-label="Seitennavigation">
+          
+          <div>
+            {page.url.prev ? (
+              <a 
+                href={page.url.prev} 
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-brand bg-white hover:bg-slate-100 text-brand-steel hover:text-brand-dark border border-brand-border/80 font-bold text-sm transition-colors shadow-sm"
+              >
+                <ChevronLeft class="w-4 h-4" /> Vorherige Seite
+              </a>
+            ) : (
+              <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-brand bg-slate-50 text-slate-300 border border-brand-border/40 font-bold text-sm cursor-not-allowed">
+                <ChevronLeft class="w-4 h-4" /> Vorherige Seite
+              </span>
+            )}
+          </div>
+
+          <div class="text-xs font-bold text-brand-muted uppercase tracking-wider">
+            Seite {page.currentPage} von {page.lastPage} ({page.total} Berichte)
+          </div>
+
+          <div>
+            {page.url.next ? (
+              <a 
+                href={page.url.next} 
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-brand bg-white hover:bg-slate-100 text-brand-steel hover:text-brand-dark border border-brand-border/80 font-bold text-sm transition-colors shadow-sm"
+              >
+                Nächste Seite <ChevronRight class="w-4 h-4" />
+              </a>
+            ) : (
+              <span class="inline-flex items-center gap-2 px-5 py-2.5 rounded-brand bg-slate-50 text-slate-300 border border-brand-border/40 font-bold text-sm cursor-not-allowed">
+                Nächste Seite <ChevronRight class="w-4 h-4" />
+              </span>
+            )}
+          </div>
+
+        </nav>
+      )}
+
+    </div>
+
+  </div>
+
+</Layout>

@@ -2,7 +2,7 @@
 title: "Vollsperrung der B279 ab 2. März"
 date: 2026-03-01T08:14:22
 draft: false
-categories: ['Uncategorized']
+categories: ['Schießstände & Termine']
 ---
 
 Die Bundesstraße 279 ist ab Montag, 2. März, bis voraussichtlich Mittwoch, 2. April, zwischen Eichenzell-Döllbach und Ebersburg-Thalau in beide Fahrtrichtungen voll gesperrt. 

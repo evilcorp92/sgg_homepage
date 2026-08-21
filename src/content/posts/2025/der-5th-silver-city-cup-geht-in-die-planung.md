@@ -2,7 +2,7 @@
 title: "Der 5th Silver City Cup geht in die Planung!"
 date: 2025-07-17T15:18:26
 draft: false
-categories: ['Uncategorized']
+categories: ['Western & Feste']
 ---
 
 [![](https://www.sg-gersfeld.de/wp-content/uploads/2025/07/K1600_PXL_20220530_084650103-1024x771.webp)](https://www.sg-gersfeld.de/wp-content/uploads/2025/07/K1600_PXL_20220530_084650103.webp)

@@ -2,7 +2,7 @@
 title: "Renaissance der Sportpistole Kleinkaliber"
 date: 2026-04-28T08:07:59
 draft: false
-categories: ['Uncategorized']
+categories: ['Sport & Wettkämpfe']
 ---
 
 Die DSB-Disziplin Kleinkaliber-Sportpistole erfreut sich in unserem Verein seit 2025 wieder wachsender Beliebtheit. Das Kaliber .22 lfb erlebt bei uns eine echte Renaissance: Immer mehr Mitglieder entdecken diese traditionsreiche und zugleich anspruchsvolle Disziplin für sich.

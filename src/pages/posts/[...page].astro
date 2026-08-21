@@ -9,7 +9,7 @@ export async function getStaticPaths({ paginate }) {
     .filter(post => !post.data.draft)
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   
-  return paginate(sortedPosts, { pageSize: 6 });
+  return paginate(sortedPosts, { pageSize: 9 });
 }
 
 const { page } = Astro.props;
@@ -66,7 +66,41 @@ const getCleanSummary = (body: string) => {
     </header>
 
     {/* Articles Grid Container */}
-    <div class="max-w-7xl mx-auto px-6 mt-16 space-y-16">
+    <div class="max-w-7xl mx-auto px-6 mt-12 space-y-12">
+      
+      {/* Category Filter Navigation */}
+      <div class="flex items-center justify-center gap-2 flex-wrap pb-4">
+        <a 
+          href="/posts/" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-extrabold bg-brand-dark text-white shadow-sm transition-all"
+        >
+          Alle
+        </a>
+        <a 
+          href="/posts/kategorie/sport/" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 transition-all shadow-2xs flex items-center gap-1.5"
+        >
+          🏆 Sport & Wettkämpfe
+        </a>
+        <a 
+          href="/posts/kategorie/verein/" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 transition-all shadow-2xs flex items-center gap-1.5"
+        >
+          📢 Vereinsleben & Vorstand
+        </a>
+        <a 
+          href="/posts/kategorie/staende/" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 transition-all shadow-2xs flex items-center gap-1.5"
+        >
+          🛠️ Schießstände & Termine
+        </a>
+        <a 
+          href="/posts/kategorie/western/" 
+          class="px-4 py-2 rounded-full text-xs sm:text-sm font-bold text-slate-600 bg-white hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 transition-all shadow-2xs flex items-center gap-1.5"
+        >
+          🤠 Western & Feste
+        </a>
+      </div>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {page.data.map(post => {

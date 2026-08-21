@@ -2,7 +2,7 @@
 title: "Vereinsnachrichten 2021-7"
 date: 2021-04-25T15:05:02
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 ### Änderung der Anzahl der Schießteilnehmer pro Stand

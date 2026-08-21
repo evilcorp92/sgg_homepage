@@ -2,7 +2,7 @@
 title: "Reparaturarbeiten am 25 m-Stand"
 date: 2023-10-10T10:49:49
 draft: false
-categories: ['Vereinsnachrichten']
+categories: ['Schießstände & Termine']
 ---
 
 Aufgrund von dringend notwendigen Reparaturarbeiten ist der 25 m-Stand vorerst gesperrt!

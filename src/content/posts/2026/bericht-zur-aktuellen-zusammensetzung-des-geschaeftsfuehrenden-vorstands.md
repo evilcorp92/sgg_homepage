@@ -2,7 +2,7 @@
 title: "Bericht zur aktuellen Zusammensetzung des geschäftsführenden Vorstands"
 date: 2026-05-08T10:25:57
 draft: false
-categories: ['Uncategorized']
+categories: ['Vereinsleben & Vorstand']
 ---
 
 Der Gesamtvorstand bedankt sich zunächst ausdrücklich beim bisherigen 1. Vorsitzenden Martin Reus für seine geleistete Arbeit. Er hat den Verein in verantwortlicher Funktion begleitet und sich für die Belange des Vereins eingesetzt. Wir wünschen ihm und seiner Familie alles Gute und freuen uns auf die weitere gemeinsame Vereinsarbeit in anderer Funktion.
