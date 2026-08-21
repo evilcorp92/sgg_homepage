@@ -10,11 +10,37 @@ const MENU_ITEMS = [
     icon: <Users className="w-4 h-4" />,
     url: '/verein/',
     children: [
+      { name: 'Über uns (Geschichte & Tradition)', url: '/verein/' },
       { name: 'Schießzeiten', url: '/verein/schiesszeiten/' },
-      { name: 'Mitglied werden', url: '/verein/mitglied-werden/' },
-      { name: 'Kosten', url: '/verein/kosten/' },
-      { name: 'Satzung', url: '/verein/satzung/' },
-      { name: 'Vorstand', url: '/verein/vorstand/' },
+      { name: 'Mitglied werden & Kosten', url: '/verein/mitglied-werden/' },
+      { name: 'Vorstand & Ansprechpartner', url: '/verein/vorstand/' },
+      { name: 'Satzung & Ordnungen', url: '/verein/satzung/' },
+      { name: 'Dienstplan (Standaufsichten)', url: 'https://dp.sg-gersfeld.de/' },
+      { name: 'easyVerein Portal', url: '/easyverein/' },
+    ]
+  },
+  {
+    name: 'Sport',
+    icon: <Target className="w-4 h-4" />,
+    url: '/abteilungen/',
+    children: [
+      { name: 'Alle Abteilungen (Übersicht)', url: '/abteilungen/' },
+      { name: 'DSB (Präzision & KK)', url: '/abteilungen/dsb/' },
+      { name: 'BDS (Großkaliber & Speed)', url: '/abteilungen/bds/' },
+      { name: 'IPSC (Dynamic Shooting)', url: '/abteilungen/ipsc/' },
+      { name: 'Western & Vorderlader', url: '/abteilungen/western/' },
+      { name: 'Bogensport', url: '/abteilungen/bogen/' },
+      { name: 'Ergebnisse & Listen', url: '/ergebnisse/' },
+    ]
+  },
+  {
+    name: 'Termine',
+    icon: <Calendar className="w-4 h-4" />,
+    url: '/termine/',
+    children: [
+      { name: 'Vereinskalender (Alle Termine)', url: '/termine/' },
+      { name: 'Arbeitseinsätze', url: '/termine/arbeitseinsaetze/' },
+      { name: 'Dienstplan', url: 'https://dp.sg-gersfeld.de/' },
     ]
   },
   {
@@ -23,57 +49,20 @@ const MENU_ITEMS = [
     url: '/posts/'
   },
   {
-    name: 'Abteilungen',
-    icon: <Target className="w-4 h-4" />,
-    url: '/abteilungen/',
-    children: [
-      { name: 'DSB', url: '/abteilungen/dsb/' },
-      { name: 'BDS', url: '/abteilungen/bds/' },
-      { name: 'IPSC', url: '/abteilungen/ipsc/' },
-      { name: 'Western', url: '/abteilungen/western/' },
-      { name: 'Bogen', url: '/abteilungen/bogen/' },
-    ]
-  },
-  {
     name: 'Fotos',
     icon: <Image className="w-4 h-4" />,
     url: '/fotos/',
     children: [
-      { name: 'Alle Alben', url: '/fotos/' },
-      { name: 'Gebäude', url: '/fotos/gebaeude/' },
+      { name: 'Alle Fotoalben', url: '/fotos/' },
+      { name: 'Events & Feste', url: '/fotos/events/' },
+      { name: 'Gebäude & Westernstadt', url: '/fotos/gebaeude/' },
       { name: 'Schießstände', url: '/fotos/schiessstaende/' },
-      { name: 'Events', url: '/fotos/events/' },
     ]
-  },
-  {
-    name: 'Termine',
-    icon: <Calendar className="w-4 h-4" />,
-    url: '/termine/'
   },
   {
     name: 'Kontakt',
     icon: <Mail className="w-4 h-4" />,
     url: '/kontakt/'
-  },
-  {
-    name: 'Ergebnisse',
-    icon: <Trophy className="w-4 h-4" />,
-    url: '/ergebnisse/',
-    children: [
-      { name: 'Alle Ergebnisse (Übersicht)', url: '/ergebnisse/' },
-      { name: 'GK Pokalrunde', url: '/ergebnisse/#gkp' },
-      { name: 'IPSC Matches & VM', url: '/ergebnisse/#ipsc' },
-      { name: 'Königsschießen', url: '/ergebnisse/#koenig' },
-    ]
-  },
-  {
-    name: 'Mitglieder',
-    icon: <Laptop className="w-4 h-4" />,
-    url: '/easyverein/',
-    children: [
-      { name: 'Dienstplan', url: 'https://dp.sg-gersfeld.de/' },
-      { name: 'easyVerein', url: '/easyverein/' },
-    ]
   }
 ];
 
@@ -111,18 +100,18 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-brand-border/50">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-brand-border/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2">
         
-        {/* Brand Logo */}
-        <a href="/" className="flex items-center gap-2 group transition-transform duration-200 hover:scale-[1.01]">
-          <span className="font-extrabold text-lg sm:text-xl text-brand-dark tracking-tight">
+        {/* Brand Logo - Fixed whitespace & shrink */}
+        <a href="/" className="flex items-center gap-2 group transition-transform duration-200 hover:scale-[1.01] shrink-0">
+          <span className="font-extrabold text-base sm:text-lg lg:text-xl text-brand-dark tracking-tight whitespace-nowrap">
             SG Gersfeld 1813 e.V.
           </span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1">
           {MENU_ITEMS.map((item, index) => {
             const hasChildren = !!item.children;
             const isExternal = item.url?.startsWith('http');
@@ -137,7 +126,7 @@ export default function Header() {
                   href={item.url} 
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener noreferrer" : undefined}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-brand-steel hover:text-brand-dark hover:bg-brand-steel/5 transition-all duration-200 ${hasChildren ? 'pr-2' : ''}`}
+                  className={`flex items-center gap-1.5 px-2.5 xl:px-3 py-2 rounded-lg text-xs xl:text-sm font-semibold text-brand-steel hover:text-brand-dark hover:bg-brand-steel/5 transition-all duration-200 ${hasChildren ? 'pr-1.5 xl:pr-2' : ''}`}
                 >
                   {item.icon}
                   <span>{item.name}</span>
@@ -147,7 +136,7 @@ export default function Header() {
                 {/* Dropdown Menu */}
                 {hasChildren && activeDropdown === index && (
                   <div 
-                    className="absolute top-full left-0 pt-2 w-56 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
+                    className="absolute top-full left-0 pt-2 w-64 z-50 animate-in fade-in slide-in-from-top-1 duration-150"
                     onMouseEnter={() => handleMouseEnter(index)}
                     onMouseLeave={() => handleMouseLeave()}
                   >
@@ -160,7 +149,7 @@ export default function Header() {
                             href={child.url}
                             target={isChildExternal ? "_blank" : undefined}
                             rel={isChildExternal ? "noopener noreferrer" : undefined}
-                            className="px-4 py-2.5 text-sm font-medium text-brand-steel hover:text-brand-dark hover:bg-brand-bg transition-colors duration-150 flex items-center justify-between"
+                            className="px-4 py-2.5 text-xs xl:text-sm font-medium text-brand-steel hover:text-brand-dark hover:bg-brand-bg transition-colors duration-150 flex items-center justify-between"
                           >
                             <span>{child.name}</span>
                             {isChildExternal && <ExternalLink className="w-3.5 h-3.5 opacity-50" />}
@@ -177,7 +166,7 @@ export default function Header() {
           {/* Search Trigger Button (Desktop) */}
           <button
             onClick={() => setSearchOpen(true)}
-            className="flex items-center gap-2 px-3 py-1.5 ml-2 rounded-lg text-xs font-semibold text-brand-steel bg-slate-100 hover:bg-slate-200/80 hover:text-brand-dark transition-all border border-slate-200/60 shadow-2xs cursor-pointer"
+            className="flex items-center gap-1.5 xl:gap-2 px-2.5 xl:px-3 py-1.5 ml-1 xl:ml-2 rounded-lg text-xs font-semibold text-brand-steel bg-slate-100 hover:bg-slate-200/80 hover:text-brand-dark transition-all border border-slate-200/60 shadow-2xs cursor-pointer shrink-0"
             aria-label="Homepage durchsuchen (Strg+K)"
             title="Suche öffnen (Strg+K)"
           >
