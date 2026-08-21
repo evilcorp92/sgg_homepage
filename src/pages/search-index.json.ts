@@ -213,9 +213,10 @@ export const GET: APIRoute = async () => {
 
   items.push(...staticPages);
 
-  // 2. All 174 News Posts
+  // 2. All 174 News Posts (Use clean URL slug without year folder)
   const posts = await getCollection('posts', ({ data }) => !data.draft);
   for (const post of posts) {
+    const cleanSlug = post.slug.replace(/^.*\//, '');
     const plainBody = (post.body || '')
       .replace(/!\[.*?\]\(.*?\)/g, '')
       .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
@@ -229,9 +230,9 @@ export const GET: APIRoute = async () => {
     const cat = (post.data.categories && post.data.categories[0]) || 'News';
 
     items.push({
-      id: `post-${post.slug}`,
+      id: `post-${cleanSlug}`,
       title: post.data.title,
-      url: `/posts/${post.slug}/`,
+      url: `/posts/${cleanSlug}/`,
       category: `News: ${cat}`,
       description: snippet || 'Bericht und Vereinsnachricht der Schützengesellschaft Gersfeld 1813 e.V.',
       keywords: `${post.data.title} ${cat} ${(post.data.tags || []).join(' ')} ${plainBody.slice(0, 500)}`,
