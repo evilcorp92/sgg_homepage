@@ -82,10 +82,10 @@ export const KASSENPRUEFER: Kassenpruefer[] = [
 ];
 
 export const KOENIGSFAMILIE: Koenig[] = [
-  { titel: 'König', vorname: 'Christoph', nachname: 'Grösch' },
-  { titel: '1. Ritter', vorname: 'Benjamin', nachname: 'Knüttel' },
-  { titel: '2. Ritter', vorname: 'Viktor', nachname: 'Kisilenko' },
-  { titel: 'Jugendkönig', vorname: 'Rudi', nachname: 'Graf' },
+  { titel: 'König', vorname: 'Thorsten', nachname: 'Schneider' },
+  { titel: '1. Ritter', vorname: 'Wolfgang', nachname: 'Müller' },
+  { titel: '2. Ritter', vorname: 'Fanel', nachname: 'Zamfiroiu' },
+  { titel: 'Jugendkönig', vorname: 'Marvin', nachname: 'Sommerhoff' },
 ];
 
 export const BDS_VORSTAND: BdsBoardMember[] = [
