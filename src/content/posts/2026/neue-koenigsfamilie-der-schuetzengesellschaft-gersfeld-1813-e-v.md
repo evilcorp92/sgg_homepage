@@ -5,7 +5,7 @@ draft: false
 categories: ['Sport & Wettkämpfe']
 ---
 
-![Neue Königsfamilie 2026 der Schützengesellschaft Gersfeld 1813 e.V.](/wp-content/uploads/2026/08/koenigsfamilie-2026-sg-gersfeld.jpeg)
+![Neue Königsfamilie 2026 der Schützengesellschaft Gersfeld 1813 e.V.](/wp-content/uploads/2026/08/koenigsfamilie-2026-sg-gersfeld.webp)
 
 Im Rahmen unseres Sommerfestes am 22. August 2026 fand die traditionelle Königsproklamation der Schützengesellschaft Gersfeld 1813 e.V. statt.
 
@@ -17,11 +17,11 @@ Ihm zur Seite stehen:
 
 Auch bei der Schützenjugend erfolgte der Wechsel: Rudi Graf gab die Jugendkönigswürde ab. Neuer Jugendkönig ist **Marvin Sommerhoff**.
 
-![Jugendkönig Marvin Sommerhoff und bisheriger Jugendkönig Rudi Graf bei der Königsproklamation](/wp-content/uploads/2026/08/jugendkoenig-2026-marvin-sommerhoff.jpeg)
+![Jugendkönig Marvin Sommerhoff und bisheriger Jugendkönig Rudi Graf bei der Königsproklamation](/wp-content/uploads/2026/08/jugendkoenig-2026-marvin-sommerhoff.webp)
 
 Wir gratulieren unserem neuen Schützenkönig, dem Jugendkönig sowie den beiden Rittern ganz herzlich und wünschen ihnen ein schönes und erfolgreiches Königsjahr. Ein herzliches Dankeschön gilt zugleich Christoph Grösch und Rudi Graf für ihre Zeit als Schützen- beziehungsweise Jugendkönig.
 
-![Königsscheibe 2026 – Schützenkönig Thorsten Schneider](/wp-content/uploads/2026/08/ehrenscheibe-schuetzenkoenig-2026-thorsten-schneider.jpeg)
+![Königsscheibe 2026 – Schützenkönig Thorsten Schneider](/wp-content/uploads/2026/08/ehrenscheibe-schuetzenkoenig-2026-thorsten-schneider.webp)
 
 ---
 

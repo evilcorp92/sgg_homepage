@@ -42,7 +42,14 @@ const getCleanSummary = (body: string) => {
   
   <!-- 1. Stunning Hero Section -->
   <section class="relative min-h-[550px] flex items-center justify-center bg-slate-950 overflow-hidden py-24 px-6 text-center">
-    <div class="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-45 select-none pointer-events-none scale-105" style="background-image: url('/images/hero-schiessstand.jpg');"></div>
+    <img 
+      src="/images/hero-schiessstand.webp" 
+      alt="Schießstand der SG Gersfeld" 
+      fetchpriority="high" 
+      loading="eager" 
+      decoding="async" 
+      class="absolute inset-0 w-full h-full object-cover opacity-45 select-none pointer-events-none scale-105"
+    />
     <div class="absolute inset-0 bg-gradient-to-b from-slate-950/70 via-slate-950/60 to-slate-950/90 pointer-events-none"></div>
     
     <div class="relative max-w-4xl mx-auto z-10 space-y-6">
@@ -68,7 +75,7 @@ const getCleanSummary = (body: string) => {
 
   <!-- Live Widget: Nächste Schießzeit & Live-Status -->
   <section class="relative -mt-12 z-20 max-w-5xl mx-auto px-6 mb-8">
-    <LiveStatusHero client:load />
+    <LiveStatusHero client:visible />
   </section>
 
   <!-- 2. Welcome Section -->
@@ -98,9 +105,13 @@ const getCleanSummary = (body: string) => {
       <div class="relative group">
         <div class="absolute -inset-2 bg-gradient-to-tr from-brand-steel/10 to-brand-muted/10 rounded-brand-lg blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500"></div>
         <img 
-          src="/images/schuetzenhaus-gersfeld.jpg" 
+          src="/images/schuetzenhaus-gersfeld.webp" 
           alt="Schützenhaus Gersfeld"
-          class="relative w-full h-auto rounded-brand-lg border border-brand-border/60 shadow-lg"
+          loading="lazy"
+          decoding="async"
+          width="800"
+          height="533"
+          class="relative w-full h-auto rounded-brand-lg border border-brand-border/60 shadow-lg object-cover"
         />
       </div>
     </div>
@@ -200,6 +211,7 @@ const getCleanSummary = (body: string) => {
         <iframe 
           src="https://www.youtube-nocookie.com/embed/gRcAN3tkrT4" 
           title="Schützengesellschaft Gersfeld 1813 e.V. Vorstellung" 
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
           allowfullscreen
           class="w-full h-full border-0"
@@ -236,9 +248,12 @@ const getCleanSummary = (body: string) => {
                 <img 
                   src={thumbnail} 
                   alt={post.data.title}
-                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  width="600"
+                  height="375"
                   loading="lazy"
-                  onerror="this.src='/images/schuetzenhaus-gersfeld.jpg'"
+                  decoding="async"
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                  onerror="this.src='/images/schuetzenhaus-gersfeld.webp'"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                 {category && (
