@@ -5,8 +5,12 @@ draft: false
 categories: ['Schießstände & Termine']
 ---
 
-Unsere Vereinsmitglieder Fanel und Marius haben heute die Randsteine für die Pflasterarbeiten vor unserer Cantina gesetzt und sämtliche vorbereitenden Arbeiten durchgeführt. Auch die Randsteine und Fahrzeuge wurden von Vereinsmitgliedern kostenlos zur Verfügung gestellt. Vielen Dank an alle Beteiligten für die Unterstützung!
+Unsere Vereinsmitglieder **Fanel und Marius** haben heute die Randsteine für die Pflasterarbeiten vor unserer Cantina gesetzt und sämtliche vorbereitenden Arbeiten durchgeführt. 
 
-[![](https://sg-gersfeld.de/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-4.56.10-PM-1-300x225.jpeg)](https://sg-gersfeld.de/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-4.56.10-PM-1.jpeg)
+Auch die Randsteine und Fahrzeuge wurden von Vereinsmitgliedern **kostenlos zur Verfügung gestellt**. 
 
-[![](https://sg-gersfeld.de/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-4.56.10-PM-300x225.jpeg)](https://sg-gersfeld.de/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-4.56.10-PM.jpeg)
+*Vielen Dank an alle Beteiligten für die tatkräftige Unterstützung!*
+
+![Vorbereitung und Randsteine an der Cantina](/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-4.56.10-PM-1-300x225.jpeg)
+
+![Arbeiten am Vorplatz der Cantina](/wp-content/uploads/2026/05/WhatsApp-Image-2026-05-15-at-4.56.10-PM-300x225.jpeg)
