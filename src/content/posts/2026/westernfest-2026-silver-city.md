@@ -40,3 +40,8 @@ Ein Fest dieser Größenordnung ist nur durch den unermüdlichen Einsatz vieler 
 Wir freuen uns schon jetzt auf das nächste Wiedersehen in der Silver City!
 
 ![Gemütliches Beisammensein im überdachten Pavillon](/wp-content/uploads/2026/06/westernfest-2026-ueberdachter-pavillon.webp)
+
+---
+
+👉 **Tipp:** Viele weitere Bilder und Eindrücke vom Festwochenende findet ihr in unserem [Fotoalbum: Westernfest 2026](/fotos/events/#westernfest-2026) mit Diashow-Funktion!
+

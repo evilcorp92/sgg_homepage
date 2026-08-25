@@ -1,6 +1,79 @@
 {
   "events": [
     {
+      "id": "westernfest-2026",
+      "title": "Westernfest Juni 2026",
+      "subtitle": "213 Jahre SG Gersfeld in Silver City",
+      "date": "Juni 2026",
+      "description": "Drei Tage Westernatmosphäre in Silver City zum 213. Vereinsgeburtstag: Livemusik von Cool Country, Linedance, Rodeo-Bullriding, Cantina-Küche und gemütliche Abende am Lagerfeuer.",
+      "cover": "/wp-content/uploads/2026/06/westernfest-2026-livemusik-cool-country.webp",
+      "coverThumb": "/wp-content/uploads/2026/06/westernfest-2026-livemusik-cool-country-thumb.webp",
+      "images": [
+        "/wp-content/uploads/2026/06/westernfest-2026-livemusik-cool-country.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-abendstimmung-lagerfeuer.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-bullriding-action.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-linedance-gruppe.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-cantina-grillteam.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-pavillon-sitzbereich.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-silver-city-gelaende.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-festplatz-besucher.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-bullriding-arena.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-fruehstuecksbuffet.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-tombola-schiesspreise.webp",
+        "/wp-content/uploads/2026/06/westernfest-2026-plakat-programm.webp"
+      ],
+      "photos": [
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-livemusik-cool-country.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-livemusik-cool-country-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-abendstimmung-lagerfeuer.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-abendstimmung-lagerfeuer-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-bullriding-action.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-bullriding-action-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-linedance-gruppe.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-linedance-gruppe-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-cantina-grillteam.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-cantina-grillteam-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-pavillon-sitzbereich.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-pavillon-sitzbereich-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-silver-city-gelaende.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-silver-city-gelaende-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-festplatz-besucher.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-festplatz-besucher-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-bullriding-arena.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-bullriding-arena-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-fruehstuecksbuffet.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-fruehstuecksbuffet-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-tombola-schiesspreise.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-tombola-schiesspreise-thumb.webp"
+        },
+        {
+          "full": "/wp-content/uploads/2026/06/westernfest-2026-plakat-programm.webp",
+          "thumb": "/wp-content/uploads/2026/06/westernfest-2026-plakat-programm-thumb.webp"
+        }
+      ]
+    },
+    {
       "id": "westernfest-2025-freitag",
       "title": "Westernfest Juni 2025 (Freitag)",
       "subtitle": "Eröffnung & Country-Abend",
