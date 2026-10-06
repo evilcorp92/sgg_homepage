@@ -97,7 +97,6 @@ export const BDS_VORSTAND: BdsBoardMember[] = [
 
 export const BDS_ROS: RangeOfficer[] = [
   { vorname: 'Björn', nachname: 'Böhlke' },
-  { vorname: 'Peter', nachname: 'Hoffmann' },
   { vorname: 'Markus', nachname: 'Müller' },
   { vorname: 'Matthias', nachname: 'Müller' },
   { vorname: 'Carsten', nachname: 'Richter' },
