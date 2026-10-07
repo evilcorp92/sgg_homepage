@@ -2,17 +2,124 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCalendarEvents, type CalendarEvent } from '../../data/calendar';
 import { 
-  Calendar as CalendarIcon, Clock, Filter, ExternalLink, Download, Hammer, Users, Trophy, ShieldCheck, MapPin, Search 
+  Calendar as CalendarIcon, Clock, Filter, ExternalLink, Download, Hammer, Users, Trophy, ShieldCheck, MapPin, Search, CalendarRange 
 } from 'lucide-react';
 
 const allEvents = await getCalendarEvents();
 
-// Filter strictly for upcoming events (not in the past) and sort chronologically ascending
+// Filter strictly for upcoming and ongoing events, sort chronologically ascending
 const now = new Date();
 const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
 
+const getEventDisplayDetails = (e: CalendarEvent, todayMidnight: number) => {
+  const start = e.startDate;
+  let inclusiveEnd = e.endDate ? new Date(e.endDate.getTime()) : new Date(start.getTime());
+  let durationDays = 1;
+  let isMultiDay = false;
+
+  if (e.isAllDay) {
+    if (e.endDate) {
+      // In RFC 5545, all-day DTEND is exclusive
+      const diffMs = e.endDate.getTime() - start.getTime();
+      const rawDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+      if (rawDays > 1) {
+        durationDays = rawDays;
+        isMultiDay = true;
+        // Last inclusive calendar day is endDate minus 12 hours (previous calendar day)
+        inclusiveEnd = new Date(e.endDate.getTime() - 12 * 60 * 60 * 1000);
+      } else {
+        durationDays = 1;
+        isMultiDay = false;
+        inclusiveEnd = new Date(start.getTime());
+      }
+    }
+  } else {
+    if (e.endDate) {
+      const startMidnight = new Date(start.getFullYear(), start.getMonth(), start.getDate()).getTime();
+      const endMidnight = new Date(e.endDate.getFullYear(), e.endDate.getMonth(), e.endDate.getDate()).getTime();
+      const dayDiff = Math.round((endMidnight - startMidnight) / (1000 * 60 * 60 * 24)) + 1;
+      if (dayDiff > 1) {
+        durationDays = dayDiff;
+        isMultiDay = true;
+        inclusiveEnd = e.endDate;
+      }
+    }
+  }
+
+  // Format month & day for the date tile
+  const startMonthStr = start.toLocaleDateString('de-DE', { month: 'short' }).replace('.', '').toUpperCase();
+  const endMonthStr = inclusiveEnd.toLocaleDateString('de-DE', { month: 'short' }).replace('.', '').toUpperCase();
+  
+  let badgeMonth = startMonthStr;
+  let badgeDay = String(start.getDate());
+
+  if (isMultiDay) {
+    const pad = (n: number) => String(n).padStart(2, '0');
+    if (durationDays > 7) {
+      badgeMonth = start.getMonth() === inclusiveEnd.getMonth() ? startMonthStr : `${startMonthStr}/${endMonthStr}`;
+      badgeDay = `${start.getDate()}.+`;
+    } else if (start.getMonth() === inclusiveEnd.getMonth()) {
+      badgeDay = `${pad(start.getDate())}–${pad(inclusiveEnd.getDate())}`;
+    } else {
+      badgeMonth = `${startMonthStr}/${endMonthStr}`;
+      badgeDay = `${pad(start.getDate())}.–${pad(inclusiveEnd.getDate())}.`;
+    }
+  }
+
+  // Format Date Range
+  const formatSingleDate = (d: Date) => d.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
+  let dateRangeStr = formatSingleDate(start);
+
+  if (isMultiDay) {
+    dateRangeStr = `${formatSingleDate(start)} – ${formatSingleDate(inclusiveEnd)}`;
+  }
+
+  // Format Time
+  let timeStr = '';
+  const formatTimeOnly = (d: Date) => d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
+  if (e.isAllDay) {
+    timeStr = isMultiDay ? `Ganztägig · ${durationDays} Tage` : 'Ganztägig';
+  } else {
+    if (isMultiDay) {
+      const startWd = start.toLocaleDateString('de-DE', { weekday: 'short' });
+      const endWd = inclusiveEnd.toLocaleDateString('de-DE', { weekday: 'short' });
+      timeStr = `${startWd}, ${formatTimeOnly(start)} – ${endWd}, ${formatTimeOnly(inclusiveEnd)}`;
+    } else if (e.endDate && e.endDate.getTime() > start.getTime()) {
+      timeStr = `${formatTimeOnly(start)} – ${formatTimeOnly(e.endDate)}`;
+    } else {
+      timeStr = formatTimeOnly(start);
+    }
+  }
+
+  const startDayTime = new Date(start.getFullYear(), start.getMonth(), start.getDate()).getTime();
+  const endDayTime = new Date(inclusiveEnd.getFullYear(), inclusiveEnd.getMonth(), inclusiveEnd.getDate()).getTime();
+  const isCurrentlyRunning = (startDayTime <= todayMidnight && endDayTime >= todayMidnight && isMultiDay);
+  
+  let currentDayNumber: number | undefined = undefined;
+  if (isCurrentlyRunning) {
+    const elapsedDays = Math.round((todayMidnight - startDayTime) / (1000 * 60 * 60 * 24)) + 1;
+    currentDayNumber = Math.min(Math.max(elapsedDays, 1), durationDays);
+  }
+
+  return {
+    isMultiDay,
+    durationDays,
+    inclusiveEnd,
+    badgeMonth,
+    badgeDay,
+    dateRangeStr,
+    timeStr,
+    isCurrentlyRunning,
+    currentDayNumber
+  };
+};
+
 const upcomingEvents = allEvents
-  .filter(e => e.startDate.getTime() >= todayStart)
+  .filter(e => {
+    const timing = getEventDisplayDetails(e, todayStart);
+    const endDayTime = new Date(timing.inclusiveEnd.getFullYear(), timing.inclusiveEnd.getMonth(), timing.inclusiveEnd.getDate()).getTime();
+    return endDayTime >= todayStart;
+  })
   .sort((a, b) => a.startDate.getTime() - b.startDate.getTime());
 
 // Count for each category
@@ -20,15 +127,6 @@ const allgemeinCount = upcomingEvents.filter(e => e.category === 'Allgemein').le
 const vorstandCount = upcomingEvents.filter(e => e.summary.toLowerCase().includes('vorstandssitzung') || e.category === 'Vorstandssitzung').length;
 const meisterschaftCount = upcomingEvents.filter(e => /\b(vm|bm|lm)\b|meisterschaft/i.test(e.summary) || e.category === 'Meisterschaft').length;
 const arbeitseinsatzCount = upcomingEvents.filter(e => e.summary.toLowerCase().includes('arbeitseinsatz') || e.category === 'Arbeitseinsatz').length;
-
-const formatDate = (date: Date) => {
-  return date.toLocaleDateString('de-DE', { weekday: 'short', day: '2-digit', month: '2-digit', year: 'numeric' });
-};
-
-const formatTime = (date: Date, isAllDay: boolean) => {
-  if (isAllDay) return 'Ganztägig';
-  return date.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' }) + ' Uhr';
-};
 
 const CALENDAR_EMBED_URL = "https://calendar.google.com/calendar/embed?src=9edol05k9ov7vnr7o9idllguk0%40group.calendar.google.com&ctz=Europe%2FBerlin&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=1&showCalendars=0&showTz=0";
 const GOOGLE_CALENDAR_ADD_URL = "https://calendar.google.com/calendar/u/0?cid=OWVkb2wwNWs5b3Y3dm5yN285aWRsbGd1azBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ";
@@ -140,6 +238,7 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
         <div class="space-y-3" id="eventsList">
           {upcomingEvents.length > 0 ? (
             upcomingEvents.map((e) => {
+              const timing = getEventDisplayDetails(e, todayStart);
               const isInitiallyVisible = e.category === 'Allgemein';
               return (
                 <div 
@@ -150,24 +249,26 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
                   data-location={e.location.toLowerCase()}
                 >
                   {/* Date & Time Column */}
-                  <div class="flex items-center gap-4 min-w-[200px] border-b md:border-b-0 md:border-r border-brand-border/40 pb-3 md:pb-0 md:pr-4">
-                    <div class="w-12 h-12 rounded-xl bg-brand-dark text-white flex flex-col items-center justify-center shrink-0 font-extrabold shadow-sm">
-                      <span class="text-xs uppercase leading-none">{e.startDate.toLocaleDateString('de-DE', { month: 'short' })}</span>
-                      <span class="text-base leading-tight">{e.startDate.getDate()}</span>
+                  <div class="flex items-center gap-4 min-w-[210px] md:min-w-[240px] border-b md:border-b-0 md:border-r border-brand-border/40 pb-3 md:pb-0 md:pr-4">
+                    <div class="w-14 sm:w-16 h-14 rounded-xl bg-brand-dark text-white flex flex-col items-center justify-center shrink-0 font-extrabold shadow-sm px-1 text-center select-none">
+                      <span class="text-[10px] sm:text-xs uppercase leading-none tracking-wider text-slate-300 font-bold">{timing.badgeMonth}</span>
+                      <span class={`font-black leading-tight mt-0.5 ${timing.badgeDay.length > 4 ? 'text-[11px] sm:text-xs tracking-tighter' : timing.badgeDay.length > 2 ? 'text-xs sm:text-sm tracking-tighter' : 'text-base sm:text-lg'}`}>
+                        {timing.badgeDay}
+                      </span>
                     </div>
                     <div class="space-y-0.5">
                       <span class="font-extrabold text-sm text-brand-dark block">
-                        {formatDate(e.startDate)}
+                        {timing.dateRangeStr}
                       </span>
                       <span class="text-xs text-brand-muted flex items-center gap-1 font-medium">
-                        <Clock class="w-3 h-3 text-brand-steel" /> {formatTime(e.startDate, e.isAllDay)}
+                        <Clock class="w-3.5 h-3.5 text-brand-steel shrink-0" /> {timing.timeStr}
                       </span>
                     </div>
                   </div>
 
                   {/* Event Details */}
                   <div class="space-y-1.5 flex-grow">
-                    <div class="flex items-center gap-2">
+                    <div class="flex flex-wrap items-center gap-2">
                       <span class={`text-xs font-bold px-2.5 py-0.5 rounded-full ${
                         e.category === 'Vorstandssitzung' ? 'bg-blue-100 text-blue-800' :
                         (e.category === 'Meisterschaft' || e.category === 'Vereinsmeisterschaft') ? 'bg-amber-100 text-amber-800' :
@@ -176,6 +277,20 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
                       }`}>
                         {e.category}
                       </span>
+
+                      {timing.isMultiDay && (
+                        <span class="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/60">
+                          <CalendarRange class="w-3 h-3 text-indigo-500" />
+                          {timing.durationDays} Tage
+                        </span>
+                      )}
+
+                      {timing.isCurrentlyRunning && (
+                        <span class="inline-flex items-center gap-1.5 text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-500 text-white shadow-xs animate-pulse">
+                          <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                          Findet heute statt (Tag {timing.currentDayNumber} von {timing.durationDays})
+                        </span>
+                      )}
                     </div>
                     <h3 class="text-base font-extrabold text-brand-dark">
                       {e.summary}
@@ -334,11 +449,104 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
         const months = ['Jan.', 'Feb.', 'März', 'Apr.', 'Mai', 'Juni', 'Juli', 'Aug.', 'Sept.', 'Okt.', 'Nov.', 'Dez.'];
         const days = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
 
+        const todayMidnight = new Date();
+        todayMidnight.setHours(0, 0, 0, 0);
+        const todayStartMs = todayMidnight.getTime();
+
+        const formatSingleDate = (d) => {
+          const days = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
+          return `${days[d.getDay()]}, ${String(d.getDate()).padStart(2, '0')}.${String(d.getMonth() + 1).padStart(2, '0')}.${d.getFullYear()}`;
+        };
+
+        const formatTimeOnly = (d) => `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')} Uhr`;
+        const monthsShort = ['JAN', 'FEB', 'MÄRZ', 'APR', 'MAI', 'JUNI', 'JULI', 'AUG', 'SEPT', 'OKT', 'NOV', 'DEZ'];
+
         const upcoming = data.events.map(e => {
-          const dt = new Date(e.startTime * 1000);
+          const start = new Date(e.startTime * 1000);
+          const end = e.endTime ? new Date(e.endTime * 1000) : null;
+          let inclusiveEnd = end ? new Date(end.getTime()) : new Date(start.getTime());
+          let durationDays = 1;
+          let isMultiDay = false;
+
+          if (e.isAllDay) {
+            if (end) {
+              const diffMs = end.getTime() - start.getTime();
+              const rawDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+              if (rawDays > 1) {
+                durationDays = rawDays;
+                isMultiDay = true;
+                inclusiveEnd = new Date(end.getTime() - 12 * 60 * 60 * 1000);
+              }
+            }
+          } else if (end) {
+            const startMid = new Date(start.getFullYear(), start.getMonth(), start.getDate()).getTime();
+            const endMid = new Date(end.getFullYear(), end.getMonth(), end.getDate()).getTime();
+            const dayDiff = Math.round((endMid - startMid) / (1000 * 60 * 60 * 24)) + 1;
+            if (dayDiff > 1) {
+              durationDays = dayDiff;
+              isMultiDay = true;
+              inclusiveEnd = end;
+            }
+          }
+
+          const startMonthStr = monthsShort[start.getMonth()];
+          const endMonthStr = monthsShort[inclusiveEnd.getMonth()];
+          let badgeMonth = startMonthStr;
+          let badgeDay = String(start.getDate());
+
+          if (isMultiDay) {
+            const pad = (n) => String(n).padStart(2, '0');
+            if (durationDays > 7) {
+              badgeMonth = start.getMonth() === inclusiveEnd.getMonth() ? startMonthStr : `${startMonthStr}/${endMonthStr}`;
+              badgeDay = `${start.getDate()}.+`;
+            } else if (start.getMonth() === inclusiveEnd.getMonth()) {
+              badgeDay = `${pad(start.getDate())}–${pad(inclusiveEnd.getDate())}`;
+            } else {
+              badgeMonth = `${startMonthStr}/${endMonthStr}`;
+              badgeDay = `${pad(start.getDate())}.–${pad(inclusiveEnd.getDate())}.`;
+            }
+          }
+
+          let dateRangeStr = formatSingleDate(start);
+          if (isMultiDay) {
+            dateRangeStr = `${formatSingleDate(start)} – ${formatSingleDate(inclusiveEnd)}`;
+          }
+
+          let timeStr = '';
+          if (e.isAllDay) {
+            timeStr = isMultiDay ? `Ganztägig · ${durationDays} Tage` : 'Ganztägig';
+          } else {
+            if (isMultiDay) {
+              const days = ['So.', 'Mo.', 'Di.', 'Mi.', 'Do.', 'Fr.', 'Sa.'];
+              timeStr = `${days[start.getDay()]}, ${formatTimeOnly(start)} – ${days[inclusiveEnd.getDay()]}, ${formatTimeOnly(inclusiveEnd)}`;
+            } else if (end && end.getTime() > start.getTime()) {
+              timeStr = `${formatTimeOnly(start)} – ${formatTimeOnly(end)}`;
+            } else {
+              timeStr = formatTimeOnly(start);
+            }
+          }
+
+          const startDayTime = new Date(start.getFullYear(), start.getMonth(), start.getDate()).getTime();
+          const endDayTime = new Date(inclusiveEnd.getFullYear(), inclusiveEnd.getMonth(), inclusiveEnd.getDate()).getTime();
+          const isCurrentlyRunning = (startDayTime <= todayStartMs && endDayTime >= todayStartMs && isMultiDay);
+          let currentDayNumber = undefined;
+          if (isCurrentlyRunning) {
+            const elapsedDays = Math.round((todayStartMs - startDayTime) / (1000 * 60 * 60 * 24)) + 1;
+            currentDayNumber = Math.min(Math.max(elapsedDays, 1), durationDays);
+          }
+
           return {
             ...e,
-            dateObj: dt
+            start,
+            inclusiveEnd,
+            isMultiDay,
+            durationDays,
+            badgeMonth,
+            badgeDay,
+            dateRangeStr,
+            timeStr,
+            isCurrentlyRunning,
+            currentDayNumber
           };
         });
 
@@ -346,15 +554,26 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
         if (!list) return;
 
         const html = upcoming.map(e => {
-          const mStr = months[e.dateObj.getMonth()];
-          const dNum = e.dateObj.getDate();
-          const dStr = `${days[e.dateObj.getDay()]}, ${String(dNum).padStart(2,'0')}.${String(e.dateObj.getMonth()+1).padStart(2,'0')}.${e.dateObj.getFullYear()}`;
-          const tStr = e.isAllDay ? 'Ganztägig' : `${String(e.dateObj.getHours()).padStart(2,'0')}:${String(e.dateObj.getMinutes()).padStart(2,'0')} Uhr`;
-
           let badgeCls = 'bg-slate-100 text-slate-700';
           if (e.category === 'Vorstandssitzung') badgeCls = 'bg-blue-100 text-blue-800';
           else if (e.category === 'Meisterschaft' || e.category === 'Vereinsmeisterschaft') badgeCls = 'bg-amber-100 text-amber-800';
           else if (e.category === 'Arbeitseinsatz') badgeCls = 'bg-emerald-100 text-emerald-800';
+
+          const dayFontCls = e.badgeDay.length > 4 ? 'text-[11px] sm:text-xs tracking-tighter' : e.badgeDay.length > 2 ? 'text-xs sm:text-sm tracking-tighter' : 'text-base sm:text-lg';
+
+          const multiDayBadge = e.isMultiDay ? `
+            <span class="inline-flex items-center gap-1 text-xs font-bold px-2.5 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/60">
+              <svg class="w-3 h-3 text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4"/><path d="M3 10h18"/><path d="M8 2v4"/><path d="M17 14h-6"/><path d="M13 18H7"/><path d="M7 14h.01"/><path d="M17 18h.01"/></svg>
+              ${e.durationDays} Tage
+            </span>
+          ` : '';
+
+          const runningBadge = e.isCurrentlyRunning ? `
+            <span class="inline-flex items-center gap-1.5 text-xs font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-500 text-white shadow-xs animate-pulse">
+              <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+              Findet heute statt (Tag ${e.currentDayNumber} von ${e.durationDays})
+            </span>
+          ` : '';
 
           return `
             <div 
@@ -364,22 +583,27 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
               data-description="${(e.description || '').toLowerCase()}"
               data-location="${(e.location || '').toLowerCase()}"
             >
-              <div class="flex items-center gap-4 min-w-[200px] border-b md:border-b-0 md:border-r border-brand-border/40 pb-3 md:pb-0 md:pr-4">
-                <div class="w-12 h-12 rounded-xl bg-brand-dark text-white flex flex-col items-center justify-center shrink-0 font-extrabold shadow-sm">
-                  <span class="text-xs uppercase leading-none">${mStr}</span>
-                  <span class="text-base leading-tight">${dNum}</span>
+              <div class="flex items-center gap-4 min-w-[210px] md:min-w-[240px] border-b md:border-b-0 md:border-r border-brand-border/40 pb-3 md:pb-0 md:pr-4">
+                <div class="w-14 sm:w-16 h-14 rounded-xl bg-brand-dark text-white flex flex-col items-center justify-center shrink-0 font-extrabold shadow-sm px-1 text-center select-none">
+                  <span class="text-[10px] sm:text-xs uppercase leading-none tracking-wider text-slate-300 font-bold">${e.badgeMonth}</span>
+                  <span class="font-black leading-tight mt-0.5 ${dayFontCls}">${e.badgeDay}</span>
                 </div>
                 <div class="space-y-0.5">
-                  <span class="font-extrabold text-sm text-brand-dark block">${dStr}</span>
-                  <span class="text-xs text-brand-muted flex items-center gap-1 font-medium">🕒 ${tStr}</span>
+                  <span class="font-extrabold text-sm text-brand-dark block">${e.dateRangeStr}</span>
+                  <span class="text-xs text-brand-muted flex items-center gap-1 font-medium">
+                    <svg class="w-3.5 h-3.5 text-brand-steel shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    ${e.timeStr}
+                  </span>
                 </div>
               </div>
               <div class="space-y-1.5 flex-grow">
-                <div class="flex items-center gap-2">
+                <div class="flex flex-wrap items-center gap-2">
                   <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${badgeCls}">${e.category}</span>
+                  ${multiDayBadge}
+                  ${runningBadge}
                 </div>
                 <h3 class="text-base font-extrabold text-brand-dark">${e.summary}</h3>
-                ${e.location ? `<p class="text-xs text-brand-steel flex items-center gap-1">📍 ${e.location}</p>` : ''}
+                ${e.location ? `<p class="text-xs text-brand-steel flex items-center gap-1"><svg class="w-3 h-3 shrink-0 text-brand-steel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> ${e.location}</p>` : ''}
                 ${e.description ? `<p class="text-xs text-brand-content/80 leading-relaxed pt-1">${e.description}</p>` : ''}
               </div>
             </div>

@@ -92,6 +92,7 @@ foreach ($lines as $line) {
                 'description' => trim($cur['desc']),
                 'location' => trim($cur['loc']),
                 'startTime' => $cur['start'],
+                'endTime' => $cur['end'] ?? null,
                 'isAllDay' => !empty($cur['isAllDay']),
                 'category' => $cat
             ];
@@ -131,6 +132,7 @@ foreach ($lines as $line) {
                             'description' => trim($cur['desc']),
                             'location' => trim($cur['loc']),
                             'startTime' => $satTs,
+                            'endTime' => $satTs + 6 * 3600,
                             'isAllDay' => false,
                             'category' => $cat
                         ];
@@ -159,14 +161,20 @@ foreach ($lines as $line) {
         elseif ($k === 'DTSTART') {
             $cur['start'] = parseICSDate($val);
             $cur['isAllDay'] = (strlen(preg_replace('/[^0-9]/', '', $val)) === 8);
+        } elseif ($k === 'DTEND') {
+            $cur['end'] = parseICSDate($val);
         }
     }
 }
 
-// Filter strictly for today and upcoming
+// Filter strictly for today and upcoming (including ongoing multi-day events)
 $todayMidnight = mktime(0, 0, 0, intval(date('n')), intval(date('j')), intval(date('Y')));
 $upcomingEvents = array_filter($events, function($e) use ($todayMidnight) {
-    return $e['startTime'] >= $todayMidnight;
+    $endTs = !empty($e['endTime']) ? $e['endTime'] : $e['startTime'];
+    if (!empty($e['isAllDay']) && !empty($e['endTime'])) {
+        $endTs = $e['endTime'] - 1; // all-day DTEND is exclusive
+    }
+    return $endTs >= $todayMidnight;
 });
 
 // Sort ascending by start time
