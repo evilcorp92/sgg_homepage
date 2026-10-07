@@ -157,21 +157,21 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
       {/* Filter Toolbar & Search Bar */}
       <div class="bg-white rounded-brand-lg border border-brand-border/80 p-6 shadow-sm space-y-6">
         
-        {/* Category Buttons: Default is Allgemein */}
+        {/* Category Buttons: Default is Alle */}
         <div class="flex flex-wrap items-center justify-center gap-2.5">
-          <button 
-            onclick="setFilter('Allgemein')" 
-            id="btn-Allgemein"
-            class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-brand-dark text-white shadow-sm"
-          >
-            🎯 Allgemein ({allgemeinCount})
-          </button>
           <button 
             onclick="setFilter('all')" 
             id="btn-all"
-            class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-slate-100 text-brand-steel hover:bg-slate-200"
+            class="filter-btn active px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-brand-dark text-white shadow-sm"
           >
             Alle ({upcomingEvents.length})
+          </button>
+          <button 
+            onclick="setFilter('Allgemein')" 
+            id="btn-Allgemein"
+            class="filter-btn px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all bg-slate-100 text-brand-steel hover:bg-slate-200"
+          >
+            🎯 Allgemein ({allgemeinCount})
           </button>
           <button 
             onclick="setFilter('Vorstandssitzung')" 
@@ -232,14 +232,14 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
       {/* Events List Container */}
       <div class="space-y-4" id="eventsContainer">
         <div id="eventsCounter" class="text-xs font-bold text-brand-muted px-1">
-          {allgemeinCount} Termine angezeigt
+          {upcomingEvents.length} Termine angezeigt
         </div>
 
         <div class="space-y-3" id="eventsList">
           {upcomingEvents.length > 0 ? (
             upcomingEvents.map((e) => {
               const timing = getEventDisplayDetails(e, todayStart);
-              const isInitiallyVisible = e.category === 'Allgemein';
+              const isInitiallyVisible = true;
               return (
                 <div 
                   class={`event-card bg-white border border-brand-border/70 rounded-brand p-5 shadow-sm hover:shadow-md transition-all duration-200 ${isInitiallyVisible ? 'flex' : 'hidden'} flex-col md:flex-row md:items-center justify-between gap-4`}
@@ -351,7 +351,7 @@ const ICAL_URL = "https://calendar.google.com/calendar/ical/9edol05k9ov7vnr7o9id
   </div>
 
   <script is:inline>
-    let activeCategory = 'Allgemein';
+    let activeCategory = 'all';
 
     // Parse URL parameter or hash (e.g. /termine/?filter=Meisterschaft)
     const urlParams = new URLSearchParams(window.location.search);
