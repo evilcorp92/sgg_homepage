@@ -1,7 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { 
-  HAUPTVORSTAND, SCHIESSWARTE, KASSENPRUEFER, KOENIGSFAMILIE, BDS_VORSTAND, BDS_ROS 
+  HAUPTVORSTAND, SCHIESSWARTE, KASSENPRUEFER, KOENIGSFAMILIE, BDS_VORSTAND, BDS_KASSENPRUEFER, BDS_ROS 
 } from '../../data/vorstand';
 import { Mail, Users, ShieldCheck, Crown, Target, Crosshair } from 'lucide-react';
 ---
@@ -240,6 +240,32 @@ import { Mail, Users, ShieldCheck, Crown, Target, Crosshair } from 'lucide-react
                         <span class="text-slate-400">—</span>
                       )}
                     </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- BDS Kassenprüfer -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-extrabold text-brand-dark flex items-center gap-2">
+            <ShieldCheck class="w-5 h-5 text-brand-steel" /> Kassenprüfer BDS-Gruppe
+          </h3>
+
+          <div class="overflow-x-auto rounded-brand border border-brand-border shadow-sm max-w-md">
+            <table class="w-full text-left text-sm text-brand-steel/90">
+              <thead class="bg-brand-dark text-white font-bold text-xs uppercase tracking-wider">
+                <tr>
+                  <th class="px-5 py-3.5">Funktion</th>
+                  <th class="px-5 py-3.5">Name</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-brand-border bg-brand-card">
+                {BDS_KASSENPRUEFER.map((kp) => (
+                  <tr class="hover:bg-brand-bg/60 transition-colors">
+                    <td class="px-5 py-3.5 font-semibold text-brand-dark">{kp.funktion}</td>
+                    <td class="px-5 py-3.5">{kp.vorname} {kp.nachname}</td>
                   </tr>
                 ))}
               </tbody>

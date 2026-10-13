@@ -95,6 +95,11 @@ export const BDS_VORSTAND: BdsBoardMember[] = [
   { funktion: 'Kassierer', vorname: 'Kerstin', nachname: 'Schmidt', email: 'k.schmidt@sg-gersfeld.de' },
 ];
 
+export const BDS_KASSENPRUEFER: Kassenpruefer[] = [
+  { funktion: 'Kassenprüfer', vorname: 'Maria', nachname: 'Schwarz' },
+  { funktion: 'Kassenprüfer', vorname: 'Mathias', nachname: 'Scheel' },
+];
+
 export const BDS_ROS: RangeOfficer[] = [
   { vorname: 'Björn', nachname: 'Böhlke' },
   { vorname: 'Markus', nachname: 'Müller' },
