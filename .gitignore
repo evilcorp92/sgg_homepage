@@ -17,6 +17,7 @@ creds.txt
 .deploy-manifest.json
 .env
 .env.*
+!.env.example
 
 # Large media uploads (hosted directly on web server / FTP)
 public/wp-content/uploads/

@@ -8,15 +8,35 @@ const __dirname = path.dirname(__filename);
 
 const LOCAL_UPLOADS = path.resolve(__dirname, "../public/wp-content/uploads");
 
+// Load .env file if present
+const envFile = path.resolve(__dirname, "../.env");
+if (fs.existsSync(envFile)) {
+  const envContent = fs.readFileSync(envFile, "utf8");
+  for (const line of envContent.split("\n")) {
+    const match = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
+    if (match) {
+      const key = match[1];
+      let value = match[2] || "";
+      if (value.startsWith('"') && value.endsWith('"')) value = value.slice(1, -1);
+      if (value.startsWith("'") && value.endsWith("'")) value = value.slice(1, -1);
+      if (!process.env[key]) process.env[key] = value.trim();
+    }
+  }
+}
+
 const ftpConfig = {
-  host: process.env.FTP_SERVER || "w020c7bf.kasserver.com",
+  host: process.env.FTP_SERVER,
   port: parseInt(process.env.FTP_PORT || "21"),
-  user: process.env.FTP_USERNAME || "f018a826",
-  password: process.env.FTP_PASSWORD || "***REMOVED***",
+  user: process.env.FTP_USERNAME,
+  password: process.env.FTP_PASSWORD,
   secure: false
 };
 
 async function getConnectedClient() {
+  if (!ftpConfig.host || !ftpConfig.user || !ftpConfig.password) {
+    console.error("FTP configuration error: FTP_SERVER, FTP_USERNAME, and FTP_PASSWORD must be defined (via .env file or environment variables).");
+    process.exit(1);
+  }
   const client = new ftp.Client();
   client.ftp.timeout = 60000;
   client.ftp.verbose = false;
