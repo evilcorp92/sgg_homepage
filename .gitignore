@@ -19,8 +19,9 @@ creds.txt
 .env.*
 !.env.example
 
-# Large media uploads (hosted directly on web server / FTP)
-public/wp-content/uploads/
+# Large media uploads (hosted directly on web server / FTP, except new 2026+ uploads)
+public/wp-content/uploads/*
+!public/wp-content/uploads/2026/
 
 # macOS / OS specific files
 .DS_Store

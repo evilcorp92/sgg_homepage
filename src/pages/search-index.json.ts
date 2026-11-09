@@ -220,6 +220,7 @@ export const GET: APIRoute = async () => {
     const plainBody = (post.body || '')
       .replace(/!\[.*?\]\(.*?\)/g, '')
       .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1')
+      .replace(/<[^>]*>/g, ' ')
       .replace(/#{1,6}\s+/g, '')
       .replace(/(\*\*|__)(.*?)\1/g, '$2')
       .replace(/(\*|_)(.*?)\1/g, '$2')

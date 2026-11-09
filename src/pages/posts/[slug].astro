@@ -28,7 +28,7 @@ const extractFeaturedImage = (body: string) => {
 const featuredImage = extractFeaturedImage(post.body);
 ---
 
-<Layout title={`${post.data.title} - SG Gersfeld`} description={post.body.substring(0, 150)}>
+<Layout title={`${post.data.title} - SG Gersfeld`} description={post.body.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().substring(0, 150)}>
   
   <article class="bg-brand-card min-h-screen pb-24">
     
