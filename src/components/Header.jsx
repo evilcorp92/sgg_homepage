@@ -12,7 +12,8 @@ const MENU_ITEMS = [
     children: [
       { name: 'Über uns', url: '/verein/' },
       { name: 'Schießzeiten', url: '/verein/schiesszeiten/' },
-      { name: 'Mitglied werden & Kosten', url: '/verein/mitglied-werden/' },
+      { name: 'Mitglied werden', url: '/verein/mitglied-werden/' },
+      { name: 'Kosten & Preise', url: '/verein/kosten/' },
       { name: 'Vorstand', url: '/verein/vorstand/' },
       { name: 'Satzung', url: '/verein/satzung/' },
       { name: 'Dienstplan', url: 'https://dp.sg-gersfeld.de/' },
