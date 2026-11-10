@@ -26,7 +26,7 @@ const AMMO_PRICES = [
 ];
 ---
 
-<Layout title="Kosten & Beiträge - SG Gersfeld 1813 e.V." description="Gültige Mitgliedsbeiträge, dynamische Beitragsstaffelung, Aufnahmegebühren, Standgebühren für Gastschützen und Munitionspreise der SG Gersfeld.">
+<Layout title="Kosten & Beiträge - SG Gersfeld 1813 e.V." description="Gültige Mitgliedsbeiträge, dynamische Beitragsstaffelung, Aufnahmegebühren, Standgebühren für Gastschützen, Munitionspreise und Kosten bei Beschädigungen am Stand.">
   
   <div class="bg-brand-card min-h-screen pb-24">
     
@@ -40,15 +40,34 @@ const AMMO_PRICES = [
           <CreditCard class="w-8 h-8 text-brand-steel" /> Mitgliedsbeiträge & Gebühren
         </h1>
         <p class="text-brand-muted font-medium max-w-2xl mx-auto">
-          Vollständige und aktuelle Übersicht aller Beiträge für den Hauptverein, die BDS-Gruppe, Gastschützen und Munitionspreise vor Ort.
+          Vollständige und aktuelle Übersicht aller Beiträge für den Hauptverein, die BDS-Gruppe, Gastschützen, Munitionspreise vor Ort sowie Standbeschädigungen.
         </p>
+
+        {/* Quick Jump Navigation (Inhaltsverzeichnis) */}
+        <nav aria-label="Inhaltsverzeichnis Kosten" class="pt-4 flex flex-wrap items-center justify-center gap-2">
+          <a href="#mitgliedsbeitraege" class="px-3.5 py-2 rounded-full bg-white hover:bg-brand-dark text-brand-steel hover:text-white border border-brand-border/80 text-xs font-bold transition-all shadow-2xs">
+            1. Hauptverein & Beiträge
+          </a>
+          <a href="#bds-abteilung" class="px-3.5 py-2 rounded-full bg-white hover:bg-brand-dark text-brand-steel hover:text-white border border-brand-border/80 text-xs font-bold transition-all shadow-2xs">
+            2. BDS-Abteilung
+          </a>
+          <a href="#gastschuetzen" class="px-3.5 py-2 rounded-full bg-white hover:bg-brand-dark text-brand-steel hover:text-white border border-brand-border/80 text-xs font-bold transition-all shadow-2xs">
+            3. Gastschützen & Leihwaffen
+          </a>
+          <a href="#munitionspreise" class="px-3.5 py-2 rounded-full bg-white hover:bg-brand-dark text-brand-steel hover:text-white border border-brand-border/80 text-xs font-bold transition-all shadow-2xs">
+            4. Munitionspreise
+          </a>
+          <a href="#standbeschaedigungen" class="px-3.5 py-2 rounded-full bg-amber-50 hover:bg-amber-600 text-amber-900 hover:text-white border border-amber-200 text-xs font-bold transition-all shadow-2xs flex items-center gap-1.5">
+            <AlertTriangle class="w-3.5 h-3.5" /> 5. Beschädigungen am Stand
+          </a>
+        </nav>
       </div>
     </header>
 
     <div class="max-w-5xl mx-auto px-6 mt-12 space-y-12">
 
       {/* 1. Hauptverein SG Gersfeld 1813 e.V. */}
-      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+      <div id="mitgliedsbeitraege" class="scroll-mt-24 bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-brand-border/40 pb-4">
           <div>
             <h2 class="text-2xl font-black text-brand-dark">
@@ -147,7 +166,7 @@ const AMMO_PRICES = [
       </div>
 
       {/* 2. BDS-Abteilung */}
-      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+      <div id="bds-abteilung" class="scroll-mt-24 bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
         <div class="border-b border-brand-border/40 pb-4">
           <h2 class="text-2xl font-black text-brand-dark">
             2. BDS-Abteilung (BDS-Schützen SG Gersfeld e.V.)
@@ -201,7 +220,7 @@ const AMMO_PRICES = [
       </div>
 
       {/* 3. Gastschützen & Standgebühren */}
-      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+      <div id="gastschuetzen" class="scroll-mt-24 bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
         <div class="border-b border-brand-border/40 pb-4">
           <h2 class="text-2xl font-black text-brand-dark">
             3. Standgebühren für Gastschützen & Leihwaffen
@@ -247,7 +266,7 @@ const AMMO_PRICES = [
       </div>
 
       {/* 4. Munitionspreise vor Ort */}
-      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+      <div id="munitionspreise" class="scroll-mt-24 bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
         <div class="border-b border-brand-border/40 pb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
             <h2 class="text-2xl font-black text-brand-dark">
@@ -284,13 +303,13 @@ const AMMO_PRICES = [
       </div>
 
       {/* 5. Gebührenordnung bei Standbeschädigungen */}
-      <div class="bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
+      <div id="standbeschaedigungen" class="scroll-mt-24 bg-white rounded-brand-lg border border-brand-border/70 p-6 sm:p-8 shadow-sm space-y-6">
         <div class="flex items-center gap-3 border-b border-brand-border/40 pb-4">
           <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center">
             <AlertTriangle class="w-6 h-6" />
           </div>
           <div>
-            <h2 class="text-xl font-extrabold text-brand-dark">Kosten bei Beschädigungen am Stand</h2>
+            <h2 class="text-xl font-extrabold text-brand-dark">5. Kosten bei Beschädigungen am Stand</h2>
             <p class="text-xs text-brand-muted">Pauschalen zur Deckung von Instandsetzungs- und Materialkosten</p>
           </div>
         </div>

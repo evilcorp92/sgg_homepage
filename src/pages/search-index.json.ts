@@ -47,7 +47,23 @@ export const GET: APIRoute = async () => {
       url: '/verein/kosten/',
       category: 'Verein',
       description: 'Transparente Übersicht über Mitgliedsbeiträge, Standgebühren, Standsanierungsumlage und Munitionspreise.',
-      keywords: 'Beitrag, Mitgliedsbeitrag, Jahresbeitrag, Kosten, Gebühren, Standgebühr, Munition, Preise, Aufnahmegebühr'
+      keywords: 'Beitrag, Mitgliedsbeitrag, Jahresbeitrag, Kosten, Gebühren, Standgebühr, Munition, Munitionspreise, Leihwaffen, Preise, Aufnahmegebühr, Beschädigung, Standbeschädigung'
+    },
+    {
+      id: 'page-munitionspreise',
+      title: 'Munitionspreise & Leihwaffen (Gastschützen)',
+      url: '/verein/kosten/#munitionspreise',
+      category: 'Verein',
+      description: 'Aktuelle Preisliste für Munition (.22 lfb, 9mm Para, .357 Mag, .38 Spec, .45 ACP, .223 Rem, Schrot, Diabolo) und kostenlose Leihwaffen.',
+      keywords: 'Munition, Munitionspreise, Leihwaffen, Gastschützen, Kaliber, 9mm, .22 lfb, .357 Magnum, .45 ACP, Schrot, Diabolo, Preisliste'
+    },
+    {
+      id: 'page-standbeschaedigungen',
+      title: 'Kosten bei Beschädigungen am Stand',
+      url: '/verein/kosten/#standbeschaedigungen',
+      category: 'Verein',
+      description: 'Gebührenordnung bei Standbeschädigungen auf dem 25m/50m-Stand und 10m-Luftgewehrstand (Decke, Boden, Wand, Tisch, Rahmen, Seil-Schuss).',
+      keywords: 'Beschädigung, Beschädigungen am Stand, Standbeschädigung, Schuss in Decke, Boden, Wand, Tisch, Rahmen, Wagen-Schuss, Seil-Schuss, Reparatur, Strafe'
     },
     {
       id: 'page-vorstand',

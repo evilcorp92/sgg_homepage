@@ -69,4 +69,5 @@ AddDefaultCharset UTF-8
 # 5. Redirect legacy Aufnahmeantrag PDF URL to the new GDPR-compliant PDF
 <IfModule mod_alias.c>
   Redirect 301 /wp-content/uploads/2022/02/Aufnahmeantrag.pdf /downloads/Aufnahmeantrag_SG_Gersfeld.pdf
+  RedirectMatch 301 ^/kosten/?$ /verein/kosten/
 </IfModule>
