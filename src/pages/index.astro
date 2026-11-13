@@ -74,8 +74,54 @@ const getCleanSummary = (body: string) => {
   </section>
 
   <!-- Live Widget: Nächste Schießzeit & Live-Status -->
-  <section class="relative -mt-12 z-20 max-w-5xl mx-auto px-6 mb-8">
+  <section class="relative -mt-12 z-20 max-w-5xl mx-auto px-6 mb-6">
     <LiveStatusHero client:visible />
+  </section>
+
+  <!-- Highlight Banner: Einladung zur Weihnachtsfeier 2026 -->
+  <section class="relative z-20 max-w-5xl mx-auto px-6 mb-10">
+    <div class="relative overflow-hidden rounded-brand-lg border border-amber-500/30 bg-gradient-to-r from-amber-950 via-slate-900 to-amber-900 text-white p-6 sm:p-7 shadow-xl group">
+      <div class="absolute -right-10 -bottom-10 w-44 h-44 rounded-full bg-amber-500/10 blur-2xl pointer-events-none"></div>
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+        <div class="flex items-start sm:items-center gap-4">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center text-amber-300 shrink-0 text-2xl shadow-inner select-none">
+            🎄
+          </div>
+          <div class="space-y-1.5">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-[11px] font-black uppercase tracking-wider bg-amber-500/25 text-amber-300 border border-amber-500/40 px-2.5 py-0.5 rounded-full">
+                Vereinsevent
+              </span>
+              <span class="text-xs font-semibold text-slate-300 flex items-center gap-1.5">
+                <Calendar class="w-3.5 h-3.5 text-amber-400" /> Samstag, 28. November 2026 • ab 15:30 Uhr
+              </span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">
+              Einladung zur Weihnachtsfeier in der „Silver City“
+            </h3>
+            <p class="text-sm text-slate-300 max-w-2xl leading-relaxed">
+              Gemeinsamer Jahresausklang in Saloon und Cantina mit Kalbsspieß & Coleslaw, frischen Waffeln, Punsch und Kakao. Alle Mitglieder, Angehörige und Freunde sind herzlich eingeladen!
+            </p>
+          </div>
+        </div>
+        <div class="flex flex-wrap sm:flex-nowrap items-center gap-3 shrink-0">
+          <a 
+            href="/posts/einladung-zur-weihnachtsfeier-2026/" 
+            class="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 px-5 py-3 rounded-brand font-bold text-xs uppercase tracking-wider shadow-md transition-all duration-200 hover:-translate-y-0.5"
+          >
+            Zur Einladung <ArrowRight class="w-4 h-4" />
+          </a>
+          <a 
+            href="/downloads/Einladung_Weihnachtsfeier_2026.pdf" 
+            target="_blank" 
+            class="inline-flex items-center gap-1.5 bg-white/10 hover:bg-white/20 text-white border border-white/20 px-4 py-3 rounded-brand font-bold text-xs uppercase tracking-wider transition-all duration-200"
+            title="Offizielle Einladung als PDF herunterladen"
+          >
+            PDF <ArrowUpRight class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 2. Welcome Section -->
